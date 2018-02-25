@@ -8,20 +8,6 @@
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "124782B120435D5B004F89B4"
-               BuildableName = "TMDbKit.framework"
-               BlueprintName = "TMDbKit"
-               ReferencedContainer = "container:TMDbKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
             buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
@@ -31,21 +17,7 @@
                BlueprintIdentifier = "12FACC882043801C00104F9E"
                BuildableName = "TMDbKitUnitTests.xctest"
                BlueprintName = "TMDbKitUnitTests"
-               ReferencedContainer = "container:TMDbKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "124AA2DC2043603C00935492"
-               BuildableName = "TMDbKitIntegrationTests.xctest"
-               BlueprintName = "TMDbKitIntegrationTests"
-               ReferencedContainer = "container:TMDbKit.xcodeproj">
+               ReferencedContainer = "container:../src/TMDbKit/TMDbKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -57,14 +29,24 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "12FACC882043801C00104F9E"
+               BuildableName = "TMDbKitUnitTests.xctest"
+               BlueprintName = "TMDbKitUnitTests"
+               ReferencedContainer = "container:../src/TMDbKit/TMDbKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "124782B120435D5B004F89B4"
-            BuildableName = "TMDbKit.framework"
-            BlueprintName = "TMDbKit"
-            ReferencedContainer = "container:TMDbKit.xcodeproj">
+            BlueprintIdentifier = "12FACC882043801C00104F9E"
+            BuildableName = "TMDbKitUnitTests.xctest"
+            BlueprintName = "TMDbKitUnitTests"
+            ReferencedContainer = "container:../src/TMDbKit/TMDbKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -81,15 +63,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "124782B120435D5B004F89B4"
-            BuildableName = "TMDbKit.framework"
-            BlueprintName = "TMDbKit"
-            ReferencedContainer = "container:TMDbKit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -99,15 +72,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "124782B120435D5B004F89B4"
-            BuildableName = "TMDbKit.framework"
-            BlueprintName = "TMDbKit"
-            ReferencedContainer = "container:TMDbKit.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

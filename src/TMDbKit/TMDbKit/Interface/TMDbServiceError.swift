@@ -18,22 +18,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import XCTest
-import TMDbKit
+import Foundation
 
-class TMDBKitIntegrationTests: XCTestCase {
-    
-    func test_it() {
-        let service = TMDBKitService(apiKey: "bdd678a8d65f5abf8608d6eb9a5be85f")
-        
-        var expectation = XCTestExpectation()
-        service.movieDetail(for: 550) { (detail, error) in
-            XCTAssertNotNil(detail)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 30)
-    }
-    
+public enum TMDbServiceError: Error {
+    case parseError(Error)
 }
-
