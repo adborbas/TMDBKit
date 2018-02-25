@@ -33,14 +33,6 @@ class TMDBKitIntegrationTests: XCTestCase {
         }
         
         wait(for: [expectation], timeout: 30)
-        
-        expectation = XCTestExpectation()
-        service.movieDetail(for: 11) { (detail, error) in
-            XCTAssertNotNil(detail)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 30)
     }
     
 }
