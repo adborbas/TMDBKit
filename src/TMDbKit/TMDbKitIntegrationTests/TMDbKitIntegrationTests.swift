@@ -32,7 +32,7 @@ class TMDBKitIntegrationTests: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 30
+        wait(for: [expectation], timeout: 30)
     }
     
 }
