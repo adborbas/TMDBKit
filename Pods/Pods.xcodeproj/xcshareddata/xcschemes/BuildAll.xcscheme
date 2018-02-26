@@ -17,21 +17,7 @@
                BlueprintIdentifier = "124782B120435D5B004F89B4"
                BuildableName = "TMDbKit.framework"
                BlueprintName = "TMDbKit"
-               ReferencedContainer = "container:TMDbKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "12FACC882043801C00104F9E"
-               BuildableName = "TMDbKitUnitTests.xctest"
-               BlueprintName = "TMDbKitUnitTests"
-               ReferencedContainer = "container:TMDbKit.xcodeproj">
+               ReferencedContainer = "container:../src/TMDbKit/TMDbKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -45,7 +31,21 @@
                BlueprintIdentifier = "124AA2DC2043603C00935492"
                BuildableName = "TMDbKitIntegrationTests.xctest"
                BlueprintName = "TMDbKitIntegrationTests"
-               ReferencedContainer = "container:TMDbKit.xcodeproj">
+               ReferencedContainer = "container:../src/TMDbKit/TMDbKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "12FACC882043801C00104F9E"
+               BuildableName = "TMDbKitUnitTests.xctest"
+               BlueprintName = "TMDbKitUnitTests"
+               ReferencedContainer = "container:../src/TMDbKit/TMDbKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "124782B120435D5B004F89B4"
             BuildableName = "TMDbKit.framework"
             BlueprintName = "TMDbKit"
-            ReferencedContainer = "container:TMDbKit.xcodeproj">
+            ReferencedContainer = "container:../src/TMDbKit/TMDbKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -87,7 +87,7 @@
             BlueprintIdentifier = "124782B120435D5B004F89B4"
             BuildableName = "TMDbKit.framework"
             BlueprintName = "TMDbKit"
-            ReferencedContainer = "container:TMDbKit.xcodeproj">
+            ReferencedContainer = "container:../src/TMDbKit/TMDbKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -105,7 +105,7 @@
             BlueprintIdentifier = "124782B120435D5B004F89B4"
             BuildableName = "TMDbKit.framework"
             BlueprintName = "TMDbKit"
-            ReferencedContainer = "container:TMDbKit.xcodeproj">
+            ReferencedContainer = "container:../src/TMDbKit/TMDbKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

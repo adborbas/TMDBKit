@@ -21,52 +21,32 @@
 import Foundation
 import Alamofire
 
-public protocol TMDBService {
-    func movieDetail(for movieId: Int, completionHandler: @escaping (Movie?, Error?) -> ())
-}
-
-public class TMDBKitService: TMDBService {
-    private static let baseURL = "https://api.themoviedb.org/3"
-
-    private let apiKey: String
-
+public class TMDbKitService: TMDbService {
+    private let urlBuilder: TMDbURLBuilder
+    
     public init(apiKey: String) {
-        self.apiKey = apiKey
+        self.urlBuilder = TMDbURLBuilder(apiKey: apiKey)
     }
-
+    
     public func movieDetail(for movieId: Int, completionHandler: @escaping (Movie?, Error?) -> ()) {
-        let url = URL(string: "\(TMDBKitService.baseURL)/movie/\(movieId)?api_key=\(self.apiKey)")!
+        let url = self.urlBuilder.movieDetailURL(for: movieId)
         Alamofire.request(url).responseString { response in
             guard let data = response.result.value?.data(using: .utf8) else {
-                completionHandler(nil, nil)
+                completionHandler(nil, nil) // TODO: return error here
                 return
             }
             
-            let detail: Movie
+            let movie: Movie
             do {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
-                detail = try decoder.decode(Movie.self, from: data)
+                movie = try decoder.decode(Movie.self, from: data)
             } catch {
-                completionHandler(nil, error)
+                completionHandler(nil, TMDbServiceError.parseError(error))
                 return
             }
             
-            completionHandler(detail, nil)
+            completionHandler(movie, nil)
         }
     }
-
-
 }
-
-extension DateFormatter {
-    static let iso8601Short: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.calendar = Calendar(identifier: .iso8601)
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        return formatter
-    }()
-}
-
