@@ -21,5 +21,5 @@
 import Foundation
 
 public protocol TMDbService {
-    func movieDetail(for movieId: Int, completionHandler: @escaping (Movie?, Error?) -> ())
+    func movieDetail(for movieId: Int, completionHandler: @escaping (Movie?, Error?) -> Void)
 }

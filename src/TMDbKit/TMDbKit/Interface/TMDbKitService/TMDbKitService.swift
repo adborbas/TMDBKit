@@ -30,17 +30,22 @@ public class TMDbKitService: TMDbService {
     
     public func movieDetail(for movieId: Int, completionHandler: @escaping (Movie?, Error?) -> ()) {
         let url = self.urlBuilder.movieDetailURL(for: movieId)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
+        
+        self.requestDecodable(url, decoder: decoder, completionHandler: completionHandler)
+    }
+    
+    private func requestDecodable<T: Decodable>(_ url: URL, decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (T?, Error?) -> Void) {
         Alamofire.request(url).responseString { response in
             guard let data = response.result.value?.data(using: .utf8) else {
                 completionHandler(nil, nil) // TODO: return error here
                 return
             }
             
-            let movie: Movie
+            let movie: T
             do {
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
-                movie = try decoder.decode(Movie.self, from: data)
+                movie = try decoder.decode(T.self, from: data)
             } catch {
                 completionHandler(nil, TMDbServiceError.parseError(error))
                 return
