@@ -19,10 +19,12 @@
 // SOFTWARE.
 
 public struct TMDbKitServiceConfig {
+    private static let defaultLanguage = "en-US"
+    
     public let apiKey: String
     public let language: String
     
-    init(apiKey: String, language: String = "en-US") {
+    init(apiKey: String, language: String = TMDbKitServiceConfig.defaultLanguage) {
         self.apiKey = apiKey
         self.language = language
     }

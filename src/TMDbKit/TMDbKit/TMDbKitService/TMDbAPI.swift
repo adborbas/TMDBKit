@@ -26,6 +26,7 @@ enum TMDbAPI {
     enum Key {
         static let apiKey = "api_key"
         static let language = "language"
+        static let appendToResponse = "append_to_response"
     }
     
     enum Movie {

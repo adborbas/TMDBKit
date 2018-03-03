@@ -18,10 +18,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+import XCTest
+@testable import TMDbKit
 
-public struct MovieCredit: Decodable {
-    public let id: Int?
-    public let cast: [CastMember]
-    public let crew: [CrewMember]
+class TMDbKitServiceConfigUnitTest: XCTestCase {
+    func test_defaultLanguage() {
+        let config = TMDbKitServiceConfig(apiKey: "APIKEY")
+        let expectedConfig = TMDbKitServiceConfig(apiKey: "APIKEY", language: "en-US")
+        
+        XCTAssertEqual(config.language, expectedConfig.language, "The default language should be 'en-US'")
+    }
 }

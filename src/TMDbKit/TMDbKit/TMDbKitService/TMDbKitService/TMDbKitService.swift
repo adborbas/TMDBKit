@@ -31,8 +31,8 @@ public class TMDbKitService: TMDbService {
 
 // MARK: - Movie
 extension TMDbKitService {
-    public func movieDetail(for movieId: Int, completionHandler: @escaping (Movie?, Error?) -> ()) {
-        let url = self.urlBuilder.movieDetailURL(for: movieId)
+    public func movieDetail(for movieId: Int, appending queryMethods: [TMDbServiceQueryMethod] = [TMDbServiceQueryMethod](), completionHandler: @escaping (Movie?, Error?) -> ()) {
+        let url = self.urlBuilder.movieDetailURL(for: movieId, appending: queryMethods)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
         

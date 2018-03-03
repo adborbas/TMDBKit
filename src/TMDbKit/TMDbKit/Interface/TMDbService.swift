@@ -21,6 +21,12 @@
 import Foundation
 
 public protocol TMDbService {
-    func movieDetail(for movieId: Int, completionHandler: @escaping (Movie?, Error?) -> ())
+
+    func movieDetail(for movieId: Int, appending: [TMDbServiceQueryMethod], completionHandler: @escaping (Movie?, Error?) -> ())
+    
     func movieCredits(for movieId: Int, completionHandler: @escaping (MovieCredit?, Error?) -> ())
+}
+
+public enum TMDbServiceQueryMethod: String {
+    case credits = "credits"
 }

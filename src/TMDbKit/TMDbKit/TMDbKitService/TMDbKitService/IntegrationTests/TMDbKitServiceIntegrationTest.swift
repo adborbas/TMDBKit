@@ -23,17 +23,17 @@ import XCTest
 
 class TMDbKitServiceIntegrationTest: XCTestCase {
     static let defaultTimeout: TimeInterval = 30
-    var service: TMDbService!
+    var service: TMDbKitService!
     
     override func setUp() {
         super.setUp()
         self.continueAfterFailure = false
         
-        self.service = TMDbKitService(apiKey: TestConstants.APIKey.valid)
+        self.service = TMDbKitService(config: TestConstants.ServiceConfig.validAPIKey)
     }
     
     func test_invalidApiKey_shouldReturnError() {
-        let invalidApiKeyService = TMDbKitService(apiKey: TestConstants.APIKey.invalid)
+        let invalidApiKeyService = TMDbKitService(config: TestConstants.ServiceConfig.invalidAPIKey)
         
         let expectation = XCTestExpectation()
         invalidApiKeyService.movieDetail(for: TestConstants.Movie.notExistsingId) { (movie, error) in

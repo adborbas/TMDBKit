@@ -25,7 +25,7 @@ class MovieDetailIntegrationTest: TMDbKitServiceIntegrationTest {
     
     func test_movieDetail_existing_shouldSucceed() {
         let expectation = XCTestExpectation()
-        service.movieDetail(for: TestConstants.Movie.existsingId) { (movie, error) in
+        self.service.movieDetail(for: TestConstants.Movie.existsingId) { (movie, error) in
             XCTAssertNil(error)
             XCTAssertNotNil(movie)
             expectation.fulfill()
@@ -36,12 +36,26 @@ class MovieDetailIntegrationTest: TMDbKitServiceIntegrationTest {
     
     func test_movieDetail_nonExisting_shouldReturnError() {
         let expectation = XCTestExpectation()
-        service.movieDetail(for: TestConstants.Movie.notExistsingId) { (movie, error) in
+        self.service.movieDetail(for: TestConstants.Movie.notExistsingId) { (movie, error) in
             XCTAssertNotNil(error)
             if let error = error, case TMDbKitError.resourceNotFound = error {} else {
                 XCTFail("Expected resourceNotFound error but got: \(String(describing: error?.localizedDescription))")
             }
             XCTAssertNil(movie)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: TMDbKitServiceIntegrationTest.defaultTimeout)
+    }
+    
+    func test_movieDetail_appendingCredits_shouldSucceed() {
+        let expectation = XCTestExpectation()
+        self.service.movieDetail(for: TestConstants.Movie.existsingId, appending: [.credits]) { (movie, error) in
+            XCTAssertNil(error)
+            XCTAssertNotNil(movie)
+            if let movie = movie {
+                XCTAssertNotNil(movie.credits)
+            }
             expectation.fulfill()
         }
         

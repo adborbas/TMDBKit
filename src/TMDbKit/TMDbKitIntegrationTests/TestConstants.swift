@@ -18,10 +18,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+@testable import TMDbKit
+
 enum TestConstants {
-    enum APIKey {
-        static let invalid = "invalidAPIKey"
-        static let valid = "bdd678a8d65f5abf8608d6eb9a5be85f"
+    
+    enum ServiceConfig {
+        private enum APIKey {
+            static let valid = "bdd678a8d65f5abf8608d6eb9a5be85f"
+            static let invalid = "invalidAPIKey"
+        }
+        
+        static let validAPIKey = TMDbKitServiceConfig(apiKey: APIKey.valid)
+        static let invalidAPIKey = TMDbKitServiceConfig(apiKey: APIKey.invalid)
     }
     
     enum Movie {
