@@ -20,7 +20,8 @@
 
 import Foundation
 
-public protocol TMDbService {
-    func movieDetail(for movieId: Int, completionHandler: @escaping (Movie?, Error?) -> ())
-    func movieCredits(for movieId: Int, completionHandler: @escaping (MovieCredit?, Error?) -> ())
+public enum Gender: Int, Decodable {
+    case notSet = 0
+    case female = 1
+    case male = 2
 }

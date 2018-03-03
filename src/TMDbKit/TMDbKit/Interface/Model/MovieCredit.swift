@@ -19,34 +19,9 @@
 // SOFTWARE.
 
 import Foundation
-import Alamofire
 
-public class TMDbKitService: TMDbService {
-    private let urlBuilder: TMDbURLBuilder
-    
-    public init(apiKey: String) {
-        self.urlBuilder = TMDbURLBuilder(apiKey: apiKey)
-    }
-    
-    public func movieDetail(for movieId: Int, completionHandler: @escaping (Movie?, Error?) -> ()) {
-        let url = self.urlBuilder.movieDetailURL(for: movieId)
-        Alamofire.request(url).responseString { response in
-            guard let data = response.result.value?.data(using: .utf8) else {
-                completionHandler(nil, nil) // TODO: return error here
-                return
-            }
-            
-            let movie: Movie
-            do {
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
-                movie = try decoder.decode(Movie.self, from: data)
-            } catch {
-                completionHandler(nil, TMDbServiceError.parseError(error))
-                return
-            }
-            
-            completionHandler(movie, nil)
-        }
-    }
+public struct MovieCredit: Decodable {
+    public let id: Int
+    public let cast: [CastMember]
+    public let crew: [CrewMember]
 }

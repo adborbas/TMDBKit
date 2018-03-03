@@ -17,6 +17,10 @@
 		124AA2D520435FB600935492 /* GenreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AA2CC20435FB600935492 /* GenreInfo.swift */; };
 		124AA2D620435FB600935492 /* TMDbService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124AA2CE20435FB600935492 /* TMDbService.swift */; };
 		124AA2E22043603C00935492 /* TMDbKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124782B220435D5B004F89B4 /* TMDbKit.framework */; };
+		1262FD20204ACAD70017012C /* CrewMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1262FD1F204ACAD70017012C /* CrewMember.swift */; };
+		1262FD22204ACB5E0017012C /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1262FD21204ACB5E0017012C /* Gender.swift */; };
+		1262FD24204ACCDB0017012C /* CastMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1262FD23204ACCDB0017012C /* CastMember.swift */; };
+		1262FD27204ACD910017012C /* MovieCredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1262FD26204ACD910017012C /* MovieCredit.swift */; };
 		12AD446E2043807300C77E7A /* TMDbURLBuilderUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD446C2043806B00C77E7A /* TMDbURLBuilderUnitTests.swift */; };
 		12FACC752043767E00104F9E /* TMDbURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FACC742043767E00104F9E /* TMDbURLBuilder.swift */; };
 		12FACC7720437CC800104F9E /* TMDbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FACC7620437CC800104F9E /* TMDbAPI.swift */; };
@@ -59,6 +63,10 @@
 		124AA2CE20435FB600935492 /* TMDbService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDbService.swift; sourceTree = "<group>"; };
 		124AA2DD2043603C00935492 /* TMDbKitIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMDbKitIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		124AA2E12043603C00935492 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1262FD1F204ACAD70017012C /* CrewMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewMember.swift; sourceTree = "<group>"; };
+		1262FD21204ACB5E0017012C /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		1262FD23204ACCDB0017012C /* CastMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastMember.swift; sourceTree = "<group>"; };
+		1262FD26204ACD910017012C /* MovieCredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCredit.swift; sourceTree = "<group>"; };
 		12AD446C2043806B00C77E7A /* TMDbURLBuilderUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbURLBuilderUnitTests.swift; sourceTree = "<group>"; };
 		12FACC742043767E00104F9E /* TMDbURLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbURLBuilder.swift; sourceTree = "<group>"; };
 		12FACC7620437CC800104F9E /* TMDbAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbAPI.swift; sourceTree = "<group>"; };
@@ -151,6 +159,10 @@
 				124AA2CA20435FB600935492 /* CompanyInfo.swift */,
 				124AA2CB20435FB600935492 /* Status.swift */,
 				124AA2CC20435FB600935492 /* GenreInfo.swift */,
+				1262FD1F204ACAD70017012C /* CrewMember.swift */,
+				1262FD21204ACB5E0017012C /* Gender.swift */,
+				1262FD23204ACCDB0017012C /* CastMember.swift */,
+				1262FD26204ACD910017012C /* MovieCredit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -158,6 +170,7 @@
 		124AA2CD20435FB600935492 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				12FACC7920437E5500104F9E /* TMDbKitService */,
 				12FACC842043800300104F9E /* UnitTests */,
 				12FACC742043767E00104F9E /* TMDbURLBuilder.swift */,
 				12FACC7620437CC800104F9E /* TMDbAPI.swift */,
@@ -179,7 +192,6 @@
 			children = (
 				124AA2CE20435FB600935492 /* TMDbService.swift */,
 				12FACC8220437F5D00104F9E /* TMDbServiceError.swift */,
-				12FACC7920437E5500104F9E /* TMDbKitService */,
 				124AA2C520435FB600935492 /* Model */,
 			);
 			path = Interface;
@@ -530,12 +542,16 @@
 				124AA2D220435FB600935492 /* CountryInfo.swift in Sources */,
 				12FACC8120437F2700104F9E /* DateFormatter+Extensions.swift in Sources */,
 				124AA2D320435FB600935492 /* CompanyInfo.swift in Sources */,
+				1262FD27204ACD910017012C /* MovieCredit.swift in Sources */,
+				1262FD20204ACAD70017012C /* CrewMember.swift in Sources */,
 				124AA2D120435FB600935492 /* LanguageInfo.swift in Sources */,
 				12FACC752043767E00104F9E /* TMDbURLBuilder.swift in Sources */,
 				12FACC7B20437E6F00104F9E /* TMDbKitService.swift in Sources */,
 				124AA2D620435FB600935492 /* TMDbService.swift in Sources */,
 				124AA2CF20435FB600935492 /* Movie.swift in Sources */,
+				1262FD24204ACCDB0017012C /* CastMember.swift in Sources */,
 				124AA2D020435FB600935492 /* CollectionInfo.swift in Sources */,
+				1262FD22204ACB5E0017012C /* Gender.swift in Sources */,
 				124AA2D420435FB600935492 /* Status.swift in Sources */,
 				12FACC8320437F5D00104F9E /* TMDbServiceError.swift in Sources */,
 				12FACC7720437CC800104F9E /* TMDbAPI.swift in Sources */,

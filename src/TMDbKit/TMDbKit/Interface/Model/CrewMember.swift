@@ -20,7 +20,24 @@
 
 import Foundation
 
-public protocol TMDbService {
-    func movieDetail(for movieId: Int, completionHandler: @escaping (Movie?, Error?) -> ())
-    func movieCredits(for movieId: Int, completionHandler: @escaping (MovieCredit?, Error?) -> ())
+public struct CrewMember: Decodable {
+    public let creditId: String
+    public let department: String
+    public let gender: Gender?
+    public let id: Int
+    public let job: String
+    public let name: String
+    public let profilePath: String
+}
+
+private extension CrewMember {
+    enum CodingKeys: String, CodingKey {
+        case creditId = "credit_id"
+        case department
+        case gender
+        case id
+        case job
+        case name
+        case profilePath = "profile_path"
+    }
 }
