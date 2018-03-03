@@ -33,7 +33,7 @@ class TMDbKitMovieURLBuilder: TMDbURLBuilder {
     
     func movieCreditsURL(for movieId: Int) -> URL {
         var components = self.baseURLComponents()
-        let movieCreditsPath = self.movieDetailPath(with: movieId).appending("/\(TMDbAPI.Movie.credits)")
+        let movieCreditsPath = self.movieDetailPath(with: movieId, method: TMDbAPI.Movie.credits)
         components.path.append(movieCreditsPath)
         
         return components.url!
@@ -41,13 +41,18 @@ class TMDbKitMovieURLBuilder: TMDbURLBuilder {
     
     func movieAlternativeTitles(for movieId: Int) -> URL {
         var components = self.baseURLComponents()
-        let movieCreditsPath = self.movieDetailPath(with: movieId).appending("/\(TMDbAPI.Movie.alternativeTitles)")
+        let movieCreditsPath = self.movieDetailPath(with: movieId, method: TMDbAPI.Movie.alternativeTitles)
         components.path.append(movieCreditsPath)
         
         return components.url!
     }
     
-    private func movieDetailPath(with movieId: Int) -> String {
-        return URL(string: "/")!.appendingPathComponent(TMDbAPI.Movie.path).appendingPathComponent("\(movieId)").absoluteString
+    private func movieDetailPath(with movieId: Int, method: String? = nil) -> String {
+        var url = URL(string: "/")!.appendingPathComponent(TMDbAPI.Movie.path).appendingPathComponent("\(movieId)")
+        if let method = method {
+            url.appendPathComponent(method)
+        }
+        
+        return url.absoluteString
     }
 }
