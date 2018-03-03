@@ -23,6 +23,24 @@ import Alamofire
 
 extension DataRequest {
     
+    func responseTMDbKitResult2<Value: Decodable>(decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (TMDbServiceResult<Value>) -> Void) {
+        self.responseDecodableObject(decoder: decoder) { (response: DataResponse<Value>) in
+            switch response.result {
+            case .failure(let error):
+                if let data = response.data, let tmdbError = self.isTMDbKitError(data) {
+                    completionHandler(.failure(tmdbError))
+                    return
+                }
+
+                completionHandler(.failure(error))
+                return
+                
+            case .success(let value):
+                completionHandler(.success(value))
+            }
+        }
+    }
+    
     func responseTMDbKitResult<Value: Decodable>(decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (TMDbServiceResult<Value>) -> Void) {
         self.responseData { response in
             

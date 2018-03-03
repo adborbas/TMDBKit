@@ -20,6 +20,7 @@
 
 import Foundation
 import Alamofire
+import CodableAlamofire
 
 public class TMDbKitMovieService: TMDbMovieService {
     
@@ -34,12 +35,12 @@ public class TMDbKitMovieService: TMDbMovieService {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
         
-        Alamofire.request(url).responseTMDbKitResult(decoder: decoder, completionHandler: completionHandler)
+        Alamofire.request(url).responseTMDbKitResult2(decoder: decoder, completionHandler: completionHandler)
     }
 
     public func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> ()) {
         let url = self.urlBuilder.movieCreditsURL(for: movieId)
-        Alamofire.request(url).responseTMDbKitResult(completionHandler: completionHandler)
+        Alamofire.request(url).responseTMDbKitResult2(completionHandler: completionHandler)
     }
     
     public func movieAlternativeTitles(for movieId: Int, completionHandler: @escaping (TMDbServiceArrayResult<AlternativeTitle>) -> Void) {
