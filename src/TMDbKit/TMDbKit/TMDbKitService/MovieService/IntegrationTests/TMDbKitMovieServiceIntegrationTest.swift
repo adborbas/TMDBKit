@@ -18,22 +18,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+import XCTest
 @testable import TMDbKit
 
-enum TestConstants {
+class TMDbKitMovieServiceIntegrationTest: XCTestCase {
+    var service: TMDbKitMovieService!
     
-    enum ServiceConfig {
-        private enum APIKey {
-            static let valid = "bdd678a8d65f5abf8608d6eb9a5be85f"
-            static let invalid = "invalidAPIKey"
-        }
+    override func setUp() {
+        super.setUp()
+        self.continueAfterFailure = false
         
-        static let validAPIKey = TMDbKitServiceConfig(apiKey: APIKey.valid)
-        static let invalidAPIKey = TMDbKitServiceConfig(apiKey: APIKey.invalid)
+        self.service = TMDbKitMovieService(config: TestConstants.ServiceConfig.validAPIKey)
     }
     
-    enum Movie {
-        static let existsingId = 550
-        static let notExistsingId = 1
+    func test_invalidApiKey_shouldReturnError() {
+        let invalidApiKeyService = TMDbKitMovieService(config: TestConstants.ServiceConfig.invalidAPIKey)
+        
+        let expectation = XCTestExpectation()
+        invalidApiKeyService.movieDetail(for: TestConstants.Movie.notExistsingId) { result in
+            switch result {
+            case .failure(let error):
+                if case TMDbKitServiceError.invalidAPIKey = error {} else {
+                    XCTFail("Expected invalidApiKey error but got: \(error.localizedDescription))")
+                }
+            case .success:
+                XCTFail("Requesting movie details with invalid apiKey should have failed.")
+            }
+            expectation.fulfill()
+        }
     }
 }

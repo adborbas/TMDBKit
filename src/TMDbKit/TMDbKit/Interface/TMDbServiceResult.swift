@@ -20,23 +20,7 @@
 
 import Foundation
 
-class TMDbURLBuilder {
-    private let urlComponents: URLComponents
-    
-    init(apiKey: String, language: String) {
-        var components = URLComponents()
-        components.scheme = TMDbAPI.scheme
-        components.host = TMDbAPI.host
-        components.path = "/\(TMDbAPI.version)"
-        
-        let apiKeyQueryItem = URLQueryItem(name: TMDbAPI.Key.apiKey, value: apiKey)
-        let languageQueryItem = URLQueryItem(name: TMDbAPI.Key.language, value: language)
-        components.queryItems = [apiKeyQueryItem, languageQueryItem]
-        self.urlComponents = components
-    }
-    
-    func baseURLComponents() -> URLComponents {
-        let components = urlComponents
-        return components
-    }
+public enum TMDbServiceResult<Value: Decodable> {
+    case failure(Error)
+    case success(Value)
 }

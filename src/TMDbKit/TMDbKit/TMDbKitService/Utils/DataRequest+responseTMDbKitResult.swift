@@ -19,14 +19,36 @@
 // SOFTWARE.
 
 import Foundation
+import Alamofire
 
-public protocol TMDbService {
-
-    func movieDetail(for movieId: Int, appending: [TMDbServiceQueryMethod], completionHandler: @escaping (Movie?, Error?) -> ())
+extension DataRequest {
     
-    func movieCredits(for movieId: Int, completionHandler: @escaping (MovieCredit?, Error?) -> ())
-}
-
-public enum TMDbServiceQueryMethod: String {
-    case credits = "credits"
+    func responseTMDbKitResult<Value>(decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (TMDbServiceResult<Value>) -> Void) {
+        self.responseData { response in
+            
+            switch response.result {
+            case .failure(let error):
+                completionHandler(.failure(error))
+                return
+                
+            case .success(let data):
+                do {
+                    if let error = self.isTMDbKitError(data) {
+                        completionHandler(.failure(error))
+                        return
+                    }
+                    
+                    let entity = try decoder.decode(Value.self, from: data)
+                    completionHandler(.success(entity))
+                } catch {
+                    completionHandler(.failure(error))
+                    return
+                }
+            }
+        }
+    }
+    
+    private func isTMDbKitError(_ data: Data) -> TMDbKitServiceError? {
+        return try? JSONDecoder().decode(TMDbKitServiceError.self, from: data)
+    }
 }

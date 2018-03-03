@@ -20,23 +20,9 @@
 
 import Foundation
 
-class TMDbURLBuilder {
-    private let urlComponents: URLComponents
+public protocol TMDbMovieService {
+
+    func movieDetail(for movieId: Int, appending: [TMDbMovieServiceQueryMethod], completionHandler: @escaping (TMDbServiceResult<Movie>) -> Void)
     
-    init(apiKey: String, language: String) {
-        var components = URLComponents()
-        components.scheme = TMDbAPI.scheme
-        components.host = TMDbAPI.host
-        components.path = "/\(TMDbAPI.version)"
-        
-        let apiKeyQueryItem = URLQueryItem(name: TMDbAPI.Key.apiKey, value: apiKey)
-        let languageQueryItem = URLQueryItem(name: TMDbAPI.Key.language, value: language)
-        components.queryItems = [apiKeyQueryItem, languageQueryItem]
-        self.urlComponents = components
-    }
-    
-    func baseURLComponents() -> URLComponents {
-        let components = urlComponents
-        return components
-    }
+    func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> Void)
 }

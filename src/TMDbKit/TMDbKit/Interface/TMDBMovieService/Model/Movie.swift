@@ -48,7 +48,7 @@ public struct Movie: Decodable {
     public let voteCount: Int
     
     // QueryMethos
-    public let credits: MovieCredit?
+    public let credits: MovieCredits?
 }
 
 private extension Movie {

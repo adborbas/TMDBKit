@@ -18,33 +18,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import XCTest
-@testable import TMDbKit
+import Foundation
+import Alamofire
 
-class MovieCreditsIntegrationTests: TMDbKitServiceIntegrationTest {
+public class TMDbKitMovieService: TMDbMovieService {
+    private let urlBuilder: TMDbKitMovieURLBuilder
     
-    func test_movieCredits_existing_shouldSucceed() {
-        let expectation = XCTestExpectation()
-        service.movieCredits(for: TestConstants.Movie.existsingId) { (credits, error) in
-            XCTAssertNil(error)
-            XCTAssertNotNil(credits)
-            expectation.fulfill()
-        }
-
-        wait(for: [expectation], timeout: TMDbKitServiceIntegrationTest.defaultTimeout)
+    public init(config: TMDbKitServiceConfig) {
+        self.urlBuilder = TMDbKitMovieURLBuilder(apiKey: config.apiKey, language: config.language)
     }
     
-    func test_movieCredits_nonExisting_shouldReturnError() {
-        let expectation = XCTestExpectation()
-        service.movieCredits(for: TestConstants.Movie.notExistsingId) { (credits, error) in
-            XCTAssertNotNil(error)
-            if let error = error, case TMDbKitError.resourceNotFound = error {} else {
-                XCTFail("Expected resourceNotFound error but got: \(String(describing: error?.localizedDescription))")
-            }
-            XCTAssertNil(credits)
-            expectation.fulfill()
-        }
+    public func movieDetail(for movieId: Int, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod](), completionHandler: @escaping (TMDbServiceResult<Movie>) -> ()) {
+        let url = self.urlBuilder.movieDetailURL(for: movieId, appending: queryMethods)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
         
-        wait(for: [expectation], timeout: TMDbKitServiceIntegrationTest.defaultTimeout)
+        Alamofire.request(url).responseTMDbKitResult(decoder: decoder, completionHandler: completionHandler)
+    }
+
+    public func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> ()) {
+        let url = self.urlBuilder.movieCreditsURL(for: movieId)
+        Alamofire.request(url).responseTMDbKitResult(completionHandler: completionHandler)
     }
 }

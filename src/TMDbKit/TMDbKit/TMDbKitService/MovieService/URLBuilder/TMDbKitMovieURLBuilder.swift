@@ -20,23 +20,26 @@
 
 import Foundation
 
-class TMDbURLBuilder {
-    private let urlComponents: URLComponents
-    
-    init(apiKey: String, language: String) {
-        var components = URLComponents()
-        components.scheme = TMDbAPI.scheme
-        components.host = TMDbAPI.host
-        components.path = "/\(TMDbAPI.version)"
+
+class TMDbKitMovieURLBuilder: TMDbURLBuilder {
+    func movieDetailURL(for movieId: Int, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod]()) -> URL {
+        var components = self.baseURLComponents()
+        let movieDetailPath = self.movieDetailPath(with: movieId)
+        components.path.append(movieDetailPath)
+        components.addQueryItem(from: queryMethods.map { $0.rawValue })
         
-        let apiKeyQueryItem = URLQueryItem(name: TMDbAPI.Key.apiKey, value: apiKey)
-        let languageQueryItem = URLQueryItem(name: TMDbAPI.Key.language, value: language)
-        components.queryItems = [apiKeyQueryItem, languageQueryItem]
-        self.urlComponents = components
+        return components.url!
     }
     
-    func baseURLComponents() -> URLComponents {
-        let components = urlComponents
-        return components
+    func movieCreditsURL(for movieId: Int) -> URL {
+        var components = self.baseURLComponents()
+        let movieCreditsPath = self.movieDetailPath(with: movieId).appending("/\(TMDbAPI.Movie.credits)")
+        components.path.append(movieCreditsPath)
+        
+        return components.url!
+    }
+    
+    private func movieDetailPath(with movieId: Int) -> String {
+        return URL(string: "/")!.appendingPathComponent(TMDbAPI.Movie.path).appendingPathComponent("\(movieId)").absoluteString
     }
 }

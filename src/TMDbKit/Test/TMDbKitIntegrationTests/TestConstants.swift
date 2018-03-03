@@ -19,9 +19,24 @@
 // SOFTWARE.
 
 import Foundation
+@testable import TMDbKit
 
-public struct MovieCredit: Decodable {
-    public let id: Int?
-    public let cast: [CastMember]
-    public let crew: [CrewMember]
+let defaultTimeout: TimeInterval = 30
+
+enum TestConstants {
+    
+    enum ServiceConfig {
+        private enum APIKey {
+            static let valid = "bdd678a8d65f5abf8608d6eb9a5be85f"
+            static let invalid = "invalidAPIKey"
+        }
+        
+        static let validAPIKey = TMDbKitServiceConfig(apiKey: APIKey.valid)
+        static let invalidAPIKey = TMDbKitServiceConfig(apiKey: APIKey.invalid)
+    }
+    
+    enum Movie {
+        static let existsingId = 550
+        static let notExistsingId = 1
+    }
 }
