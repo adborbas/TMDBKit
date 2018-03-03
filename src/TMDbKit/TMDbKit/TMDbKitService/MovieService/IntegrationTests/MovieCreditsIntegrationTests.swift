@@ -21,27 +21,37 @@
 import XCTest
 @testable import TMDbKit
 
-class TMDbKitMovieServiceIntegrationTest: XCTestCase {
-    var service: TMDbKitMovieService!
+class MovieCreditsIntegrationTests: TMDbKitMovieServiceIntegrationTest {
     
-    override func setUp() {
-        super.setUp()
-        self.continueAfterFailure = false
-        
-        self.service = TMDbKitMovieService(config: TestConstants.ServiceConfig.validAPIKey)
-    }
-    
-    func test_invalidApiKey_shouldReturnError() {
-        let invalidApiKeyService = TMDbKitMovieService(config: TestConstants.ServiceConfig.invalidAPIKey)
-        
+    func test_movieCredits_existing_shouldSucceed() {
         let expectation = XCTestExpectation()
-        invalidApiKeyService.movieDetail(for: TestConstants.Movie.notExistsingId) { (movie, error) in
-            XCTAssertNotNil(error)
-            if let error = error, case TMDbKitError.invalidApiKey = error {} else {
-                XCTFail("Expected invalidApiKey error but got: \(String(describing: error?.localizedDescription))")
+        self.service.movieCredits(for: TestConstants.Movie.existsingId) { result in
+            switch result {
+            case .failure(let error):
+                XCTFail("Requesting moview credits for existing movie should not fail: \(error.localizedDescription)")
+            case .success:
+                break
             }
-            XCTAssertNil(movie)
             expectation.fulfill()
         }
+        
+        wait(for: [expectation], timeout: defaultTimeout)
+    }
+    
+    func test_movieCredits_nonExisting_shouldReturnError() {
+        let expectation = XCTestExpectation()
+        self.service.movieCredits(for: TestConstants.Movie.notExistsingId) { result in
+            switch result {
+            case .failure(let error):
+                if case TMDbKitError.resourceNotFound = error {} else {
+                    XCTFail("Expected resourceNotFound error but got: \(String(describing: error.localizedDescription))")
+                }
+            case .success:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: defaultTimeout)
     }
 }

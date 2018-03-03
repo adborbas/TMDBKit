@@ -34,7 +34,7 @@ class TMDbURLBuilder {
         self.urlComponents = components
     }
     
-    func movieDetailURL(for movieId: Int, appending queryMethods: [TMDbServiceQueryMethod] = [TMDbServiceQueryMethod]()) -> URL {
+    func movieDetailURL(for movieId: Int, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod]()) -> URL {
         var components = self.urlComponents
         let path = "/\(TMDbAPI.version)/\(TMDbAPI.Movie.path)/\(movieId)"
         components.path = path
@@ -53,7 +53,7 @@ class TMDbURLBuilder {
 }
 
 fileprivate extension URLComponents {
-    mutating func addQueryItem(from queryMethods: [TMDbServiceQueryMethod]) {
+    mutating func addQueryItem(from queryMethods: [TMDbMovieServiceQueryMethod]) {
         guard !queryMethods.isEmpty else { return }
         
         self.queryItems?.append(URLQueryItem(from: queryMethods))
@@ -61,7 +61,7 @@ fileprivate extension URLComponents {
 }
 
 fileprivate extension URLQueryItem {
-    init(from queryMethods: [TMDbServiceQueryMethod]) {
+    init(from queryMethods: [TMDbMovieServiceQueryMethod]) {
         let queryValue = queryMethods.map { $0.rawValue }.joined(separator: ",")
         self.init(name: TMDbAPI.Key.appendToResponse, value: queryValue)
     }

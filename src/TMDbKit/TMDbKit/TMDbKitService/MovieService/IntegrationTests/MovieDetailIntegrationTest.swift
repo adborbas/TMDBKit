@@ -25,9 +25,13 @@ class MovieDetailIntegrationTest: TMDbKitMovieServiceIntegrationTest {
     
     func test_movieDetail_existing_shouldSucceed() {
         let expectation = XCTestExpectation()
-        self.service.movieDetail(for: TestConstants.Movie.existsingId) { (movie, error) in
-            XCTAssertNil(error)
-            XCTAssertNotNil(movie)
+        self.service.movieDetail(for: TestConstants.Movie.existsingId) { result in
+            switch result {
+            case .failure(let error):
+                XCTFail("Requesting details for an existing movie should not fail: \(error.localizedDescription)")
+            case .success:
+                break
+            }
             expectation.fulfill()
         }
         
@@ -36,12 +40,16 @@ class MovieDetailIntegrationTest: TMDbKitMovieServiceIntegrationTest {
     
     func test_movieDetail_nonExisting_shouldReturnError() {
         let expectation = XCTestExpectation()
-        self.service.movieDetail(for: TestConstants.Movie.notExistsingId) { (movie, error) in
-            XCTAssertNotNil(error)
-            if let error = error, case TMDbKitError.resourceNotFound = error {} else {
-                XCTFail("Expected resourceNotFound error but got: \(String(describing: error?.localizedDescription))")
+        self.service.movieDetail(for: TestConstants.Movie.notExistsingId) { result in
+            
+            switch result {
+            case .failure(let error):
+                if case TMDbKitError.resourceNotFound = error {} else {
+                    XCTFail("Expected resourceNotFound error but got: \(error.localizedDescription)")
+                }
+            case .success:
+                XCTFail("Requesting details for a nonExisting movie should have failed")
             }
-            XCTAssertNil(movie)
             expectation.fulfill()
         }
         
@@ -50,11 +58,12 @@ class MovieDetailIntegrationTest: TMDbKitMovieServiceIntegrationTest {
     
     func test_movieDetail_appendingCredits_shouldSucceed() {
         let expectation = XCTestExpectation()
-        self.service.movieDetail(for: TestConstants.Movie.existsingId, appending: [.credits]) { (movie, error) in
-            XCTAssertNil(error)
-            XCTAssertNotNil(movie)
-            if let movie = movie {
-                XCTAssertNotNil(movie.credits)
+        self.service.movieDetail(for: TestConstants.Movie.existsingId, appending: [.credits]) { result in
+            switch result {
+            case .failure(let error):
+                XCTFail("Request movie details with credentials should not fail: \(error.localizedDescription)")
+            case .success(let movie):
+                XCTAssertNotNil(movie.credits, "Request movie details with credentials should return credentials.")
             }
             expectation.fulfill()
         }

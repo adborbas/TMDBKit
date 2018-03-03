@@ -18,33 +18,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import XCTest
-@testable import TMDbKit
+import Foundation
 
-class MovieCreditsIntegrationTests: TMDbKitMovieServiceIntegrationTest {
-    
-    func test_movieCredits_existing_shouldSucceed() {
-        let expectation = XCTestExpectation()
-        self.service.movieCredits(for: TestConstants.Movie.existsingId) { (credits, error) in
-            XCTAssertNil(error)
-            XCTAssertNotNil(credits)
-            expectation.fulfill()
-        }
-
-        wait(for: [expectation], timeout: defaultTimeout)
-    }
-    
-    func test_movieCredits_nonExisting_shouldReturnError() {
-        let expectation = XCTestExpectation()
-        self.service.movieCredits(for: TestConstants.Movie.notExistsingId) { (credits, error) in
-            XCTAssertNotNil(error)
-            if let error = error, case TMDbKitError.resourceNotFound = error {} else {
-                XCTFail("Expected resourceNotFound error but got: \(String(describing: error?.localizedDescription))")
-            }
-            XCTAssertNil(credits)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: defaultTimeout)
-    }
+public enum TMDbServiceResult<Value: Decodable> {
+    case failure(Error)
+    case success(Value)
 }

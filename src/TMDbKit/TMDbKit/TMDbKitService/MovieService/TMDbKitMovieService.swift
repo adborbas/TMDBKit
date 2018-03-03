@@ -23,56 +23,25 @@ import Alamofire
 
 public class TMDbKitMovieService: TMDbMovieService {
     private let urlBuilder: TMDbURLBuilder
-
+    
     public init(config: TMDbKitServiceConfig) {
         self.urlBuilder = TMDbURLBuilder(apiKey: config.apiKey, language: config.language)
     }
-}
-
-// MARK: - Movie
-extension TMDbKitMovieService {
-    public func movieDetail(for movieId: Int, appending queryMethods: [TMDbServiceQueryMethod] = [TMDbServiceQueryMethod](), completionHandler: @escaping (Movie?, Error?) -> ()) {
+    
+    public func movieDetail(for movieId: Int, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod](), completionHandler: @escaping (TMDbServiceResult<Movie>) -> ()) {
         let url = self.urlBuilder.movieDetailURL(for: movieId, appending: queryMethods)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
         
-        self.requestDecodable(url, decoder: decoder, completionHandler: completionHandler)
+        Alamofire.request(url).responseTMDbKitResult(decoder: decoder, completionHandler: completionHandler)
     }
     
-    public func movieCredits(for movieId: Int, completionHandler: @escaping (MovieCredit?, Error?) -> ()) {
+    //    public func movieCredits(for movieId: Int, completionHandler: @escaping (MovieCredit?, Error?) -> ()) {
+    //        let url = self.urlBuilder.movieCreditsURL(for: movieId)
+    //        Alamofire.request(url).responseDecodable(completionHandler: completionHandler)
+    //    }
+    public func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredit>) -> ()) {
         let url = self.urlBuilder.movieCreditsURL(for: movieId)
-        self.requestDecodable(url, completionHandler: completionHandler)
-    }
-}
-
-// MARK: - Parsing
-fileprivate extension TMDbKitMovieService {
-    
-    func requestDecodable<Entity: Decodable>(_ url: URL, decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (Entity?, Error?) -> Void) {
-        Alamofire.request(url).responseData { response in
-            switch response.result {
-            case .failure(let error):
-                completionHandler(nil, error)
-                return
-                
-            case .success(let data):
-                if let tmdbError = self.isTMDbError(data) {
-                    completionHandler(nil, tmdbError)
-                    return
-                }
-                
-                do {
-                    let entity = try decoder.decode(Entity.self, from: data)
-                    completionHandler(entity, nil)
-                } catch {
-                    completionHandler(nil, error)
-                    return
-                }
-            }
-        }
-    }
-    
-    private func isTMDbError(_ data: Data) -> TMDbKitError? {
-        return try? JSONDecoder().decode(TMDbKitError.self, from: data)
+        Alamofire.request(url).responseTMDbKitResult(completionHandler: completionHandler)
     }
 }
