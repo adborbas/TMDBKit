@@ -18,8 +18,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+import XCTest
+@testable import TMDbKit
 
-public enum TMDbServiceError: Error {
-    case parseError(Error)
+class TMDbKitServiceIntegrationTest: XCTestCase {
+    static let defaultTimeout: TimeInterval = 30
+    var service: TMDbService!
+    
+    override func setUp() {
+        super.setUp()
+        self.continueAfterFailure = false
+        
+        self.service = TMDbKitService(apiKey: TestConstants.APIKey.valid)
+    }
+    
+    func test_invalidApiKey_shouldReturnError() {
+        let invalidApiKeyService = TMDbKitService(apiKey: TestConstants.APIKey.invalid)
+        
+        let expectation = XCTestExpectation()
+        invalidApiKeyService.movieDetail(for: TestConstants.Movie.notExistsingId) { (movie, error) in
+            XCTAssertNotNil(error)
+            if let error = error, case TMDbKitError.invalidApiKey = error {} else {
+                XCTFail("Expected invalidApiKey error but got: \(String(describing: error?.localizedDescription))")
+            }
+            XCTAssertNil(movie)
+            expectation.fulfill()
+        }
+    }
 }
