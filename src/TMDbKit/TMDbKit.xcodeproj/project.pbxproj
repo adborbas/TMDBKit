@@ -143,8 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				124782B420435D5B004F89B4 /* TMDbKit */,
-				124AA2DE2043603C00935492 /* TMDbKitIntegrationTests */,
-				12FACC8A2043801C00104F9E /* TMDbKitUnitTests */,
+				1255BD2C204B0AB900939FA4 /* Test */,
 				124782B320435D5B004F89B4 /* Products */,
 				9C57FE3C0F56D9D1F09503A3 /* Pods */,
 				E5EB2E01D1C39658CC80DF04 /* Frameworks */,
@@ -245,6 +244,15 @@
 				1255BD29204B01BB00939FA4 /* TMDbKitMovieURLBuilder.swift */,
 			);
 			path = URLBuilder;
+			sourceTree = "<group>";
+		};
+		1255BD2C204B0AB900939FA4 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				124AA2DE2043603C00935492 /* TMDbKitIntegrationTests */,
+				12FACC8A2043801C00104F9E /* TMDbKitUnitTests */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 		12E6044E204AD195001C5F20 /* TMDbKitURLBuilder */ = {
