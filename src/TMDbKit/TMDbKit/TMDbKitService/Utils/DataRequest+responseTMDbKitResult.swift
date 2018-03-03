@@ -23,8 +23,8 @@ import Alamofire
 
 extension DataRequest {
     
-    func responseTMDbKitResult2<Value: Decodable>(decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (TMDbServiceResult<Value>) -> Void) {
-        self.responseDecodableObject(decoder: decoder) { (response: DataResponse<Value>) in
+    func responseTMDbKitResult<Value: Decodable>(keyPath: String? = nil, decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (TMDbServiceResult<Value>) -> Void) {
+        self.responseDecodableObject(keyPath: keyPath, decoder: decoder) { (response: DataResponse<Value>) in
             switch response.result {
             case .failure(let error):
                 if let data = response.data, let tmdbError = self.isTMDbKitError(data) {
@@ -41,67 +41,7 @@ extension DataRequest {
         }
     }
     
-    func responseTMDbKitResult<Value: Decodable>(decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (TMDbServiceResult<Value>) -> Void) {
-        self.responseData { response in
-            
-            switch response.result {
-            case .failure(let error):
-                completionHandler(.failure(error))
-                return
-                
-            case .success(let data):
-                do {
-                    if let error = self.isTMDbKitError(data) {
-                        completionHandler(.failure(error))
-                        return
-                    }
-                    
-                    let entity = try decoder.decode(Value.self, from: data)
-                    completionHandler(.success(entity))
-                } catch {
-                    completionHandler(.failure(error))
-                    return
-                }
-            }
-        }
-    }
-    
-    func responseTMDbServiceArrayResult<Value>(decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (TMDbServiceArrayResult<Value>) -> Void) where Value: Decodable {
-        self.responseData { response in
-            
-            switch response.result {
-            case .failure(let error):
-                completionHandler(.failure(error))
-                return
-                
-            case .success(let data):
-                do {
-                    if let error = self.isTMDbKitError(data) {
-                        completionHandler(.failure(error))
-                        return
-                    }
-                    
-                    let entities = try decoder.decode(TMDbKitServiceArrayResult<Value>.self, from: data)
-                    completionHandler(.success(entities.items))
-                } catch {
-                    completionHandler(.failure(error))
-                    return
-                }
-            }
-        }
-    }
-    
     private func isTMDbKitError(_ data: Data) -> TMDbKitServiceError? {
         return try? JSONDecoder().decode(TMDbKitServiceError.self, from: data)
-    }
-}
-
-struct TMDbKitServiceArrayResult<Value: Decodable>: Decodable {
-    public let items: [Value]
-}
-
-fileprivate extension TMDbKitServiceArrayResult {
-    enum CodingKeys: String, CodingKey  {
-        case items = "results"
     }
 }

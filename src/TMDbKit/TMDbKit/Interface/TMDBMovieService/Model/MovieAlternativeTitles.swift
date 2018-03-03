@@ -20,7 +20,6 @@
 
 import Foundation
 
-public enum TMDbServiceResult<T> {
-    case failure(Error)
-    case success(T)
+public struct MovieAlternativeTitles: Decodable {
+    public let titles: [AlternativeTitle]
 }

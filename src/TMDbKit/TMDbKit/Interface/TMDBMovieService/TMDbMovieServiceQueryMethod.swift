@@ -22,4 +22,5 @@ import Foundation
 
 public enum TMDbMovieServiceQueryMethod: String {
     case credits = "credits"
+    case alternativeTitles = "alternative_titles"
 }

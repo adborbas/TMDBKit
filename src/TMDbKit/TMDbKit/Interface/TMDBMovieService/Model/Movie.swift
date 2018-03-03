@@ -49,7 +49,7 @@ public struct Movie: Decodable {
     
     // QueryMethos
     public let credits: MovieCredits?
-    public let alternativeTitles: [AlternativeTitle]?
+    public let alternativeTitles: MovieAlternativeTitles?
 }
 
 extension Movie {
@@ -84,36 +84,4 @@ extension Movie {
         case credits
         case alternativeTitles = "alternative_titles"
     }
-    
-//    public init(from decoder: Decoder) throws {
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        self.adult = try values.decode(Bool.self, forKey: .adult)
-//        self.backdropPath = try values.decode(String.self, forKey: .backdropPath)
-//        self.collection = try values.decode(CollectionInfo.self, forKey: .collection)
-//        self.budget = try values.decode(Int.self, forKey: .budget)
-//        self.genres = try values.decode(GenreInfo.self, forKey: .genres)
-//        self.homepage = try values.decode(URL.self, forKey: .homepage)
-//        self.id = try values.decode(Int.self, forKey: .id)
-//        self.imdbId = try values.decode(String.self, forKey: .imdbId)
-//        self.originalLanguage = try values.decode(String.self, forKey: .originalLanguage)
-//        self.originalTitle = try values.decode(String.self, forKey: .originalTitle)
-//        self.overview = try values.decode(String.self, forKey: .overview)
-//        self.popularity = try values.decode(Double.self, forKey: .popularity)
-//        self.posterPath = try values.decode(String.self, forKey: .posterPath)
-//        self.productionCompanies = try values.decode(CompanyInfo.self, forKey: .productionCompanies)
-//        self.productionCountries = try values.decode(CountryInfo.self, forKey: .productionCountries)
-//        self.releaseDate = try values.decode(Date.self, forKey: .releaseDate)
-//        self.revenue = try values.decode(Int.self, forKey: .revenue)
-//        self.runtime = try values.decode(Int.self, forKey: .runtime)
-//        self.spokenLanguages = try values.decode(LanguageInfo.self, forKey: .spokenLanguages)
-//        self.status = try values.decode(Status.self, forKey: .status)
-//        self.tagline = try values.decode(String.self, forKey: .tagline)
-//        self.title = try values.decode(String.self, forKey: .title)
-//        self.video = try values.decode(Bool.self, forKey: .video)
-//        self.voteAverage = try values.decode(Double.self, forKey: .voteAverage)
-//        self.voteCount = try values.decode(Int.self, forKey: .voteCount)
-//        self.credits = try values.decode(MovieCredits.self, forKey: .credits)
-//        self.alternativeTitles = try values.decode(AlternativeTitle.self, forKey: .alternativeTitles)
-//
-//    }
 }
