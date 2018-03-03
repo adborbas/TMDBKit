@@ -20,7 +20,7 @@
 
 import Foundation
 
-public struct Movie: Codable {
+public struct Movie: Decodable {
     public let adult: Bool
     public let backdropPath: String
     public let collection: CollectionInfo?

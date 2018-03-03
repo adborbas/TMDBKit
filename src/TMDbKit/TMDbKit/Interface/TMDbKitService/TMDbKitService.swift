@@ -36,22 +36,31 @@ public class TMDbKitService: TMDbService {
         self.requestDecodable(url, decoder: decoder, completionHandler: completionHandler)
     }
     
-    private func requestDecodable<T: Decodable>(_ url: URL, decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (T?, Error?) -> Void) {
-        Alamofire.request(url).responseString { response in
-            guard let data = response.result.value?.data(using: .utf8) else {
-                completionHandler(nil, nil) // TODO: return error here
+    private func requestDecodable<Entity: Decodable>(_ url: URL, decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (Entity?, Error?) -> Void) {
+        Alamofire.request(url).responseData { response in
+            switch response.result {
+            case .failure(let error):
+                completionHandler(nil, error)
                 return
+                
+            case .success(let data):
+                if let tmdbError = self.isTMDbError(data) {
+                    completionHandler(nil, tmdbError)
+                    return
+                }
+                
+                do {
+                    let entity = try decoder.decode(Entity.self, from: data)
+                    completionHandler(entity, nil)
+                } catch {
+                    completionHandler(nil, error)
+                    return
+                }
             }
-            
-            let movie: T
-            do {
-                movie = try decoder.decode(T.self, from: data)
-            } catch {
-                completionHandler(nil, TMDbServiceError.parseError(error))
-                return
-            }
-            
-            completionHandler(movie, nil)
         }
+    }
+    
+    private func isTMDbError(_ data: Data) -> TMDbKitError? {
+        return try? JSONDecoder().decode(TMDbKitError.self, from: data)
     }
 }
