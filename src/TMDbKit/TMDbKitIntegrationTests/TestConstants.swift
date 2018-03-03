@@ -18,8 +18,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-public protocol TMDbService {
-    func movieDetail(for movieId: Int, completionHandler: @escaping (Movie?, Error?) -> Void)
+enum TestConstants {
+    enum APIKey {
+        static let invalid = "invalidAPIKey"
+        static let valid = "bdd678a8d65f5abf8608d6eb9a5be85f"
+    }
+    
+    enum Movie {
+        static let existsingId = 550
+        static let notExistsingId = 1
+    }
 }

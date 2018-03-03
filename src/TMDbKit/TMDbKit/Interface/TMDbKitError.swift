@@ -19,19 +19,35 @@
 // SOFTWARE.
 
 import Foundation
-import TMDbKit
-import XCTest
 
-class TMDbKitServiceIntegrationTests: XCTestCase {
-    func test_it() {
-        let service = TMDbKitService(apiKey: "bdd678a8d65f5abf8608d6eb9a5be85f")
-        
-        let expectation = XCTestExpectation()
-        service.movieDetail(for: 550) { (detail, error) in
-            XCTAssertNotNil(detail)
-            expectation.fulfill()
+public enum TMDbKitError: Int, Error {
+    case invalidApiKey = 7
+    case failed = 15
+    case resourceNotFound = 34
+}
+
+extension TMDbKitError: LocalizedError {
+    var localizedDescription: String {
+        switch self {
+        case .invalidApiKey:
+            return "Invalid API key: You must be granted a valid key."
+        case .failed:
+            return "Failed."
+        case .resourceNotFound:
+            return "The resource you requested could not be found."
         }
+    }
+}
+
+extension TMDbKitError: Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case statusCode = "status_code"
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let statusCode = try values.decode(Int.self, forKey: CodingKeys.statusCode)
         
-        wait(for: [expectation], timeout: 30)
+        self = TMDbKitError(rawValue: statusCode) ?? .failed
     }
 }
