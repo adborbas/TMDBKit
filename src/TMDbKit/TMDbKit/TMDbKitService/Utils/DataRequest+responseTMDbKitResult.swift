@@ -23,7 +23,7 @@ import Alamofire
 
 extension DataRequest {
     
-    func responseTMDbKitResult<Value>(decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (TMDbServiceResult<Value>) -> Void) {
+    func responseTMDbKitResult<Value: Decodable>(decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (TMDbServiceResult<Value>) -> Void) {
         self.responseData { response in
             
             switch response.result {
@@ -48,7 +48,42 @@ extension DataRequest {
         }
     }
     
+    func responseTMDbServiceArrayResult<Value>(decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (TMDbServiceArrayResult<Value>) -> Void) where Value: Decodable {
+        self.responseData { response in
+            
+            switch response.result {
+            case .failure(let error):
+                completionHandler(.failure(error))
+                return
+                
+            case .success(let data):
+                do {
+                    if let error = self.isTMDbKitError(data) {
+                        completionHandler(.failure(error))
+                        return
+                    }
+                    
+                    let entities = try decoder.decode(TMDbKitServiceArrayResult<Value>.self, from: data)
+                    completionHandler(.success(entities.items))
+                } catch {
+                    completionHandler(.failure(error))
+                    return
+                }
+            }
+        }
+    }
+    
     private func isTMDbKitError(_ data: Data) -> TMDbKitServiceError? {
         return try? JSONDecoder().decode(TMDbKitServiceError.self, from: data)
+    }
+}
+
+struct TMDbKitServiceArrayResult<Value: Decodable>: Decodable {
+    public let items: [Value]
+}
+
+fileprivate extension TMDbKitServiceArrayResult {
+    enum CodingKeys: String, CodingKey  {
+        case items = "results"
     }
 }

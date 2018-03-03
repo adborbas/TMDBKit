@@ -32,5 +32,6 @@ enum TMDbAPI {
     enum Movie {
         static let path = "movie"
         static let credits = "credits"
+        static let alternativeTitles = "alternative_titles"
     }
 }

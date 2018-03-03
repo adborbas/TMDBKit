@@ -22,6 +22,7 @@ import Foundation
 import Alamofire
 
 public class TMDbKitMovieService: TMDbMovieService {
+    
     private let urlBuilder: TMDbKitMovieURLBuilder
     
     public init(config: TMDbKitServiceConfig) {
@@ -39,5 +40,10 @@ public class TMDbKitMovieService: TMDbMovieService {
     public func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> ()) {
         let url = self.urlBuilder.movieCreditsURL(for: movieId)
         Alamofire.request(url).responseTMDbKitResult(completionHandler: completionHandler)
+    }
+    
+    public func movieAlternativeTitles(for movieId: Int, completionHandler: @escaping (TMDbServiceArrayResult<AlternativeTitle>) -> Void) {
+        let url = self.urlBuilder.movieAlternativeTitles(for: movieId)
+        Alamofire.request(url).responseTMDbServiceArrayResult(completionHandler: completionHandler)
     }
 }

@@ -39,6 +39,14 @@ class TMDbKitMovieURLBuilder: TMDbURLBuilder {
         return components.url!
     }
     
+    func movieAlternativeTitles(for movieId: Int) -> URL {
+        var components = self.baseURLComponents()
+        let movieCreditsPath = self.movieDetailPath(with: movieId).appending("/\(TMDbAPI.Movie.alternativeTitles)")
+        components.path.append(movieCreditsPath)
+        
+        return components.url!
+    }
+    
     private func movieDetailPath(with movieId: Int) -> String {
         return URL(string: "/")!.appendingPathComponent(TMDbAPI.Movie.path).appendingPathComponent("\(movieId)").absoluteString
     }
