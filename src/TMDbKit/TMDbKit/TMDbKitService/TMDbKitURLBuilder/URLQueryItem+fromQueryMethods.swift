@@ -19,23 +19,10 @@
 // SOFTWARE.
 
 import Foundation
-import XCTest
-@testable import TMDbKit
 
-class TMDbURLBuilderUnitTests: XCTestCase {
-    func test_movieDetailURL() {
-        let urlBuilder = TMDbURLBuilder(apiKey: "API_KEY", language: "de")
-        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/10?api_key=API_KEY&language=de")!
-        let actualURL = urlBuilder.movieDetailURL(for: 10)
-        
-        XCTAssertEqual(expectedURL, actualURL)
-    }
-    
-    func test_movieCreditsURL() {
-        let urlBuilder = TMDbURLBuilder(apiKey: "API_KEY", language: "en-US")
-        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/10/credits?api_key=API_KEY&language=en-US")!
-        let actualURL = urlBuilder.movieCreditsURL(for: 10)
-        
-        XCTAssertEqual(expectedURL, actualURL)
+extension URLQueryItem {
+    init(from queryMethods: [String]) {
+        let queryValue = queryMethods.joined(separator: ",")
+        self.init(name: TMDbAPI.Key.appendToResponse, value: queryValue)
     }
 }

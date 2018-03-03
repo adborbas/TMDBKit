@@ -19,36 +19,23 @@
 // SOFTWARE.
 
 import Foundation
-import Alamofire
+import XCTest
+@testable import TMDbKit
 
-extension DataRequest {
-    
-    func responseTMDbKitResult<Value>(decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (TMDbServiceResult<Value>) -> Void) {
-        self.responseData { response in
-            
-            switch response.result {
-            case .failure(let error):
-                completionHandler(.failure(error))
-                return
-                
-            case .success(let data):
-                do {
-                    if let error = self.isTMDbKitError(data) {
-                        completionHandler(.failure(error))
-                        return
-                    }
-                    
-                    let entity = try decoder.decode(Value.self, from: data)
-                    completionHandler(.success(entity))
-                } catch {
-                    completionHandler(.failure(error))
-                    return
-                }
-            }
-        }
+class TMDbKitMovieURLBuilderUnitTests: XCTestCase {
+    func test_movieDetailURL() {
+        let urlBuilder = TMDbKitMovieURLBuilder(apiKey: "API_KEY", language: "de")
+        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/10?api_key=API_KEY&language=de")!
+        let actualURL = urlBuilder.movieDetailURL(for: 10)
+        
+        XCTAssertEqual(expectedURL, actualURL)
     }
     
-    private func isTMDbKitError(_ data: Data) -> TMDbKitError? {
-        return try? JSONDecoder().decode(TMDbKitError.self, from: data)
+    func test_movieCreditsURL() {
+        let urlBuilder = TMDbKitMovieURLBuilder(apiKey: "API_KEY", language: "en-US")
+        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/10/credits?api_key=API_KEY&language=en-US")!
+        let actualURL = urlBuilder.movieCreditsURL(for: 10)
+        
+        XCTAssertEqual(expectedURL, actualURL)
     }
 }

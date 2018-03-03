@@ -24,9 +24,5 @@ public protocol TMDbMovieService {
 
     func movieDetail(for movieId: Int, appending: [TMDbMovieServiceQueryMethod], completionHandler: @escaping (TMDbServiceResult<Movie>) -> Void)
     
-    func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredit>) -> Void)
-}
-
-public enum TMDbMovieServiceQueryMethod: String {
-    case credits = "credits"
+    func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> Void)
 }

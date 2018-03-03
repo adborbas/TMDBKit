@@ -22,10 +22,10 @@ import Foundation
 import Alamofire
 
 public class TMDbKitMovieService: TMDbMovieService {
-    private let urlBuilder: TMDbURLBuilder
+    private let urlBuilder: TMDbKitMovieURLBuilder
     
     public init(config: TMDbKitServiceConfig) {
-        self.urlBuilder = TMDbURLBuilder(apiKey: config.apiKey, language: config.language)
+        self.urlBuilder = TMDbKitMovieURLBuilder(apiKey: config.apiKey, language: config.language)
     }
     
     public func movieDetail(for movieId: Int, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod](), completionHandler: @escaping (TMDbServiceResult<Movie>) -> ()) {
@@ -35,12 +35,8 @@ public class TMDbKitMovieService: TMDbMovieService {
         
         Alamofire.request(url).responseTMDbKitResult(decoder: decoder, completionHandler: completionHandler)
     }
-    
-    //    public func movieCredits(for movieId: Int, completionHandler: @escaping (MovieCredit?, Error?) -> ()) {
-    //        let url = self.urlBuilder.movieCreditsURL(for: movieId)
-    //        Alamofire.request(url).responseDecodable(completionHandler: completionHandler)
-    //    }
-    public func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredit>) -> ()) {
+
+    public func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> ()) {
         let url = self.urlBuilder.movieCreditsURL(for: movieId)
         Alamofire.request(url).responseTMDbKitResult(completionHandler: completionHandler)
     }

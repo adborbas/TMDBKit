@@ -20,34 +20,10 @@
 
 import Foundation
 
-public enum TMDbKitError: Int, Error {
-    case invalidApiKey = 7
-    case failed = 15
-    case resourceNotFound = 34
-}
-
-extension TMDbKitError: LocalizedError {
-    var localizedDescription: String {
-        switch self {
-        case .invalidApiKey:
-            return "Invalid API key: You must be granted a valid key."
-        case .failed:
-            return "Failed."
-        case .resourceNotFound:
-            return "The resource you requested could not be found."
-        }
-    }
-}
-
-extension TMDbKitError: Decodable {
-    private enum CodingKeys: String, CodingKey {
-        case statusCode = "status_code"
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let statusCode = try values.decode(Int.self, forKey: CodingKeys.statusCode)
+extension URLComponents {
+    mutating func addQueryItem(from queryMethods: [String]) {
+        guard !queryMethods.isEmpty else { return }
         
-        self = TMDbKitError(rawValue: statusCode) ?? .failed
+        self.queryItems?.append(URLQueryItem(from: queryMethods))
     }
 }

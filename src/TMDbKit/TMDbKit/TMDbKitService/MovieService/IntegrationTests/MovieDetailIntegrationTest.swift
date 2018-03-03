@@ -44,7 +44,7 @@ class MovieDetailIntegrationTest: TMDbKitMovieServiceIntegrationTest {
             
             switch result {
             case .failure(let error):
-                if case TMDbKitError.resourceNotFound = error {} else {
+                if case TMDbKitServiceError.resourceNotFound = error {} else {
                     XCTFail("Expected resourceNotFound error but got: \(error.localizedDescription)")
                 }
             case .success:

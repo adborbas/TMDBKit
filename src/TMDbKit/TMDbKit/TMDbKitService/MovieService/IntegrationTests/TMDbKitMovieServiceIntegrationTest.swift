@@ -38,7 +38,7 @@ class TMDbKitMovieServiceIntegrationTest: XCTestCase {
         invalidApiKeyService.movieDetail(for: TestConstants.Movie.notExistsingId) { result in
             switch result {
             case .failure(let error):
-                if case TMDbKitError.invalidApiKey = error {} else {
+                if case TMDbKitServiceError.invalidAPIKey = error {} else {
                     XCTFail("Expected invalidApiKey error but got: \(error.localizedDescription))")
                 }
             case .success:

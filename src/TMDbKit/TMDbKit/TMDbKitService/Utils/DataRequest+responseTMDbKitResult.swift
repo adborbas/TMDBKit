@@ -19,9 +19,36 @@
 // SOFTWARE.
 
 import Foundation
+import Alamofire
 
-public struct MovieCredit: Decodable {
-    public let id: Int?
-    public let cast: [CastMember]
-    public let crew: [CrewMember]
+extension DataRequest {
+    
+    func responseTMDbKitResult<Value>(decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (TMDbServiceResult<Value>) -> Void) {
+        self.responseData { response in
+            
+            switch response.result {
+            case .failure(let error):
+                completionHandler(.failure(error))
+                return
+                
+            case .success(let data):
+                do {
+                    if let error = self.isTMDbKitError(data) {
+                        completionHandler(.failure(error))
+                        return
+                    }
+                    
+                    let entity = try decoder.decode(Value.self, from: data)
+                    completionHandler(.success(entity))
+                } catch {
+                    completionHandler(.failure(error))
+                    return
+                }
+            }
+        }
+    }
+    
+    private func isTMDbKitError(_ data: Data) -> TMDbKitServiceError? {
+        return try? JSONDecoder().decode(TMDbKitServiceError.self, from: data)
+    }
 }
