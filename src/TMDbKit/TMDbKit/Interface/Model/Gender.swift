@@ -20,23 +20,8 @@
 
 import Foundation
 
-class TMDbURLBuilder {
-    private var urlComponents: URLComponents
-    
-    init(apiKey: String) {
-        var components = URLComponents()
-        components.scheme = TMDbAPI.scheme
-        components.host = TMDbAPI.host
-        
-        let apiKeyQueryItem = URLQueryItem(name: TMDbAPI.Key.apiKey, value: apiKey)
-        components.queryItems = [apiKeyQueryItem]
-        self.urlComponents = components
-    }
-    
-    func movieDetailURL(for movieId: Int) -> URL {
-        let path = "/\(TMDbAPI.version)/\(TMDbAPI.Method.movie)/\(movieId)"
-        self.urlComponents.path = path
-        
-        return self.urlComponents.url!
-    }
+public enum Gender: Int, Decodable {
+    case notSet = 0
+    case female = 1
+    case male = 2
 }

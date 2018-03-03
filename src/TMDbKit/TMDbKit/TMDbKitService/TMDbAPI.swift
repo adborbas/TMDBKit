@@ -18,15 +18,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-public protocol TMDbService {
-
-    func movieDetail(for movieId: Int, appending: [TMDbServiceQueryMethod], completionHandler: @escaping (Movie?, Error?) -> ())
+enum TMDbAPI {
+    static let scheme = "https"
+    static let host = "api.themoviedb.org"
+    static let version = "3"
     
-    func movieCredits(for movieId: Int, completionHandler: @escaping (MovieCredit?, Error?) -> ())
-}
-
-public enum TMDbServiceQueryMethod: String {
-    case credits = "credits"
+    enum Key {
+        static let apiKey = "api_key"
+        static let language = "language"
+        static let appendToResponse = "append_to_response"
+    }
+    
+    enum Movie {
+        static let path = "movie"
+        static let credits = "credits"
+    }
 }

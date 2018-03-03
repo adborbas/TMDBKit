@@ -19,15 +19,25 @@
 // SOFTWARE.
 
 import Foundation
-import XCTest
-@testable import TMDbKit
 
-class TMDbURLBuilderUnitTests: XCTestCase {
-    func test_movieDetailURL() {
-        let urlBuilder = TMDbURLBuilder(apiKey: "API_KEY")
-        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/10?api_key=API_KEY")!
-        let actualURL = urlBuilder.movieDetailURL(for: 10)
-        
-        XCTAssertEqual(expectedURL, actualURL)
+public struct CrewMember: Decodable {
+    public let creditId: String
+    public let department: String
+    public let gender: Gender?
+    public let id: Int
+    public let job: String
+    public let name: String
+    public let profilePath: String?
+}
+
+private extension CrewMember {
+    enum CodingKeys: String, CodingKey {
+        case creditId = "credit_id"
+        case department
+        case gender
+        case id
+        case job
+        case name
+        case profilePath = "profile_path"
     }
 }

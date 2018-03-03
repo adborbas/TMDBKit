@@ -18,16 +18,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-enum TMDbAPI {
-    static let scheme = "https"
-    static let host = "api.themoviedb.org"
-    static let version = "3"
+public struct TMDbKitServiceConfig {
+    private static let defaultLanguage = "en-US"
     
-    enum Key {
-        static let apiKey = "api_key"
-    }
+    public let apiKey: String
+    public let language: String
     
-    enum Method {
-        static let movie = "movie"
+    init(apiKey: String, language: String = TMDbKitServiceConfig.defaultLanguage) {
+        self.apiKey = apiKey
+        self.language = language
     }
 }

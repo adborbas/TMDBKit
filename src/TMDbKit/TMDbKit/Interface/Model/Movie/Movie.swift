@@ -46,6 +46,9 @@ public struct Movie: Decodable {
     public let video: Bool
     public let voteAverage: Double
     public let voteCount: Int
+    
+    // QueryMethos
+    public let credits: MovieCredit?
 }
 
 private extension Movie {
@@ -75,5 +78,8 @@ private extension Movie {
         case video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+        
+        // QueryMethos
+        case credits
     }
 }

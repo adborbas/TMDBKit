@@ -18,22 +18,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+import XCTest
 @testable import TMDbKit
 
-enum TestConstants {
+class MovieCreditsIntegrationTests: TMDbKitServiceIntegrationTest {
     
-    enum ServiceConfig {
-        private enum APIKey {
-            static let valid = "bdd678a8d65f5abf8608d6eb9a5be85f"
-            static let invalid = "invalidAPIKey"
+    func test_movieCredits_existing_shouldSucceed() {
+        let expectation = XCTestExpectation()
+        service.movieCredits(for: TestConstants.Movie.existsingId) { (credits, error) in
+            XCTAssertNil(error)
+            XCTAssertNotNil(credits)
+            expectation.fulfill()
         }
-        
-        static let validAPIKey = TMDbKitServiceConfig(apiKey: APIKey.valid)
-        static let invalidAPIKey = TMDbKitServiceConfig(apiKey: APIKey.invalid)
+
+        wait(for: [expectation], timeout: TMDbKitServiceIntegrationTest.defaultTimeout)
     }
     
-    enum Movie {
-        static let existsingId = 550
-        static let notExistsingId = 1
+    func test_movieCredits_nonExisting_shouldReturnError() {
+        let expectation = XCTestExpectation()
+        service.movieCredits(for: TestConstants.Movie.notExistsingId) { (credits, error) in
+            XCTAssertNotNil(error)
+            if let error = error, case TMDbKitError.resourceNotFound = error {} else {
+                XCTFail("Expected resourceNotFound error but got: \(String(describing: error?.localizedDescription))")
+            }
+            XCTAssertNil(credits)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: TMDbKitServiceIntegrationTest.defaultTimeout)
     }
 }

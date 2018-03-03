@@ -18,15 +18,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+import XCTest
+@testable import TMDbKit
 
-public protocol TMDbService {
-
-    func movieDetail(for movieId: Int, appending: [TMDbServiceQueryMethod], completionHandler: @escaping (Movie?, Error?) -> ())
-    
-    func movieCredits(for movieId: Int, completionHandler: @escaping (MovieCredit?, Error?) -> ())
-}
-
-public enum TMDbServiceQueryMethod: String {
-    case credits = "credits"
+class TMDbKitServiceConfigUnitTest: XCTestCase {
+    func test_defaultLanguage() {
+        let config = TMDbKitServiceConfig(apiKey: "APIKEY")
+        let expectedConfig = TMDbKitServiceConfig(apiKey: "APIKEY", language: "en-US")
+        
+        XCTAssertEqual(config.language, expectedConfig.language, "The default language should be 'en-US'")
+    }
 }
