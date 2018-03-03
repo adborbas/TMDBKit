@@ -21,7 +21,7 @@
 import XCTest
 @testable import TMDbKit
 
-class MovieDetailIntegrationTest: TMDbKitServiceIntegrationTest {
+class MovieDetailIntegrationTest: TMDbKitMovieServiceIntegrationTest {
     
     func test_movieDetail_existing_shouldSucceed() {
         let expectation = XCTestExpectation()
@@ -31,7 +31,7 @@ class MovieDetailIntegrationTest: TMDbKitServiceIntegrationTest {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: TMDbKitServiceIntegrationTest.defaultTimeout)
+        wait(for: [expectation], timeout: defaultTimeout)
     }
     
     func test_movieDetail_nonExisting_shouldReturnError() {
@@ -45,7 +45,7 @@ class MovieDetailIntegrationTest: TMDbKitServiceIntegrationTest {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: TMDbKitServiceIntegrationTest.defaultTimeout)
+        wait(for: [expectation], timeout: defaultTimeout)
     }
     
     func test_movieDetail_appendingCredits_shouldSucceed() {
@@ -59,6 +59,6 @@ class MovieDetailIntegrationTest: TMDbKitServiceIntegrationTest {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: TMDbKitServiceIntegrationTest.defaultTimeout)
+        wait(for: [expectation], timeout: defaultTimeout)
     }
 }

@@ -18,7 +18,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+import Foundation
 @testable import TMDbKit
+
+let defaultTimeout: TimeInterval = 30
 
 enum TestConstants {
     

@@ -21,22 +21,22 @@
 import XCTest
 @testable import TMDbKit
 
-class MovieCreditsIntegrationTests: TMDbKitServiceIntegrationTest {
+class MovieCreditsIntegrationTests: TMDbKitMovieServiceIntegrationTest {
     
     func test_movieCredits_existing_shouldSucceed() {
         let expectation = XCTestExpectation()
-        service.movieCredits(for: TestConstants.Movie.existsingId) { (credits, error) in
+        self.service.movieCredits(for: TestConstants.Movie.existsingId) { (credits, error) in
             XCTAssertNil(error)
             XCTAssertNotNil(credits)
             expectation.fulfill()
         }
 
-        wait(for: [expectation], timeout: TMDbKitServiceIntegrationTest.defaultTimeout)
+        wait(for: [expectation], timeout: defaultTimeout)
     }
     
     func test_movieCredits_nonExisting_shouldReturnError() {
         let expectation = XCTestExpectation()
-        service.movieCredits(for: TestConstants.Movie.notExistsingId) { (credits, error) in
+        self.service.movieCredits(for: TestConstants.Movie.notExistsingId) { (credits, error) in
             XCTAssertNotNil(error)
             if let error = error, case TMDbKitError.resourceNotFound = error {} else {
                 XCTFail("Expected resourceNotFound error but got: \(String(describing: error?.localizedDescription))")
@@ -45,6 +45,6 @@ class MovieCreditsIntegrationTests: TMDbKitServiceIntegrationTest {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: TMDbKitServiceIntegrationTest.defaultTimeout)
+        wait(for: [expectation], timeout: defaultTimeout)
     }
 }

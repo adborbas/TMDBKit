@@ -21,7 +21,7 @@
 import Foundation
 import Alamofire
 
-public class TMDbKitService: TMDbService {
+public class TMDbKitMovieService: TMDbMovieService {
     private let urlBuilder: TMDbURLBuilder
 
     public init(config: TMDbKitServiceConfig) {
@@ -30,7 +30,7 @@ public class TMDbKitService: TMDbService {
 }
 
 // MARK: - Movie
-extension TMDbKitService {
+extension TMDbKitMovieService {
     public func movieDetail(for movieId: Int, appending queryMethods: [TMDbServiceQueryMethod] = [TMDbServiceQueryMethod](), completionHandler: @escaping (Movie?, Error?) -> ()) {
         let url = self.urlBuilder.movieDetailURL(for: movieId, appending: queryMethods)
         let decoder = JSONDecoder()
@@ -46,7 +46,7 @@ extension TMDbKitService {
 }
 
 // MARK: - Parsing
-fileprivate extension TMDbKitService {
+fileprivate extension TMDbKitMovieService {
     
     func requestDecodable<Entity: Decodable>(_ url: URL, decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (Entity?, Error?) -> Void) {
         Alamofire.request(url).responseData { response in
