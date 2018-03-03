@@ -4,13 +4,16 @@ use_frameworks!
 project "src/TMDbKit/TMDbKit.xcodeproj"
 
 target 'TMDbKit' do
-  pod 'Alamofire', '~> 4.6'
+  pod 'Alamofire'
+  pod 'CodableAlamofire'
 end
 
 target 'TMDbKitIntegrationTests' do
-  pod 'Alamofire', '~> 4.6'
+  pod 'Alamofire'
+  pod 'CodableAlamofire'
 end
 
 target 'TMDbKitUnitTests' do
-  pod 'Alamofire', '~> 4.6'
+  pod 'Alamofire'
+  pod 'CodableAlamofire'
 end

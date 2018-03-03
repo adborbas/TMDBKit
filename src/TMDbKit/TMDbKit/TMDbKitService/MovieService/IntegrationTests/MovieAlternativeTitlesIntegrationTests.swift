@@ -21,16 +21,16 @@
 import XCTest
 @testable import TMDbKit
 
-class MovieCreditsIntegrationTests: TMDbKitMovieServiceIntegrationTest {
+class MovieAlterNativeTitlesIntegrationTests: TMDbKitMovieServiceIntegrationTest {
     
-    func test_movieCredits_existing_shouldSucceed() {
+    func test_movieAlternativeTitles_existing_shouldSucceed() {
         let expectation = XCTestExpectation()
-        self.service.movieCredits(for: TestConstants.Movie.existsingId) { result in
+        self.service.movieAlternativeTitles(for: TestConstants.Movie.existsingId) { result in
             switch result {
             case .failure(let error):
-                XCTFail("Requesting movie credits for existing movie should not fail: \(error.localizedDescription)")
-            case .success:
-                break
+                XCTFail("Requesting alternative titles for existing movie should not fail: \(error.localizedDescription)")
+            case .success(let titles):
+                XCTAssertTrue(titles.count > 0)
             }
             expectation.fulfill()
         }
@@ -38,16 +38,16 @@ class MovieCreditsIntegrationTests: TMDbKitMovieServiceIntegrationTest {
         wait(for: [expectation], timeout: defaultTimeout)
     }
     
-    func test_movieCredits_nonExisting_shouldReturnError() {
+    func test_movieAlternativeTitles_nonExisting_shouldReturnError() {
         let expectation = XCTestExpectation()
-        self.service.movieCredits(for: TestConstants.Movie.notExistsingId) { result in
+        self.service.movieAlternativeTitles(for: TestConstants.Movie.notExistsingId) { result in
             switch result {
             case .failure(let error):
                 if case TMDbKitServiceError.resourceNotFound = error {} else {
                     XCTFail("Expected resourceNotFound error but got: \(String(describing: error.localizedDescription))")
                 }
             case .success:
-                XCTFail("Expected resourceNotFound error ")
+                XCTFail("Expected resourceNotFound error")
             }
             expectation.fulfill()
         }
@@ -55,3 +55,4 @@ class MovieCreditsIntegrationTests: TMDbKitMovieServiceIntegrationTest {
         wait(for: [expectation], timeout: defaultTimeout)
     }
 }
+

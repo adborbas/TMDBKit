@@ -20,7 +20,7 @@
 
 import Foundation
 
-public enum TMDbServiceResult<Value: Decodable> {
+public enum TMDbServiceResult<T> {
     case failure(Error)
-    case success(Value)
+    case success(T)
 }

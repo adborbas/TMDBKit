@@ -20,7 +20,6 @@
 
 import Foundation
 
-public struct MovieCredits: Decodable {
-    public let cast: [CastMember]
-    public let crew: [CrewMember]
+public struct MovieAlternativeTitles: Decodable {
+    public let titles: [AlternativeTitle]
 }

@@ -20,7 +20,14 @@
 
 import Foundation
 
-public struct MovieCredits: Decodable {
-    public let cast: [CastMember]
-    public let crew: [CrewMember]
+public struct AlternativeTitle: Decodable {
+    public let title: String
+    public let language: String
+}
+
+private extension AlternativeTitle {
+    enum CodingKeys: String, CodingKey {
+        case title
+        case language = "iso_3166_1"
+    }
 }

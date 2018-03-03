@@ -49,9 +49,10 @@ public struct Movie: Decodable {
     
     // QueryMethos
     public let credits: MovieCredits?
+    public let alternativeTitles: MovieAlternativeTitles?
 }
 
-private extension Movie {
+extension Movie {
     enum CodingKeys: String, CodingKey {
         case adult
         case backdropPath = "backdrop_path"
@@ -81,5 +82,6 @@ private extension Movie {
         
         // QueryMethos
         case credits
+        case alternativeTitles = "alternative_titles"
     }
 }
