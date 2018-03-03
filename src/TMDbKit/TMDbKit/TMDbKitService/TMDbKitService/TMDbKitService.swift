@@ -37,19 +37,27 @@ public class TMDbKitService: TMDbService {
         self.requestDecodable(url, decoder: decoder, completionHandler: completionHandler)
     }
 
-    private func requestDecodable<Entity: Decodable>(_ url: URL, decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (Entity?, Error?) -> Void) {
+    public func movieCredits(for movieId: Int, completionHandler: @escaping (MovieCredit?, Error?) -> ()) {
+        let url = self.urlBuilder.movieCreditsURL(for: movieId)
+        self.requestDecodable(url, completionHandler: completionHandler)
+    }
+}
+
+fileprivate extension TMDbKitService {
+    
+    func requestDecodable<Entity: Decodable>(_ url: URL, decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (Entity?, Error?) -> Void) {
         Alamofire.request(url).responseData { response in
             switch response.result {
             case .failure(let error):
                 completionHandler(nil, error)
                 return
-
+                
             case .success(let data):
                 if let tmdbError = self.isTMDbError(data) {
                     completionHandler(nil, tmdbError)
                     return
                 }
-
+                
                 do {
                     let entity = try decoder.decode(Entity.self, from: data)
                     completionHandler(entity, nil)
@@ -60,13 +68,8 @@ public class TMDbKitService: TMDbService {
             }
         }
     }
-
-    public func movieCredits(for movieId: Int, completionHandler: @escaping (MovieCredit?, Error?) -> ()) {
-
+    
+    private func isTMDbError(_ data: Data) -> TMDbKitError? {
+        return try? JSONDecoder().decode(TMDbKitError.self, from: data)
     }
-
-
-        private func isTMDbError(_ data: Data) -> TMDbKitError? {
-            return try? JSONDecoder().decode(TMDbKitError.self, from: data)
-        }
 }

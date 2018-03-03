@@ -34,7 +34,14 @@ class TMDbURLBuilder {
     }
     
     func movieDetailURL(for movieId: Int) -> URL {
-        let path = "/\(TMDbAPI.version)/\(TMDbAPI.Method.movie)/\(movieId)"
+        let path = "/\(TMDbAPI.version)/\(TMDbAPI.Movie.path)/\(movieId)"
+        self.urlComponents.path = path
+        
+        return self.urlComponents.url!
+    }
+    
+    func movieCreditsURL(for movieId: Int) -> URL {
+        let path = "/\(TMDbAPI.version)/\(TMDbAPI.Movie.path)/\(movieId)/\(TMDbAPI.Movie.credits)"
         self.urlComponents.path = path
         
         return self.urlComponents.url!

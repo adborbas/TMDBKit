@@ -19,19 +19,23 @@
 // SOFTWARE.
 
 import Foundation
-import TMDbKit
 import XCTest
+@testable import TMDbKit
 
-class TMDbKitServiceIntegrationTests: XCTestCase {
-    func test_it() {
-        let service = TMDbKitService(apiKey: "bdd678a8d65f5abf8608d6eb9a5be85f")
+class TMDbURLBuilderUnitTests: XCTestCase {
+    func test_movieDetailURL() {
+        let urlBuilder = TMDbURLBuilder(apiKey: "API_KEY")
+        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/10?api_key=API_KEY")!
+        let actualURL = urlBuilder.movieDetailURL(for: 10)
         
-        let expectation = XCTestExpectation()
-        service.movieDetail(for: 550) { (detail, error) in
-            XCTAssertNotNil(detail)
-            expectation.fulfill()
-        }
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    func test_movieCreditsURL() {
+        let urlBuilder = TMDbURLBuilder(apiKey: "API_KEY")
+        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/10/credits?api_key=API_KEY")!
+        let actualURL = urlBuilder.movieCreditsURL(for: 10)
         
-        wait(for: [expectation], timeout: 30)
+        XCTAssertEqual(expectedURL, actualURL)
     }
 }

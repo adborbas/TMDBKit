@@ -18,16 +18,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-import XCTest
-@testable import TMDbKit
-
-class TMDbURLBuilderUnitTests: XCTestCase {
-    func test_movieDetailURL() {
-        let urlBuilder = TMDbURLBuilder(apiKey: "API_KEY")
-        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/10?api_key=API_KEY")!
-        let actualURL = urlBuilder.movieDetailURL(for: 10)
-        
-        XCTAssertEqual(expectedURL, actualURL)
+enum TMDbAPI {
+    static let scheme = "https"
+    static let host = "api.themoviedb.org"
+    static let version = "3"
+    
+    enum Key {
+        static let apiKey = "api_key"
+    }
+    
+    enum Movie {
+        static let path = "movie"
+        static let credits = "credits"
     }
 }
