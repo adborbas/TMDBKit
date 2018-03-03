@@ -27,7 +27,7 @@ public struct CrewMember: Decodable {
     public let id: Int
     public let job: String
     public let name: String
-    public let profilePath: String
+    public let profilePath: String?
 }
 
 private extension CrewMember {

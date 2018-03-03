@@ -18,33 +18,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+import XCTest
+@testable import TMDbKit
 
-class TMDbURLBuilder {
-    private var urlComponents: URLComponents
+class MovieCreditsIntegrationTests: TMDbKitServiceIntegrationTest {
     
-    init(apiKey: String, language: String) {
-        var components = URLComponents()
-        components.scheme = TMDbAPI.scheme
-        components.host = TMDbAPI.host
-        
-        let apiKeyQueryItem = URLQueryItem(name: TMDbAPI.Key.apiKey, value: apiKey)
-        let languageQueryItem = URLQueryItem(name: TMDbAPI.Key.language, value: language)
-        components.queryItems = [apiKeyQueryItem, languageQueryItem]
-        self.urlComponents = components
+    func test_movieCredits_existing_shouldSucceed() {
+        let expectation = XCTestExpectation()
+        service.movieCredits(for: TestConstants.Movie.existsingId) { (credits, error) in
+            XCTAssertNil(error)
+            XCTAssertNotNil(credits)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: TMDbKitServiceIntegrationTest.defaultTimeout)
     }
     
-    func movieDetailURL(for movieId: Int) -> URL {
-        let path = "/\(TMDbAPI.version)/\(TMDbAPI.Movie.path)/\(movieId)"
-        self.urlComponents.path = path
+    func test_movieCredits_nonExisting_shouldReturnError() {
+        let expectation = XCTestExpectation()
+        service.movieCredits(for: TestConstants.Movie.notExistsingId) { (credits, error) in
+            XCTAssertNotNil(error)
+            if let error = error, case TMDbKitError.resourceNotFound = error {} else {
+                XCTFail("Expected resourceNotFound error but got: \(String(describing: error?.localizedDescription))")
+            }
+            XCTAssertNil(credits)
+            expectation.fulfill()
+        }
         
-        return self.urlComponents.url!
-    }
-    
-    func movieCreditsURL(for movieId: Int) -> URL {
-        let path = "/\(TMDbAPI.version)/\(TMDbAPI.Movie.path)/\(movieId)/\(TMDbAPI.Movie.credits)"
-        self.urlComponents.path = path
-        
-        return self.urlComponents.url!
+        wait(for: [expectation], timeout: TMDbKitServiceIntegrationTest.defaultTimeout)
     }
 }

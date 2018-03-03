@@ -18,28 +18,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
-
-public struct CastMember: Decodable {
-    public let castId: String
-    public let character: String
-    public let creditId: String
-    public let gender: Gender?
-    public let id: Int
-    public let name: String
-    public let order: Int
-    public let profilePath: String
-}
-
-private extension CastMember {
-    enum CodingKeys: String, CodingKey {
-        case castId = "cast_id"
-        case character = "character"
-        case creditId = "credit_id"
-        case gender
-        case id
-        case name
-        case order
-        case profilePath = "profile_path"
+public struct TMDbKitServiceConfig {
+    public let apiKey: String
+    public let language: String
+    
+    init(apiKey: String, language: String = "en-US") {
+        self.apiKey = apiKey
+        self.language = language
     }
 }

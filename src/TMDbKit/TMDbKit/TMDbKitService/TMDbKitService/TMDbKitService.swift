@@ -22,27 +22,30 @@ import Foundation
 import Alamofire
 
 public class TMDbKitService: TMDbService {
-
     private let urlBuilder: TMDbURLBuilder
 
-    public init(apiKey: String) {
-        self.urlBuilder = TMDbURLBuilder(apiKey: apiKey)
+    public init(config: TMDbKitServiceConfig) {
+        self.urlBuilder = TMDbURLBuilder(apiKey: config.apiKey, language: config.language)
     }
+}
 
+// MARK: - Movie
+extension TMDbKitService {
     public func movieDetail(for movieId: Int, completionHandler: @escaping (Movie?, Error?) -> ()) {
         let url = self.urlBuilder.movieDetailURL(for: movieId)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
-
+        
         self.requestDecodable(url, decoder: decoder, completionHandler: completionHandler)
     }
-
+    
     public func movieCredits(for movieId: Int, completionHandler: @escaping (MovieCredit?, Error?) -> ()) {
         let url = self.urlBuilder.movieCreditsURL(for: movieId)
         self.requestDecodable(url, completionHandler: completionHandler)
     }
 }
 
+// MARK: - Parsing
 fileprivate extension TMDbKitService {
     
     func requestDecodable<Entity: Decodable>(_ url: URL, decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (Entity?, Error?) -> Void) {

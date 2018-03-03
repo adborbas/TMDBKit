@@ -20,31 +20,26 @@
 
 import Foundation
 
-class TMDbURLBuilder {
-    private var urlComponents: URLComponents
-    
-    init(apiKey: String, language: String) {
-        var components = URLComponents()
-        components.scheme = TMDbAPI.scheme
-        components.host = TMDbAPI.host
-        
-        let apiKeyQueryItem = URLQueryItem(name: TMDbAPI.Key.apiKey, value: apiKey)
-        let languageQueryItem = URLQueryItem(name: TMDbAPI.Key.language, value: language)
-        components.queryItems = [apiKeyQueryItem, languageQueryItem]
-        self.urlComponents = components
-    }
-    
-    func movieDetailURL(for movieId: Int) -> URL {
-        let path = "/\(TMDbAPI.version)/\(TMDbAPI.Movie.path)/\(movieId)"
-        self.urlComponents.path = path
-        
-        return self.urlComponents.url!
-    }
-    
-    func movieCreditsURL(for movieId: Int) -> URL {
-        let path = "/\(TMDbAPI.version)/\(TMDbAPI.Movie.path)/\(movieId)/\(TMDbAPI.Movie.credits)"
-        self.urlComponents.path = path
-        
-        return self.urlComponents.url!
+public struct CastMember: Decodable {
+    public let castId: Int
+    public let character: String
+    public let creditId: String
+    public let gender: Gender?
+    public let id: Int
+    public let name: String
+    public let order: Int
+    public let profilePath: String?
+}
+
+private extension CastMember {
+    enum CodingKeys: String, CodingKey {
+        case castId = "cast_id"
+        case character = "character"
+        case creditId = "credit_id"
+        case gender
+        case id
+        case name
+        case order
+        case profilePath = "profile_path"
     }
 }
