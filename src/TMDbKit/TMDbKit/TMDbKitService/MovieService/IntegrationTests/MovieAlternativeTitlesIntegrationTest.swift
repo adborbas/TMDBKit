@@ -69,5 +69,20 @@ class MovieAlterNativeTitlesIntegrationTest: TMDbKitMovieServiceIntegrationTest 
         
         wait(for: [expectation], timeout: defaultTimeout)
     }
+    
+    func test_movieDetail_appendingAlternativeTitles_shouldSucceed() {
+        let expectation = XCTestExpectation()
+        self.service.movieDetail(for: TestConstants.Movie.existsingId, appending: [.alternativeTitles]) { result in
+            switch result {
+            case .failure(let error):
+                XCTFail("Request movie details with credentials should not fail: \(error.localizedDescription)")
+            case .success(let movie):
+                XCTAssertNotNil(movie.alternativeTitles, "Request movie details with credentials should return credentials.")
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: defaultTimeout)
+    }
 }
 

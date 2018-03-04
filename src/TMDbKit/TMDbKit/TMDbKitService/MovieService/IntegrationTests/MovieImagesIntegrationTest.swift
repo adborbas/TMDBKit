@@ -21,16 +21,17 @@
 import XCTest
 @testable import TMDbKit
 
-class MovieCreditsIntegrationTest: TMDbKitMovieServiceIntegrationTest {
+class MovieImagesIntegrationTest: TMDbKitMovieServiceIntegrationTest {
     
-    func test_movieCredits_existing_shouldSucceed() {
+    func test_movieImages_existing_shouldSucceed() {
         let expectation = XCTestExpectation()
-        self.service.movieCredits(for: TestConstants.Movie.existsingId) { result in
+        self.service.movieImages(for: TestConstants.Movie.existsingId) { result in
             switch result {
             case .failure(let error):
-                XCTFail("Requesting movie credits for existing movie should not fail: \(error.localizedDescription)")
-            case .success:
-                break
+                XCTFail("Requesting movie images for existing movie should not fail: \(error.localizedDescription)")
+            case .success(let images):
+                XCTAssertTrue(images.backdrops.count > 0)
+                XCTAssertTrue(images.posters.count > 0)
             }
             expectation.fulfill()
         }
@@ -38,9 +39,9 @@ class MovieCreditsIntegrationTest: TMDbKitMovieServiceIntegrationTest {
         wait(for: [expectation], timeout: defaultTimeout)
     }
     
-    func test_movieCredits_nonExisting_shouldReturnError() {
+    func test_movieImages_nonExisting_shouldReturnError() {
         let expectation = XCTestExpectation()
-        self.service.movieCredits(for: TestConstants.Movie.notExistsingId) { result in
+        self.service.movieImages(for: TestConstants.Movie.notExistsingId) { result in
             switch result {
             case .failure(let error):
                 if case TMDbServiceError.resourceNotFound = error {} else {
@@ -55,14 +56,14 @@ class MovieCreditsIntegrationTest: TMDbKitMovieServiceIntegrationTest {
         wait(for: [expectation], timeout: defaultTimeout)
     }
     
-    func test_movieDetail_appendingCredits_shouldSucceed() {
+    func test_movieDetail_appendingImages_shouldSucceed() {
         let expectation = XCTestExpectation()
-        self.service.movieDetail(for: TestConstants.Movie.existsingId, appending: [.credits]) { result in
+        self.service.movieDetail(for: TestConstants.Movie.existsingId, appending: [.images]) { result in
             switch result {
             case .failure(let error):
                 XCTFail("Request movie details with credentials should not fail: \(error.localizedDescription)")
             case .success(let movie):
-                XCTAssertNotNil(movie.credits, "Request movie details with credentials should return credentials.")
+                XCTAssertNotNil(movie.images, "Request movie details with credentials should return credentials.")
             }
             expectation.fulfill()
         }
@@ -70,3 +71,4 @@ class MovieCreditsIntegrationTest: TMDbKitMovieServiceIntegrationTest {
         wait(for: [expectation], timeout: defaultTimeout)
     }
 }
+

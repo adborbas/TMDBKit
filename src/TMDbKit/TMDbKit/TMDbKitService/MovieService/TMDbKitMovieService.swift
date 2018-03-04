@@ -23,7 +23,6 @@ import Alamofire
 import CodableAlamofire
 
 public class TMDbKitMovieService: TMDbMovieService {
-    
     private let urlBuilder: TMDbKitMovieURLBuilder
     
     public init(config: TMDbKitServiceConfig) {
@@ -46,5 +45,10 @@ public class TMDbKitMovieService: TMDbMovieService {
     public func movieAlternativeTitles(for movieId: Int, country: String? = nil, completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) {
         let url = self.urlBuilder.movieAlternativeTitles(for: movieId, country: country)
         Alamofire.request(url).responseTMDbKitResult(keyPath: "titles", completionHandler: completionHandler)
+    }
+    
+    public func movieImages(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieImages>) -> Void) {
+        let url = self.urlBuilder.movieImages(for: movieId)
+        Alamofire.request(url).responseTMDbKitResult(completionHandler: completionHandler)
     }
 }
