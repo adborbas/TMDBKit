@@ -1,6 +1,11 @@
 language: swift
 osx_image: xcode9.2
 
+before_install:
+  - gem install jazzy
+
 script: ./travis/build.sh
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - jazzy --source-directory ./src/TMDbKit --hide-documentation-coverage --github_url https://github.com/adborbas/TMDbKit
