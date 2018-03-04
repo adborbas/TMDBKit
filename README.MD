@@ -62,4 +62,4 @@ This project has started as a home project but any contribution is more than wel
 **This project is still under development, the first release will occur once a reasonable scope has been reached!**
 
 ## License
-This project is release under the [MIT License](https://github.com/adborbas/TMDbKit/blob/master/README.MD)
+This project is release under the [MIT License](https://github.com/adborbas/TMDbKit/blob/master/README.MD).
