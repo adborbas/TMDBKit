@@ -20,7 +20,7 @@
 
 import Foundation
 
-public struct GenreInfo: Codable {
+public struct GenreInfo: Decodable {
     public let id: Int
     public let name: String
 }

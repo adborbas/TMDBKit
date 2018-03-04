@@ -20,7 +20,7 @@
 
 import Foundation
 
-public struct CountryInfo: Codable {
+public struct CountryInfo: Decodable {
     public let code: String
     public let name: String
 }

@@ -20,7 +20,7 @@
 
 import Foundation
 
-public enum Status: String, Codable {
+public enum Status: String, Decodable {
     case rumored = "Rumored"
     case planned = "Planned"
     case inProduction = "In Production"

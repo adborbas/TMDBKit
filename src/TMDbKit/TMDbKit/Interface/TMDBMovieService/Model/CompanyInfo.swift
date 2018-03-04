@@ -20,7 +20,7 @@
 
 import Foundation
 
-public struct CompanyInfo: Codable {
+public struct CompanyInfo: Decodable {
     public let id: Int
     public let name: String
 }
