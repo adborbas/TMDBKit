@@ -43,8 +43,8 @@ public class TMDbKitMovieService: TMDbMovieService {
         Alamofire.request(url).responseTMDbKitResult(completionHandler: completionHandler)
     }
     
-    public func movieAlternativeTitles(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) {
-        let url = self.urlBuilder.movieAlternativeTitles(for: movieId)
+    public func movieAlternativeTitles(for movieId: Int, country: String? = nil, completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) {
+        let url = self.urlBuilder.movieAlternativeTitles(for: movieId, country: country)
         Alamofire.request(url).responseTMDbKitResult(keyPath: "titles", completionHandler: completionHandler)
     }
 }

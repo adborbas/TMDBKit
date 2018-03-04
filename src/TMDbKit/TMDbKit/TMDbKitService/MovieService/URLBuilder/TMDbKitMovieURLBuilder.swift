@@ -24,6 +24,8 @@ import Foundation
 class TMDbKitMovieURLBuilder: TMDbURLBuilder {
     func movieDetailURL(for movieId: Int, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod]()) -> URL {
         var components = self.baseURLComponents()
+        
+        // Append path
         let movieDetailPath = self.movieDetailPath(with: movieId)
         components.path.append(movieDetailPath)
         components.addQueryItem(from: queryMethods.map { $0.rawValue })
@@ -32,17 +34,27 @@ class TMDbKitMovieURLBuilder: TMDbURLBuilder {
     }
     
     func movieCreditsURL(for movieId: Int) -> URL {
-        var components = self.baseURLComponents()
+        var components = self.baseURLComponents(withLanguage: false)
+        
+        // Append path
         let movieCreditsPath = self.movieDetailPath(with: movieId, method: TMDbAPI.Movie.credits)
         components.path.append(movieCreditsPath)
         
         return components.url!
     }
     
-    func movieAlternativeTitles(for movieId: Int) -> URL {
-        var components = self.baseURLComponents()
+    func movieAlternativeTitles(for movieId: Int, country: String? = nil) -> URL {
+        var components = self.baseURLComponents(withLanguage: false)
+        
+        // Append path
         let movieCreditsPath = self.movieDetailPath(with: movieId, method: TMDbAPI.Movie.alternativeTitles)
         components.path.append(movieCreditsPath)
+        
+        // Append country query
+        if let country = country {
+            let countryQueryItem = URLQueryItem(name: TMDbAPI.Movie.country, value: country)
+            components.queryItems!.append(countryQueryItem)
+        }
         
         return components.url!
     }

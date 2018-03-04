@@ -23,18 +23,41 @@ import XCTest
 @testable import TMDbKit
 
 class TMDbKitMovieURLBuilderUnitTests: XCTestCase {
+    private var movieUrlBuilder: TMDbKitMovieURLBuilder!
+    private let apiKey = "APIKey"
+    private let language = "en-US"
+    private let movieId = 10
+    
+    override func setUp() {
+        super.setUp()
+        
+        self.movieUrlBuilder = TMDbKitMovieURLBuilder(apiKey: "\(self.apiKey)", language: "\(self.language)")
+    }
+    
     func test_movieDetailURL() {
-        let urlBuilder = TMDbKitMovieURLBuilder(apiKey: "API_KEY", language: "de")
-        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/10?api_key=API_KEY&language=de")!
-        let actualURL = urlBuilder.movieDetailURL(for: 10)
+        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/\(self.movieId)?api_key=\(self.apiKey)&language=\(self.language)")!
+        let actualURL = self.movieUrlBuilder.movieDetailURL(for: self.movieId)
         
         XCTAssertEqual(expectedURL, actualURL)
     }
     
     func test_movieCreditsURL() {
-        let urlBuilder = TMDbKitMovieURLBuilder(apiKey: "API_KEY", language: "en-US")
-        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/10/credits?api_key=API_KEY&language=en-US")!
-        let actualURL = urlBuilder.movieCreditsURL(for: 10)
+        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/\(self.movieId)/credits?api_key=\(self.apiKey)")!
+        let actualURL = self.movieUrlBuilder.movieCreditsURL(for: self.movieId)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    func test_movieAlternativeTitlesURL() {
+        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/\(self.movieId)/alternative_titles?api_key=\(self.apiKey)")!
+        let actualURL = self.movieUrlBuilder.movieAlternativeTitles(for: self.movieId)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    func test_movieAlternativeTitlesURL_wihtCounty() {
+        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/\(self.movieId)/alternative_titles?api_key=\(self.apiKey)&country=hu")!
+        let actualURL = self.movieUrlBuilder.movieAlternativeTitles(for: self.movieId, country: "hu")
         
         XCTAssertEqual(expectedURL, actualURL)
     }
