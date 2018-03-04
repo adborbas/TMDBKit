@@ -9,10 +9,10 @@ A Swift framework to cusome The Movie Database (TMDb) API.
 ## Summary
 * [Introduction](#introduction)
 * [Installation](#installation)
-* [Movies] (#movies) 
+* [Movies](#movies) 
 * [Collaboration](#collaboration)
 * [Release Notes](#release-notes)
-* [License] (#license)
+* [License](#license)
 
 ## Introduction
 My goal with this repository is to see how an open source project could be developed.
