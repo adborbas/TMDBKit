@@ -1,7 +1,7 @@
 ignore:
   - Pods/.*
-  - UnitTests/.*
-  - IntegrationTests/.*
+  - **/UnitTests/.*
+  - **/IntegrationTests/.*
 
 coverage:
   precision: 2
