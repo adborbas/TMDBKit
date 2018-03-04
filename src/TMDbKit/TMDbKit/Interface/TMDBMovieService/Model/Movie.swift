@@ -50,6 +50,7 @@ public struct Movie: Decodable {
     // QueryMethos
     public let credits: MovieCredits?
     public let alternativeTitles: MovieAlternativeTitles?
+    public let images: MovieImages?
 }
 
 extension Movie {
@@ -83,5 +84,6 @@ extension Movie {
         // QueryMethos
         case credits
         case alternativeTitles = "alternative_titles"
+        case images
     }
 }

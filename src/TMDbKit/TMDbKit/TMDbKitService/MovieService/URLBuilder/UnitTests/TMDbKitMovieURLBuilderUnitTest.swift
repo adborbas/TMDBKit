@@ -61,4 +61,11 @@ class TMDbKitMovieURLBuilderUnitTest: XCTestCase {
         
         XCTAssertEqual(expectedURL, actualURL)
     }
+    
+    func test_movieImagesTitlesURL() {
+        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/\(self.movieId)/images?api_key=\(self.apiKey)")!
+        let actualURL = self.movieUrlBuilder.movieImages(for: self.movieId)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
 }

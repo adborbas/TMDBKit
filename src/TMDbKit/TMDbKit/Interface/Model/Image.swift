@@ -18,22 +18,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-enum TMDbAPI {
-    static let scheme = "https"
-    static let host = "api.themoviedb.org"
-    static let version = "3"
-    
-    enum Key {
-        static let apiKey = "api_key"
-        static let language = "language"
-        static let appendToResponse = "append_to_response"
-    }
-    
-    enum Movie {
-        static let path = "movie"
-        static let credits = "credits"
-        static let alternativeTitles = "alternative_titles"
-        static let country = "country"
-        static let images = "images"
+import Foundation
+
+public struct Image: Decodable {
+    public let aspectRatio: Double
+    public let filePath: String
+    public let height: Int
+    public let language: String?
+    public let avarageVote: Double
+    public let avarageCount: Double
+    public let width: Int
+}
+
+private extension Image {
+    enum CodingKeys: String, CodingKey {
+        case aspectRatio = "aspect_ratio"
+        case filePath = "file_path"
+        case height
+        case language = "iso_639_1"
+        case avarageVote = "vote_average"
+        case avarageCount = "vote_count"
+        case width
     }
 }
