@@ -2,6 +2,7 @@ ignore:
   - Pods/.*
   - **/UnitTests/.*
   - **/IntegrationTests/.*
+  - docs/.*
 
 coverage:
   precision: 2
@@ -15,5 +16,5 @@ coverage:
       default: on
     changes:
       default: off
-      
+
 comment: false
