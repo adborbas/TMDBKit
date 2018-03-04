@@ -21,7 +21,7 @@
 import XCTest
 @testable import TMDbKit
 
-class MovieCreditsIntegrationTests: TMDbKitMovieServiceIntegrationTest {
+class MovieCreditsIntegrationTest: TMDbKitMovieServiceIntegrationTest {
     
     func test_movieCredits_existing_shouldSucceed() {
         let expectation = XCTestExpectation()

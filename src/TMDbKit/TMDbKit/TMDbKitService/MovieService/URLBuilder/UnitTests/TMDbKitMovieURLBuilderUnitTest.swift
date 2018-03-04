@@ -22,7 +22,7 @@ import Foundation
 import XCTest
 @testable import TMDbKit
 
-class TMDbKitMovieURLBuilderUnitTests: XCTestCase {
+class TMDbKitMovieURLBuilderUnitTest: XCTestCase {
     private var movieUrlBuilder: TMDbKitMovieURLBuilder!
     private let apiKey = "APIKey"
     private let language = "en-US"

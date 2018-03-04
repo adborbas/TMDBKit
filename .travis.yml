@@ -3,4 +3,4 @@ osx_image: xcode9.2
 
 script: ./travis/build.sh
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -J 'TMDbKit'
+  - bash <(curl -s https://codecov.io/bash)
