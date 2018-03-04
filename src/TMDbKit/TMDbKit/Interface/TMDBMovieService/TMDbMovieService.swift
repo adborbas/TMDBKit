@@ -26,5 +26,5 @@ public protocol TMDbMovieService {
     
     func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> Void)
     
-    func movieAlternativeTitles(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void)
+    func movieAlternativeTitles(for movieId: Int, country: String?, completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void)
 }

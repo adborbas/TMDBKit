@@ -41,7 +41,7 @@
 		12FACC7720437CC800104F9E /* TMDbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FACC7620437CC800104F9E /* TMDbAPI.swift */; };
 		12FACC7B20437E6F00104F9E /* TMDbKitMovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FACC7A20437E6F00104F9E /* TMDbKitMovieService.swift */; };
 		12FACC8120437F2700104F9E /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FACC8020437F2700104F9E /* DateFormatter+Extensions.swift */; };
-		12FACC8320437F5D00104F9E /* TMDbKitServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FACC8220437F5D00104F9E /* TMDbKitServiceError.swift */; };
+		12FACC8320437F5D00104F9E /* TMDbServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FACC8220437F5D00104F9E /* TMDbServiceError.swift */; };
 		12FACC8E2043801C00104F9E /* TMDbKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124782B220435D5B004F89B4 /* TMDbKit.framework */; };
 		16D3462C8FC33B2B9494F043 /* Pods_TMDbKitUnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA4F607F15AE80EAC42F3AF /* Pods_TMDbKitUnitTests.framework */; };
 		3A850C0EB391EC3057DF71E2 /* Pods_TMDbKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D27C5370F5F7ECCE985EE91 /* Pods_TMDbKit.framework */; };
@@ -101,7 +101,7 @@
 		12FACC7620437CC800104F9E /* TMDbAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbAPI.swift; sourceTree = "<group>"; };
 		12FACC7A20437E6F00104F9E /* TMDbKitMovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbKitMovieService.swift; sourceTree = "<group>"; };
 		12FACC8020437F2700104F9E /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
-		12FACC8220437F5D00104F9E /* TMDbKitServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbKitServiceError.swift; sourceTree = "<group>"; };
+		12FACC8220437F5D00104F9E /* TMDbServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbServiceError.swift; sourceTree = "<group>"; };
 		12FACC892043801C00104F9E /* TMDbKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMDbKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12FACC8D2043801C00104F9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1374F24AE040A18D95D1D0BE /* Pods-TMDbKitUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDbKitUnitTests.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-TMDbKitUnitTests/Pods-TMDbKitUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -302,7 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				1255BD21204AF54A00939FA4 /* TMDbServiceResult.swift */,
-				12FACC8220437F5D00104F9E /* TMDbKitServiceError.swift */,
+				12FACC8220437F5D00104F9E /* TMDbServiceError.swift */,
 				1255BD19204AE67C00939FA4 /* TMDBMovieService */,
 				124AA2C520435FB600935492 /* Model */,
 			);
@@ -671,7 +671,7 @@
 				1262FD22204ACB5E0017012C /* Gender.swift in Sources */,
 				124AA2D420435FB600935492 /* Status.swift in Sources */,
 				1255BD22204AF54A00939FA4 /* TMDbServiceResult.swift in Sources */,
-				12FACC8320437F5D00104F9E /* TMDbKitServiceError.swift in Sources */,
+				12FACC8320437F5D00104F9E /* TMDbServiceError.swift in Sources */,
 				12FACC7720437CC800104F9E /* TMDbAPI.swift in Sources */,
 				1255BD24204AFABB00939FA4 /* TMDbMovieServiceQueryMethod.swift in Sources */,
 			);

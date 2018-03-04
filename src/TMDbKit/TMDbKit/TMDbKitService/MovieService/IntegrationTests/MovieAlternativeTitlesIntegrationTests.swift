@@ -38,12 +38,27 @@ class MovieAlterNativeTitlesIntegrationTests: TMDbKitMovieServiceIntegrationTest
         wait(for: [expectation], timeout: defaultTimeout)
     }
     
+    func test_movieAlternativeTitles_existing_withCountry_shouldSucceed() {
+        let expectation = XCTestExpectation()
+        self.service.movieAlternativeTitles(for: TestConstants.Movie.existsingId, country: "hu") { result in
+            switch result {
+            case .failure(let error):
+                XCTFail("Requesting alternative titles for existing movie should not fail: \(error.localizedDescription)")
+            case .success(let titles):
+                XCTAssertTrue(titles.count == 1)
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: defaultTimeout)
+    }
+    
     func test_movieAlternativeTitles_nonExisting_shouldReturnError() {
         let expectation = XCTestExpectation()
         self.service.movieAlternativeTitles(for: TestConstants.Movie.notExistsingId) { result in
             switch result {
             case .failure(let error):
-                if case TMDbKitServiceError.resourceNotFound = error {} else {
+                if case TMDbServiceError.resourceNotFound = error {} else {
                     XCTFail("Expected resourceNotFound error but got: \(String(describing: error.localizedDescription))")
                 }
             case .success:

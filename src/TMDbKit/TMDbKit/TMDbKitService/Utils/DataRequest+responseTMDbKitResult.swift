@@ -41,7 +41,7 @@ extension DataRequest {
         }
     }
     
-    private func isTMDbKitError(_ data: Data) -> TMDbKitServiceError? {
-        return try? JSONDecoder().decode(TMDbKitServiceError.self, from: data)
+    private func isTMDbKitError(_ data: Data) -> TMDbServiceError? {
+        return try? JSONDecoder().decode(TMDbServiceError.self, from: data)
     }
 }
