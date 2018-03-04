@@ -8,4 +8,4 @@ script: ./travis/build.sh
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - jazzy --swift-version 4.1 --source-directory ./src/TMDbKit --hide-documentation-coverage -a "Adam Borbas"
+  - jazzy --source-directory ./src/TMDbKit --hide-documentation-coverage --github_url https://github.com/adborbas/TMDbKit
