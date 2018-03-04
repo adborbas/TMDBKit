@@ -20,7 +20,7 @@
 
 import Foundation
 
-public struct LanguageInfo: Codable {
+public struct LanguageInfo: Decodable {
     public let iso_639_1: String
     public let name: String
 }

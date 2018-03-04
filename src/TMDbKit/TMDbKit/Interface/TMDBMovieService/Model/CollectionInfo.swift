@@ -20,7 +20,7 @@
 
 import Foundation
 
-public struct CollectionInfo: Codable {
+public struct CollectionInfo: Decodable {
     public let id: Int
     public let name: String
     public let posterPath: String
