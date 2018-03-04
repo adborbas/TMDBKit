@@ -30,23 +30,4 @@ class TMDbKitMovieServiceIntegrationTest: XCTestCase {
         
         self.service = TMDbKitMovieService(config: TestConstants.ServiceConfig.validAPIKey)
     }
-    
-    func test_invalidApiKey_shouldReturnError() {
-        let invalidApiKeyService = TMDbKitMovieService(config: TestConstants.ServiceConfig.invalidAPIKey)
-        
-        let expectation = XCTestExpectation()
-        invalidApiKeyService.movieDetail(for: TestConstants.Movie.notExistsingId) { result in
-            switch result {
-            case .failure(let error):
-                if case TMDbServiceError.invalidAPIKey = error {
-                    XCTAssertEqual(error.localizedDescription, "Invalid API key: You must be granted a valid key.")
-                } else {
-                    XCTFail("Expected invalidApiKey error but got: \(error.localizedDescription))")
-                }
-            case .success:
-                XCTFail("Requesting movie details with invalid apiKey should have failed.")
-            }
-            expectation.fulfill()
-        }
-    }
 }
