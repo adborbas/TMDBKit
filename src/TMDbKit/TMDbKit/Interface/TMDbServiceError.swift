@@ -54,9 +54,10 @@ extension TMDbServiceError: LocalizedError {
         .resourceNotFound: "The resource you requested could not be found."
     ]
     
-    var localizedDescription: String {
-        return TMDbServiceError.statusMessages[self] ?? "Failed."
+    public var errorDescription: String? {
+        return TMDbServiceError.statusMessages[self]
     }
+
 }
 
 extension TMDbServiceError: Decodable {
