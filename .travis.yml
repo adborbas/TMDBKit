@@ -9,3 +9,12 @@ script: ./travis/build.sh
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   - jazzy --source-directory ./src/TMDbKit --hide-documentation-coverage --github_url https://github.com/adborbas/TMDbKit
+
+deploy:
+  local-dir: docs
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: false
+  on:
+    branch: master
