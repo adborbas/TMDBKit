@@ -20,7 +20,7 @@
 
 import Foundation
 
-public enum TMDbKitServiceError: Int, Error {
+public enum TMDbServiceError: Int, Error {
     case invalidSerice = 2
     case invalidFormat = 4
     case invalidParameters = 5
@@ -36,7 +36,7 @@ public enum TMDbKitServiceError: Int, Error {
     case resourceNotFound = 34
 }
 
-extension TMDbKitServiceError: LocalizedError {
+extension TMDbServiceError: LocalizedError {
     var localizedDescription: String {
         switch self {
         case .invalidSerice:
@@ -69,7 +69,7 @@ extension TMDbKitServiceError: LocalizedError {
     }
 }
 
-extension TMDbKitServiceError: Decodable {
+extension TMDbServiceError: Decodable {
     private enum CodingKeys: String, CodingKey {
         case statusCode = "status_code"
     }
@@ -78,6 +78,6 @@ extension TMDbKitServiceError: Decodable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         let statusCode = try values.decode(Int.self, forKey: CodingKeys.statusCode)
         
-        self = TMDbKitServiceError(rawValue: statusCode) ?? .failed
+        self = TMDbServiceError(rawValue: statusCode) ?? .failed
     }
 }

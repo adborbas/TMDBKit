@@ -43,7 +43,7 @@ class MovieAlterNativeTitlesIntegrationTests: TMDbKitMovieServiceIntegrationTest
         self.service.movieAlternativeTitles(for: TestConstants.Movie.notExistsingId) { result in
             switch result {
             case .failure(let error):
-                if case TMDbKitServiceError.resourceNotFound = error {} else {
+                if case TMDbServiceError.resourceNotFound = error {} else {
                     XCTFail("Expected resourceNotFound error but got: \(String(describing: error.localizedDescription))")
                 }
             case .success:
