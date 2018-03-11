@@ -4,7 +4,7 @@
 [![codebeat badge](https://codebeat.co/badges/834e1729-33d1-439f-8f18-996e841da686)](https://codebeat.co/projects/github-com-adborbas-tmdbkit-master)
 [![codecov](https://codecov.io/gh/adborbas/TMDbKit/branch/master/graph/badge.svg)](https://codecov.io/gh/adborbas/TMDbKit)
 
-A Swift framework to cusome The Movie Database (TMDb) API.
+A Swift framework to consume The Movie Database (TMDb) API.
 
 ## Summary
 * [Introduction](#introduction)
