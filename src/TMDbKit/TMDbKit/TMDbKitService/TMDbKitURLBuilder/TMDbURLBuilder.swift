@@ -22,9 +22,8 @@ import Foundation
 
 class TMDbURLBuilder {
     private let urlComponents: URLComponents
-    private let languageQueryItem: URLQueryItem
     
-    init(apiKey: String, language: String) {
+    init(apiKey: String) {
         var components = URLComponents()
         components.scheme = TMDbAPI.scheme
         components.host = TMDbAPI.host
@@ -33,15 +32,9 @@ class TMDbURLBuilder {
         let apiKeyQueryItem = URLQueryItem(name: TMDbAPI.Key.apiKey, value: apiKey)
         components.queryItems = [apiKeyQueryItem]
         self.urlComponents = components
-        
-        self.languageQueryItem = URLQueryItem(name: TMDbAPI.Key.language, value: language)
     }
     
     func baseURLComponents(withLanguage: Bool = true) -> URLComponents {
-        var components = urlComponents
-        if withLanguage {
-            components.queryItems!.append(self.languageQueryItem)
-        }
-        return components
+        return self.urlComponents
     }
 }

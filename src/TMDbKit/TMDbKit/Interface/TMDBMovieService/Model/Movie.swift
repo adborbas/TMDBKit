@@ -50,8 +50,10 @@ public struct Movie: Decodable {
     // QueryMethos
     public let credits: MovieCredits?
     public let alternativeTitles: MovieAlternativeTitles?
-    public let images: MovieImages?
+    let images: Images?
 }
+
+extension Movie: ImagesContaining {}
 
 extension Movie {
     enum CodingKeys: String, CodingKey {

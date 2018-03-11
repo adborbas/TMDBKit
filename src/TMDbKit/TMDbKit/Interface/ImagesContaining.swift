@@ -18,14 +18,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-public struct TMDbKitServiceConfig {
-    private static let defaultLanguage = "en"
+import Foundation
+
+protocol ImagesContaining {
+    var images: Images? { get }
+}
+
+extension ImagesContaining {
+    public var backdrops: [Image]? {
+        return self.images?.backdrops
+    }
     
-    public let apiKey: String
-    public let language: String
-    
-    init(apiKey: String, language: String = TMDbKitServiceConfig.defaultLanguage) {
-        self.apiKey = apiKey
-        self.language = language
+    public var posters: [Image]? {
+        return self.images?.posters
     }
 }
+

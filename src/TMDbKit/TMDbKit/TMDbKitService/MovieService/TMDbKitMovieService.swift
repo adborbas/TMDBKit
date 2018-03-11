@@ -26,11 +26,11 @@ public class TMDbKitMovieService: TMDbMovieService {
     private let urlBuilder: TMDbKitMovieURLBuilder
     
     public init(config: TMDbKitServiceConfig) {
-        self.urlBuilder = TMDbKitMovieURLBuilder(apiKey: config.apiKey, language: config.language)
+        self.urlBuilder = TMDbKitMovieURLBuilder(apiKey: config.apiKey)
     }
     
-    public func movieDetail(for movieId: Int, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod](), completionHandler: @escaping (TMDbServiceResult<Movie>) -> ()) {
-        let url = self.urlBuilder.movieDetailURL(for: movieId, appending: queryMethods)
+    public func movieDetail(for movieId: Int, language: String? = nil, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod](), completionHandler: @escaping (TMDbServiceResult<Movie>) -> ()) {
+        let url = self.urlBuilder.movieDetailURL(for: movieId, language: language, appending: queryMethods)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
         
@@ -47,7 +47,7 @@ public class TMDbKitMovieService: TMDbMovieService {
         Alamofire.request(url).responseTMDbKitResult(keyPath: "titles", completionHandler: completionHandler)
     }
     
-    public func movieImages(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieImages>) -> Void) {
+    public func movieImages(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<Images>) -> Void) {
         let url = self.urlBuilder.movieImages(for: movieId)
         Alamofire.request(url).responseTMDbKitResult(completionHandler: completionHandler)
     }

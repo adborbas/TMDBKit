@@ -19,7 +19,7 @@
 // SOFTWARE.
 
 import XCTest
-@testable import TMDbKit
+import TMDbKit
 
 class MovieImagesIntegrationTest: TMDbKitMovieServiceIntegrationTest {
     
@@ -61,9 +61,10 @@ class MovieImagesIntegrationTest: TMDbKitMovieServiceIntegrationTest {
         self.service.movieDetail(for: TestConstants.Movie.existsingId, appending: [.images]) { result in
             switch result {
             case .failure(let error):
-                XCTFail("Request movie details with credentials should not fail: \(error.localizedDescription)")
+                XCTFail("Request movie details with images should not fail: \(error.localizedDescription)")
             case .success(let movie):
-                XCTAssertNotNil(movie.images, "Request movie details with credentials should return credentials.")
+                XCTAssertNotNil(movie.backdrops, "Request movie details with images should return backdrops.")
+                XCTAssertNotNil(movie.posters, "Request movie details with images should return posters.")
             }
             expectation.fulfill()
         }

@@ -20,7 +20,7 @@
 
 import Foundation
 
-public struct MovieImages: Decodable {
+public struct Images: Decodable {
     public let id: Int?
     public let backdrops: [Image]
     public let posters: [Image]
