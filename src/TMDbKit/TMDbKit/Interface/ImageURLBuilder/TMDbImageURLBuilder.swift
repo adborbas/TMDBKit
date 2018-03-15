@@ -54,11 +54,11 @@ public class TMDdImageURLBuilder {
         self.baseURL = URL(string: scheme.rawValue)!
     }
     
-    public func backdrop(size: Size.Backdrop, filePath: String) -> URL {
+    public func backdropURL(_ filePath: String, size: Size.Backdrop = .original) -> URL {
         return baseURL.appendingPathComponent(size.rawValue).appendingPathComponent(filePath)
     }
     
-    public func poster(size: Size.Poster, filePath: String) -> URL {
+    public func posterURL(_ filePath: String, size: Size.Poster = .original) -> URL {
         return baseURL.appendingPathComponent(size.rawValue).appendingPathComponent(filePath)
     }
 }
