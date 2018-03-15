@@ -19,8 +19,6 @@
 // SOFTWARE.
 
 import Foundation
-import Alamofire
-import CodableAlamofire
 
 public class TMDbKitMovieService: TMDbMovieService {
     private let urlBuilder: TMDbKitMovieURLBuilder
