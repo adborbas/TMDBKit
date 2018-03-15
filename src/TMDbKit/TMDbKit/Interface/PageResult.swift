@@ -20,15 +20,43 @@
 
 import Foundation
 
-
-public protocol TMDbMovieService {
-    func movieDetail(for movieId: Int, language: String?, appending: [TMDbMovieServiceQueryMethod], completionHandler: @escaping (TMDbServiceResult<Movie>) -> Void) -> Operation
+public class PageResult<Value>: Decodable where Value: Decodable {
+    public internal(set) var results: [Value]
+    public internal(set) var current: Int
+    public let totalPages: Int
+    public let totalResults: Int
     
-    func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> Void) -> Operation
-    
-    func movieAlternativeTitles(for movieId: Int, country: String?, completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) -> Operation
-    
-    func movieImages(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<Images>) -> Void) -> Operation
-    
-    func nowPlaying(language: String?, region: String?, completionHandler: @escaping (TMDbServiceResult<PageResult<MovieInfo>>) -> Void) -> Operation
+    // TODO: why is this needed?
+    fileprivate init() {
+        self.results = [Value]()
+        self.current = 1
+        self.totalPages = 1
+        self.totalResults = 1
+    }
 }
+
+extension PageResult {
+    enum CodingKeys: String, CodingKey {
+        case results
+        case current = "page"
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+    }
+}
+
+//public class TimeFramePageResult<Value: Decodable>: PageResult<Value> {
+//    public let fromDate: Date
+//    public let toDate: Date
+//
+//    // TODO: why is this needed?
+//    private override init() {
+//        super.init()
+//        self.fromDate = Date()
+//        self.toDate = Date()
+//    }
+//
+//    required public init(from decoder: Decoder) throws {
+//        try super.init(from: decoder)
+//    }
+//}
+

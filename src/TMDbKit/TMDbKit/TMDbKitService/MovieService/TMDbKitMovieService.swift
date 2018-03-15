@@ -61,4 +61,14 @@ public class TMDbKitMovieService: TMDbMovieService {
         self.operationQueue.addOperation(operation)
         return operation
     }
+    
+    public func nowPlaying(language: String? = nil, region: String? = nil, completionHandler: @escaping (TMDbServiceResult<PageResult<MovieInfo>>) -> Void) -> Operation {
+        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=bdd678a8d65f5abf8608d6eb9a5be85f")!
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
+        
+        let operation = TMDbKitServiceOperation(url: url, decoder: decoder, completionHandler: completionHandler)
+        self.operationQueue.addOperation(operation)
+        return operation
+    }
 }

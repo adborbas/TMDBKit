@@ -18,17 +18,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+import XCTest
+import TMDbKit
 
-
-public protocol TMDbMovieService {
-    func movieDetail(for movieId: Int, language: String?, appending: [TMDbMovieServiceQueryMethod], completionHandler: @escaping (TMDbServiceResult<Movie>) -> Void) -> Operation
-    
-    func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> Void) -> Operation
-    
-    func movieAlternativeTitles(for movieId: Int, country: String?, completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) -> Operation
-    
-    func movieImages(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<Images>) -> Void) -> Operation
-    
-    func nowPlaying(language: String?, region: String?, completionHandler: @escaping (TMDbServiceResult<PageResult<MovieInfo>>) -> Void) -> Operation
+class NowPlayingIntegrationTest: TMDbKitMovieServiceIntegrationTest {
+    func test_nowPlaying() {
+        let expectation = XCTestExpectation()
+        _ = self.service.nowPlaying() { result in
+            switch result {
+            case .failure(let error):
+                XCTFail("Requesting movie images for existing movie should not fail: \(error.localizedDescription)")
+            case .success(let page):
+                XCTAssertTrue(true)
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: defaultTimeout)
+    }
 }
