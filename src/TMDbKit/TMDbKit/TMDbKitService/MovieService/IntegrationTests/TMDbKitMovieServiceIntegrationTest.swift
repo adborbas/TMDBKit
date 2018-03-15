@@ -28,6 +28,6 @@ class TMDbKitMovieServiceIntegrationTest: XCTestCase {
         super.setUp()
         self.continueAfterFailure = false
         
-        self.service = TMDbKitMovieService(config: TestConstants.ServiceConfig.validAPIKey)
+        _ = self.service = TMDbKitMovieService(config: TestConstants.ServiceConfig.validAPIKey)
     }
 }
