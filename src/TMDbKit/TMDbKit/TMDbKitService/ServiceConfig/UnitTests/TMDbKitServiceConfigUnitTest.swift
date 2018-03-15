@@ -24,8 +24,8 @@ import XCTest
 class TMDbKitServiceConfigUnitTest: XCTestCase {
     func test_defaultLanguage() {
         let config = TMDbKitServiceConfig(apiKey: "APIKEY")
-        let expectedConfig = TMDbKitServiceConfig(apiKey: "APIKEY", language: "en-US")
+        let expectedConfig = TMDbKitServiceConfig(apiKey: "APIKEY", language: "en")
         
-        XCTAssertEqual(config.language, expectedConfig.language, "The default language should be 'en-US'")
+        XCTAssertEqual(config.language, expectedConfig.language, "The default language should be 'en'")
     }
 }
