@@ -20,7 +20,23 @@
 
 import Foundation
 
-public enum TMDbServiceResult<T> {
-    case failure(TMDbServiceError)
-    case success(T)
+extension TMDbServiceError {
+    public enum JSONParsingReason {
+        case jsonForKeyPathNotFound(String)
+        case decodeFailed(Error)
+    }
 }
+
+extension TMDbServiceError.JSONParsingReason: TMDbServiceErrorReason {
+    var description: String? {
+        switch self {
+        case .decodeFailed(let error):
+            return error.localizedDescription
+        case .jsonForKeyPathNotFound(let reason):
+            return reason
+        }
+    }
+    
+    
+}
+

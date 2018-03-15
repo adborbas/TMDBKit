@@ -30,7 +30,7 @@ class MovieDetailIntegrationTest: TMDbKitMovieServiceIntegrationTest {
         _ = invalidApiKeyService.movieDetail(for: TestConstants.Movie.notExistsingId) { result in
             switch result {
             case .failure(let error):
-                if case TMDbServiceError.invalidAPIKey = error {
+                if case TMDbServiceError.failureFromService(.invalidAPIKey) = error {
                     XCTAssertEqual(error.localizedDescription, "Invalid API key: You must be granted a valid key.")
                 } else {
                     XCTFail("Expected invalidApiKey error but got: \(error.localizedDescription))")
@@ -63,7 +63,7 @@ class MovieDetailIntegrationTest: TMDbKitMovieServiceIntegrationTest {
             
             switch result {
             case .failure(let error):
-                if case TMDbServiceError.resourceNotFound = error {} else {
+                if case TMDbServiceError.failureFromService(.resourceNotFound) = error {} else {
                     XCTFail("Expected resourceNotFound error but got: \(error.localizedDescription)")
                 }
             case .success:

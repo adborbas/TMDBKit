@@ -20,7 +20,28 @@
 
 import Foundation
 
-public enum TMDbServiceResult<T> {
-    case failure(TMDbServiceError)
-    case success(T)
+public enum TMDbServiceError: Error {
+    case failureFromService(FailureFromServiceReason)
+    case noDataInResponse
+    case failedToParse(JSONParsingReason)
+    case networkError(Error)
+}
+
+extension TMDbServiceError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .failureFromService(let reason):
+            return reason.description
+        case .noDataInResponse:
+            return "Service returned no data."
+        case .failedToParse(let reason):
+            return reason.description
+        case .networkError(let error):
+            return error.localizedDescription
+        }
+    }
+}
+
+internal protocol TMDbServiceErrorReason {
+    var description: String? { get }
 }

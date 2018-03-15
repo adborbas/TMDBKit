@@ -20,13 +20,12 @@
 
 import Foundation
 
-class TMDbOperation<Value>: Operation where Value: Decodable {
+class TMDbKitServiceOperation<Value>: Operation where Value: Decodable {
     private let urlRequest: URLRequest
-    private let decoder: JSONDecoder
     private let urlSession: URLSession
     private let keyPath: String?
+    private let decoder: JSONDecoder
     private let completionHandler: (TMDbServiceResult<Value>) -> Void
-    
     private var dataTask: URLSessionDataTask?
     
     init(request: URLRequest, urlSession: URLSession = URLSession.shared, keyPath: String? = nil, decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (TMDbServiceResult<Value>) -> Void) {
@@ -54,40 +53,25 @@ class TMDbOperation<Value>: Operation where Value: Decodable {
             defer { semaphore.signal() }
             
             if let error = error {
-                self.completionHandler(.failure(error))
+                self.completionHandler(.failure(.networkError(error)))
                 return
             }
             
-            guard var data = data else {
-                // TODO: implement
+            guard let data = data else {
+                self.completionHandler(.failure(.noDataInResponse))
                 return
             }
             
-            if let tmdbError = self.isTMDbKitError(data) {
-                self.completionHandler(.failure(tmdbError))
+            if let tmdbError = TMDbServiceError.FailureFromServiceReason.isFailure(data) {
+                self.completionHandler(.failure(.failureFromService(tmdbError)))
                 return
             }
             
-            do {
-                if let keyPath = self.keyPath {
-                    let json = try JSONSerialization.jsonObject(with: data)
-                    if let nestedJson = (json as AnyObject).value(forKeyPath: keyPath) {
-                        data = try JSONSerialization.data(withJSONObject: nestedJson)
-                    }
-                }
-            
-                let value = try self.decoder.decode(Value.self, from: data)
-                self.completionHandler(.success(value))
-            } catch {
-                self.completionHandler(.failure(error))
-            }
+            self.performDecoding(on: data, keyPath: self.keyPath)
         }
         self.dataTask?.resume()
-        let dispatchResult = semaphore.wait(timeout: .distantFuture)
-        
-        if dispatchResult == DispatchTimeoutResult.timedOut {
-            self.completionHandler(.failure(TMDbServiceError.backendServerTimedOut))
-        }
+        // The URLSessionDataTask terminates with error if request timeout. Do not need to check here.
+        _ = semaphore.wait(timeout: .distantFuture)
     }
     
     override func cancel() {
@@ -96,8 +80,42 @@ class TMDbOperation<Value>: Operation where Value: Decodable {
         self.dataTask?.cancel()
     }
     
-    private func isTMDbKitError(_ data: Data) -> TMDbServiceError? {
-        return try? JSONDecoder().decode(TMDbServiceError.self, from: data)
+    /**
+     Performs decoding with the `JSONDecoder` on self.
+     - Parameters:
+        - data: `Data` to decode JSON from.
+        - keyPath: Specify where the JSON should be decoded from. Pass `nil` if the JSON object to parse is at root.
+     */
+    private func performDecoding(on data: Data, keyPath: String?) {
+        do {
+            if let keyPath = keyPath {
+                self.performDecoding(on: try self.extractJSON(from: keyPath, from: data), keyPath: nil)
+                return
+            }
+            
+            let value = try self.decoder.decode(Value.self, from: data)
+            self.completionHandler(.success(value))
+        } catch {
+            self.completionHandler(.failure(.failedToParse(.decodeFailed(error))))
+        }
+    }
+    
+    /**
+     Extracts a JSON object from `Data` at a given keyPath.
+     - Parameters:
+        - keyPath: Path to extract the JSON object from.
+        - data: `Data` that should contain the JSON object.
+     - Returns: The extracted JSON in `Data`.
+     - Throws:
+        - `JSONParsingReasion.jsonForKeyPathNotFound` if a JSON object could not be found at the keyPath.
+        - Other error is JSON object found at keyPath could not be parsed.
+     */
+    private func extractJSON(from keyPath: String, from data: Data) throws -> Data {
+        let json = try JSONSerialization.jsonObject(with: data)
+        guard let nestedJson = (json as AnyObject).value(forKeyPath: keyPath) else {
+            throw TMDbServiceError.failedToParse(.jsonForKeyPathNotFound(keyPath))
+        }
+        return try JSONSerialization.data(withJSONObject: nestedJson)
     }
     
 }

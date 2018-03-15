@@ -20,25 +20,27 @@
 
 import Foundation
 
-public enum TMDbServiceError: Int, Error {
-    case invalidSerice = 2
-    case invalidFormat = 4
-    case invalidParameters = 5
-    case invalidId = 6
-    case invalidAPIKey = 7
-    case serviceOffline = 9
-    case suspendedAPIKey = 10
-    case internalError = 11
-    case failed = 15
-    case backendServerTimedOut = 24
-    case requestCountLimitReached = 25
-    case tooManyAppendedResponse = 27
-    case resourceNotFound = 34
+extension TMDbServiceError {
+    public enum FailureFromServiceReason: Int {
+        case invalidSerice = 2
+        case invalidFormat = 4
+        case invalidParameters = 5
+        case invalidId = 6
+        case invalidAPIKey = 7
+        case serviceOffline = 9
+        case suspendedAPIKey = 10
+        case internalError = 11
+        case failed = 15
+        case backendServerTimedOut = 24
+        case requestCountLimitReached = 25
+        case tooManyAppendedResponse = 27
+        case resourceNotFound = 34
+    }
 }
 
-extension TMDbServiceError: LocalizedError {
+extension TMDbServiceError.FailureFromServiceReason: TMDbServiceErrorReason {
     
-    private static let statusMessages: [TMDbServiceError: String] = [
+    private static let statusMessages: [TMDbServiceError.FailureFromServiceReason: String] = [
         .invalidSerice: "Invalid service: this service does not exist.",
         .invalidFormat:"Invalid format: This service doesn't exist in that format.",
         .invalidParameters: "Invalid parameters: Your request parameters are incorrect.",
@@ -54,13 +56,13 @@ extension TMDbServiceError: LocalizedError {
         .resourceNotFound: "The resource you requested could not be found."
     ]
     
-    public var errorDescription: String? {
-        return TMDbServiceError.statusMessages[self]
+    internal var description: String? {
+        return TMDbServiceError.FailureFromServiceReason.statusMessages[self]
     }
-
+    
 }
 
-extension TMDbServiceError: Decodable {
+extension TMDbServiceError.FailureFromServiceReason: Decodable {
     private enum CodingKeys: String, CodingKey {
         case statusCode = "status_code"
     }
@@ -69,6 +71,10 @@ extension TMDbServiceError: Decodable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         let statusCode = try values.decode(Int.self, forKey: CodingKeys.statusCode)
         
-        self = TMDbServiceError(rawValue: statusCode) ?? .failed
+        self = TMDbServiceError.FailureFromServiceReason(rawValue: statusCode) ?? .failed
+    }
+    
+    internal static func isFailure(_ data: Data) -> TMDbServiceError.FailureFromServiceReason? {
+        return try? JSONDecoder().decode(TMDbServiceError.FailureFromServiceReason.self, from: data)
     }
 }
