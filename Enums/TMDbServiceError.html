@@ -34,6 +34,15 @@
               <li class="nav-group-task">
                 <a href="../Classes/TMDbKitMovieService.html">TMDbKitMovieService</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TMDdImageURLBuilder.html">TMDdImageURLBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TMDdImageURLBuilder/Scheme.html">– Scheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TMDdImageURLBuilder/Size.html">– Size</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -52,7 +61,21 @@
                 <a href="../Enums/TMDbServiceError.html">TMDbServiceError</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Enums/TMDbServiceError/FailureFromServiceReason.html">– FailureFromServiceReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TMDbServiceError/JSONParsingReason.html">– JSONParsingReason</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Enums/TMDbServiceResult.html">TMDbServiceResult</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/ImagesContaining.html">ImagesContaining</a>
               </li>
             </ul>
           </li>
@@ -92,6 +115,9 @@
                 <a href="../Structs/Image.html">Image</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/Images.html">Images</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/LanguageInfo.html">LanguageInfo</a>
               </li>
               <li class="nav-group-task">
@@ -102,9 +128,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/MovieCredits.html">MovieCredits</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/MovieImages.html">MovieImages</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/TMDbKitServiceConfig.html">TMDbKitServiceConfig</a>
@@ -119,7 +142,7 @@
             <h1>TMDbServiceError</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">TMDbServiceError</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Error</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">TMDbServiceError</span><span class="p">:</span> <span class="kt">Error</span></code></pre>
 
                 </div>
               </div>
@@ -132,9 +155,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7TMDbKit0A12ServiceErrorO13invalidSericeA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/invalidSerice" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO13invalidSericeA2CmF">invalidSerice</a>
+                    <a name="/s:7TMDbKit0A12ServiceErrorO011failureFromC0A2C07FailurefC6ReasonOcACmF"></a>
+                    <a name="//apple_ref/swift/Element/failureFromService" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO011failureFromC0A2C07FailurefC6ReasonOcACmF">failureFromService</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -149,7 +172,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">invalidSerice</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">failureFromService</span><span class="p">(</span><span class="kt"><a href="../Enums/TMDbServiceError/FailureFromServiceReason.html">FailureFromServiceReason</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -163,9 +186,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7TMDbKit0A12ServiceErrorO13invalidFormatA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/invalidFormat" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO13invalidFormatA2CmF">invalidFormat</a>
+                    <a name="/s:7TMDbKit0A12ServiceErrorO16noDataInResponseA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/noDataInResponse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO16noDataInResponseA2CmF">noDataInResponse</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -180,7 +203,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">invalidFormat</span> <span class="o">=</span> <span class="mi">4</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">noDataInResponse</span></code></pre>
 
                         </div>
                       </div>
@@ -194,9 +217,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7TMDbKit0A12ServiceErrorO17invalidParametersA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/invalidParameters" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO17invalidParametersA2CmF">invalidParameters</a>
+                    <a name="/s:7TMDbKit0A12ServiceErrorO13failedToParseA2C17JSONParsingReasonOcACmF"></a>
+                    <a name="//apple_ref/swift/Element/failedToParse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO13failedToParseA2C17JSONParsingReasonOcACmF">failedToParse</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -211,7 +234,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">invalidParameters</span> <span class="o">=</span> <span class="mi">5</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">failedToParse</span><span class="p">(</span><span class="kt"><a href="../Enums/TMDbServiceError/JSONParsingReason.html">JSONParsingReason</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -225,9 +248,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7TMDbKit0A12ServiceErrorO9invalidIdA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/invalidId" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO9invalidIdA2CmF">invalidId</a>
+                    <a name="/s:7TMDbKit0A12ServiceErrorO07networkD0ACs0D0_pcACmF"></a>
+                    <a name="//apple_ref/swift/Element/networkError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO07networkD0ACs0D0_pcACmF">networkError</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -242,7 +265,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">invalidId</span> <span class="o">=</span> <span class="mi">6</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">networkError</span><span class="p">(</span><span class="kt">Error</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -256,9 +279,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7TMDbKit0A12ServiceErrorO13invalidAPIKeyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/invalidAPIKey" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO13invalidAPIKeyA2CmF">invalidAPIKey</a>
+                    <a name="/s:7TMDbKit0A12ServiceErrorO011FailureFromC6ReasonO"></a>
+                    <a name="//apple_ref/swift/Enum/FailureFromServiceReason" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO011FailureFromC6ReasonO">FailureFromServiceReason</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -268,12 +291,13 @@
                       <div class="abstract">
                         <p>Undocumented</p>
 
+                        <a href="../Enums/TMDbServiceError/FailureFromServiceReason.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">invalidAPIKey</span> <span class="o">=</span> <span class="mi">7</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">FailureFromServiceReason</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
 
                         </div>
                       </div>
@@ -287,9 +311,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7TMDbKit0A12ServiceErrorO14serviceOfflineA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/serviceOffline" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO14serviceOfflineA2CmF">serviceOffline</a>
+                    <a name="/s:7TMDbKit0A12ServiceErrorO17JSONParsingReasonO"></a>
+                    <a name="//apple_ref/swift/Enum/JSONParsingReason" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO17JSONParsingReasonO">JSONParsingReason</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -299,229 +323,13 @@
                       <div class="abstract">
                         <p>Undocumented</p>
 
+                        <a href="../Enums/TMDbServiceError/JSONParsingReason.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">serviceOffline</span> <span class="o">=</span> <span class="mi">9</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:7TMDbKit0A12ServiceErrorO15suspendedAPIKeyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/suspendedAPIKey" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO15suspendedAPIKeyA2CmF">suspendedAPIKey</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">suspendedAPIKey</span> <span class="o">=</span> <span class="mi">10</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:7TMDbKit0A12ServiceErrorO08internalD0A2CmF"></a>
-                    <a name="//apple_ref/swift/Element/internalError" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO08internalD0A2CmF">internalError</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">internalError</span> <span class="o">=</span> <span class="mi">11</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:7TMDbKit0A12ServiceErrorO6failedA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/failed" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO6failedA2CmF">failed</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">failed</span> <span class="o">=</span> <span class="mi">15</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:7TMDbKit0A12ServiceErrorO21backendServerTimedOutA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/backendServerTimedOut" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO21backendServerTimedOutA2CmF">backendServerTimedOut</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">backendServerTimedOut</span> <span class="o">=</span> <span class="mi">24</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:7TMDbKit0A12ServiceErrorO24requestCountLimitReachedA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/requestCountLimitReached" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO24requestCountLimitReachedA2CmF">requestCountLimitReached</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">requestCountLimitReached</span> <span class="o">=</span> <span class="mi">25</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:7TMDbKit0A12ServiceErrorO23tooManyAppendedResponseA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/tooManyAppendedResponse" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO23tooManyAppendedResponseA2CmF">tooManyAppendedResponse</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">tooManyAppendedResponse</span> <span class="o">=</span> <span class="mi">27</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:7TMDbKit0A12ServiceErrorO16resourceNotFoundA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/resourceNotFound" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0A12ServiceErrorO16resourceNotFoundA2CmF">resourceNotFound</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">resourceNotFound</span> <span class="o">=</span> <span class="mi">34</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">JSONParsingReason</span></code></pre>
 
                         </div>
                       </div>
@@ -560,40 +368,10 @@
                 </li>
               </ul>
             </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:s9DecodablePxs7Decoder_p4from_tKcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(from:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:s9DecodablePxs7Decoder_p4from_tKcfc">init(from:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">from</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">Decoder</span><span class="p">)</span> <span class="k">throws</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2018-03-14)</p>
+          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2018-03-15)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

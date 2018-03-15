@@ -1,6 +1,363 @@
 {
   "warnings": [
     {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": null,
+      "symbol": "TMDbServiceError.FailureFromServiceReason",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": 24,
+      "symbol": "TMDbServiceError.FailureFromServiceReason",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": 25,
+      "symbol": "TMDbServiceError.FailureFromServiceReason.invalidSerice",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": 26,
+      "symbol": "TMDbServiceError.FailureFromServiceReason.invalidFormat",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": 27,
+      "symbol": "TMDbServiceError.FailureFromServiceReason.invalidParameters",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": 28,
+      "symbol": "TMDbServiceError.FailureFromServiceReason.invalidId",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": 29,
+      "symbol": "TMDbServiceError.FailureFromServiceReason.invalidAPIKey",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": 30,
+      "symbol": "TMDbServiceError.FailureFromServiceReason.serviceOffline",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": 31,
+      "symbol": "TMDbServiceError.FailureFromServiceReason.suspendedAPIKey",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": 32,
+      "symbol": "TMDbServiceError.FailureFromServiceReason.internalError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": 33,
+      "symbol": "TMDbServiceError.FailureFromServiceReason.failed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": 34,
+      "symbol": "TMDbServiceError.FailureFromServiceReason.backendServerTimedOut",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": 35,
+      "symbol": "TMDbServiceError.FailureFromServiceReason.requestCountLimitReached",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": 36,
+      "symbol": "TMDbServiceError.FailureFromServiceReason.tooManyAppendedResponse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/FailureFromServiceReason.swift",
+      "line": 37,
+      "symbol": "TMDbServiceError.FailureFromServiceReason.resourceNotFound",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/JSONParsingReason.swift",
+      "line": 24,
+      "symbol": "TMDbServiceError.JSONParsingReason",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/JSONParsingReason.swift",
+      "line": 25,
+      "symbol": "TMDbServiceError.JSONParsingReason.jsonForKeyPathNotFound",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/JSONParsingReason.swift",
+      "line": 26,
+      "symbol": "TMDbServiceError.JSONParsingReason.decodeFailed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/TMDbServiceError.swift",
+      "line": null,
+      "symbol": "TMDbServiceError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/TMDbServiceError.swift",
+      "line": null,
+      "symbol": "TMDbServiceError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/TMDbServiceError.swift",
+      "line": null,
+      "symbol": "TMDbServiceError",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/TMDbServiceError.swift",
+      "line": 23,
+      "symbol": "TMDbServiceError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/TMDbServiceError.swift",
+      "line": 24,
+      "symbol": "TMDbServiceError.failureFromService",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/TMDbServiceError.swift",
+      "line": 25,
+      "symbol": "TMDbServiceError.noDataInResponse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/TMDbServiceError.swift",
+      "line": 26,
+      "symbol": "TMDbServiceError.failedToParse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Error/TMDbServiceError.swift",
+      "line": 27,
+      "symbol": "TMDbServiceError.networkError",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 23,
+      "symbol": "TMDdImageURLBuilder",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 24,
+      "symbol": "TMDdImageURLBuilder.Scheme",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 25,
+      "symbol": "TMDdImageURLBuilder.Scheme.secure",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 26,
+      "symbol": "TMDdImageURLBuilder.Scheme.nonSecure",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 29,
+      "symbol": "TMDdImageURLBuilder.Size",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 30,
+      "symbol": "TMDdImageURLBuilder.Size.Backdrop",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 31,
+      "symbol": "TMDdImageURLBuilder.Size.Backdrop.w300",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 32,
+      "symbol": "TMDdImageURLBuilder.Size.Backdrop.w780",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 33,
+      "symbol": "TMDdImageURLBuilder.Size.Backdrop.w1280",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 34,
+      "symbol": "TMDdImageURLBuilder.Size.Backdrop.original",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 37,
+      "symbol": "TMDdImageURLBuilder.Size.Poster",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 38,
+      "symbol": "TMDdImageURLBuilder.Size.Poster.w92",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 39,
+      "symbol": "TMDdImageURLBuilder.Size.Poster.w154",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 40,
+      "symbol": "TMDdImageURLBuilder.Size.Poster.w185",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 41,
+      "symbol": "TMDdImageURLBuilder.Size.Poster.w342",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 42,
+      "symbol": "TMDdImageURLBuilder.Size.Poster.w500",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 43,
+      "symbol": "TMDdImageURLBuilder.Size.Poster.w780",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 44,
+      "symbol": "TMDdImageURLBuilder.Size.Poster.original",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 48,
+      "symbol": "TMDdImageURLBuilder.secure",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 49,
+      "symbol": "TMDdImageURLBuilder.nonSecure",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 57,
+      "symbol": "TMDdImageURLBuilder.backdropURL(_:size:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImageURLBuilder/TMDbImageURLBuilder.swift",
+      "line": 61,
+      "symbol": "TMDdImageURLBuilder.posterURL(_:size:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImagesContaining.swift",
+      "line": null,
+      "symbol": "ImagesContaining",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImagesContaining.swift",
+      "line": 28,
+      "symbol": "ImagesContaining.backdrops",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/ImagesContaining.swift",
+      "line": 32,
+      "symbol": "ImagesContaining.posters",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Model/AlternativeTitle.swift",
       "line": 23,
       "symbol": "AlternativeTitle",
@@ -106,730 +463,611 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CastMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Model/Images.swift",
+      "line": 23,
+      "symbol": "Images",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Model/Images.swift",
+      "line": 24,
+      "symbol": "Images.id",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Model/Images.swift",
+      "line": 25,
+      "symbol": "Images.backdrops",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/Model/Images.swift",
+      "line": 26,
+      "symbol": "Images.posters",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CastMember.swift",
       "line": 23,
       "symbol": "CastMember",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CastMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CastMember.swift",
       "line": 24,
       "symbol": "CastMember.castId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CastMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CastMember.swift",
       "line": 25,
       "symbol": "CastMember.character",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CastMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CastMember.swift",
       "line": 26,
       "symbol": "CastMember.creditId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CastMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CastMember.swift",
       "line": 27,
       "symbol": "CastMember.gender",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CastMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CastMember.swift",
       "line": 28,
       "symbol": "CastMember.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CastMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CastMember.swift",
       "line": 29,
       "symbol": "CastMember.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CastMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CastMember.swift",
       "line": 30,
       "symbol": "CastMember.order",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CastMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CastMember.swift",
       "line": 31,
       "symbol": "CastMember.profilePath",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CollectionInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CollectionInfo.swift",
       "line": 23,
       "symbol": "CollectionInfo",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CollectionInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CollectionInfo.swift",
       "line": 24,
       "symbol": "CollectionInfo.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CollectionInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CollectionInfo.swift",
       "line": 25,
       "symbol": "CollectionInfo.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CollectionInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CollectionInfo.swift",
       "line": 26,
       "symbol": "CollectionInfo.posterPath",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CollectionInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CollectionInfo.swift",
       "line": 27,
       "symbol": "CollectionInfo.backdropPath",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CompanyInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CompanyInfo.swift",
       "line": 23,
       "symbol": "CompanyInfo",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CompanyInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CompanyInfo.swift",
       "line": 24,
       "symbol": "CompanyInfo.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CompanyInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CompanyInfo.swift",
       "line": 25,
       "symbol": "CompanyInfo.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CountryInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CountryInfo.swift",
       "line": 23,
       "symbol": "CountryInfo",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CountryInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CountryInfo.swift",
       "line": 24,
       "symbol": "CountryInfo.code",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CountryInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CountryInfo.swift",
       "line": 25,
       "symbol": "CountryInfo.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CrewMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CrewMember.swift",
       "line": 23,
       "symbol": "CrewMember",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CrewMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CrewMember.swift",
       "line": 24,
       "symbol": "CrewMember.creditId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CrewMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CrewMember.swift",
       "line": 25,
       "symbol": "CrewMember.department",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CrewMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CrewMember.swift",
       "line": 26,
       "symbol": "CrewMember.gender",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CrewMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CrewMember.swift",
       "line": 27,
       "symbol": "CrewMember.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CrewMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CrewMember.swift",
       "line": 28,
       "symbol": "CrewMember.job",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CrewMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CrewMember.swift",
       "line": 29,
       "symbol": "CrewMember.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/CrewMember.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/CrewMember.swift",
       "line": 30,
       "symbol": "CrewMember.profilePath",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/GenreInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/GenreInfo.swift",
       "line": 23,
       "symbol": "GenreInfo",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/GenreInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/GenreInfo.swift",
       "line": 24,
       "symbol": "GenreInfo.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/GenreInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/GenreInfo.swift",
       "line": 25,
       "symbol": "GenreInfo.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/LanguageInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/LanguageInfo.swift",
       "line": 23,
       "symbol": "LanguageInfo",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/LanguageInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/LanguageInfo.swift",
       "line": 24,
       "symbol": "LanguageInfo.iso_639_1",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/LanguageInfo.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/LanguageInfo.swift",
       "line": 25,
       "symbol": "LanguageInfo.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 23,
       "symbol": "Movie",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 24,
       "symbol": "Movie.adult",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 25,
       "symbol": "Movie.backdropPath",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 26,
       "symbol": "Movie.collection",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 27,
       "symbol": "Movie.budget",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 28,
       "symbol": "Movie.genres",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 29,
       "symbol": "Movie.homepage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 30,
       "symbol": "Movie.id",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 31,
       "symbol": "Movie.imdbId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 32,
       "symbol": "Movie.originalLanguage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 33,
       "symbol": "Movie.originalTitle",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 34,
       "symbol": "Movie.overview",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 35,
       "symbol": "Movie.popularity",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 36,
       "symbol": "Movie.posterPath",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 37,
       "symbol": "Movie.productionCompanies",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 38,
       "symbol": "Movie.productionCountries",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 39,
       "symbol": "Movie.releaseDate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 40,
       "symbol": "Movie.revenue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 41,
       "symbol": "Movie.runtime",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 42,
       "symbol": "Movie.spokenLanguages",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 43,
       "symbol": "Movie.status",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 44,
       "symbol": "Movie.tagline",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 45,
       "symbol": "Movie.title",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 46,
       "symbol": "Movie.video",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 47,
       "symbol": "Movie.voteAverage",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 48,
       "symbol": "Movie.voteCount",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 51,
       "symbol": "Movie.credits",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Movie.swift",
       "line": 52,
       "symbol": "Movie.alternativeTitles",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Movie.swift",
-      "line": 53,
-      "symbol": "Movie.images",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/MovieAlternativeTitles.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/MovieAlternativeTitles.swift",
       "line": 23,
       "symbol": "MovieAlternativeTitles",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/MovieAlternativeTitles.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/MovieAlternativeTitles.swift",
       "line": 24,
       "symbol": "MovieAlternativeTitles.titles",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/MovieCredits.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/MovieCredits.swift",
       "line": 23,
       "symbol": "MovieCredits",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/MovieCredits.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/MovieCredits.swift",
       "line": 24,
       "symbol": "MovieCredits.cast",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/MovieCredits.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/MovieCredits.swift",
       "line": 25,
       "symbol": "MovieCredits.crew",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/MovieImages.swift",
-      "line": 23,
-      "symbol": "MovieImages",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/MovieImages.swift",
-      "line": 24,
-      "symbol": "MovieImages.id",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/MovieImages.swift",
-      "line": 25,
-      "symbol": "MovieImages.backdrops",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/MovieImages.swift",
-      "line": 26,
-      "symbol": "MovieImages.posters",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Status.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Status.swift",
       "line": 23,
       "symbol": "Status",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Status.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Status.swift",
       "line": 24,
       "symbol": "Status.rumored",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Status.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Status.swift",
       "line": 25,
       "symbol": "Status.planned",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Status.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Status.swift",
       "line": 26,
       "symbol": "Status.inProduction",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Status.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Status.swift",
       "line": 27,
       "symbol": "Status.postProduction",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Status.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Status.swift",
       "line": 28,
       "symbol": "Status.released",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/Model/Status.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Status.swift",
       "line": 29,
       "symbol": "Status.canceled",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/TMDbMovieService.swift",
-      "line": 23,
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieService.swift",
+      "line": 24,
       "symbol": "TMDbMovieService",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/TMDbMovieService.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieService.swift",
       "line": 25,
-      "symbol": "TMDbMovieService.movieDetail(for:appending:completionHandler:)",
+      "symbol": "TMDbMovieService.movieDetail(for:language:appending:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/TMDbMovieService.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieService.swift",
       "line": 27,
       "symbol": "TMDbMovieService.movieCredits(for:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/TMDbMovieService.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieService.swift",
       "line": 29,
       "symbol": "TMDbMovieService.movieAlternativeTitles(for:country:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/TMDbMovieService.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieService.swift",
       "line": 31,
       "symbol": "TMDbMovieService.movieImages(for:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/TMDbMovieServiceQueryMethod.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieServiceQueryMethod.swift",
       "line": 23,
       "symbol": "TMDbMovieServiceQueryMethod",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/TMDbMovieServiceQueryMethod.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieServiceQueryMethod.swift",
       "line": 24,
       "symbol": "TMDbMovieServiceQueryMethod.credits",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/TMDbMovieServiceQueryMethod.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieServiceQueryMethod.swift",
       "line": 25,
       "symbol": "TMDbMovieServiceQueryMethod.alternativeTitles",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDBMovieService/TMDbMovieServiceQueryMethod.swift",
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieServiceQueryMethod.swift",
       "line": 26,
       "symbol": "TMDbMovieServiceQueryMethod.images",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": null,
-      "symbol": "TMDbServiceError",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": null,
-      "symbol": "TMDbServiceError",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": 23,
-      "symbol": "TMDbServiceError",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": 24,
-      "symbol": "TMDbServiceError.invalidSerice",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": 25,
-      "symbol": "TMDbServiceError.invalidFormat",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": 26,
-      "symbol": "TMDbServiceError.invalidParameters",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": 27,
-      "symbol": "TMDbServiceError.invalidId",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": 28,
-      "symbol": "TMDbServiceError.invalidAPIKey",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": 29,
-      "symbol": "TMDbServiceError.serviceOffline",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": 30,
-      "symbol": "TMDbServiceError.suspendedAPIKey",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": 31,
-      "symbol": "TMDbServiceError.internalError",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": 32,
-      "symbol": "TMDbServiceError.failed",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": 33,
-      "symbol": "TMDbServiceError.backendServerTimedOut",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": 34,
-      "symbol": "TMDbServiceError.requestCountLimitReached",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": 35,
-      "symbol": "TMDbServiceError.tooManyAppendedResponse",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/TMDbServiceError.swift",
-      "line": 36,
-      "symbol": "TMDbServiceError.resourceNotFound",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -856,42 +1094,49 @@
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 25,
+      "line": 23,
       "symbol": "TMDbKitMovieService",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 28,
+      "line": 25,
+      "symbol": "TMDbKitMovieService.operationQueue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
+      "line": 27,
       "symbol": "TMDbKitMovieService.init(config:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 32,
-      "symbol": "TMDbKitMovieService.movieDetail(for:appending:completionHandler:)",
+      "line": 31,
+      "symbol": "TMDbKitMovieService.movieDetail(for:language:appending:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 40,
+      "line": 41,
       "symbol": "TMDbKitMovieService.movieCredits(for:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 45,
+      "line": 49,
       "symbol": "TMDbKitMovieService.movieAlternativeTitles(for:country:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 50,
+      "line": 57,
       "symbol": "TMDbKitMovieService.movieImages(for:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

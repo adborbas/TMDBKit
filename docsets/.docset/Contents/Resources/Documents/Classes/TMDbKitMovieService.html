@@ -34,6 +34,15 @@
               <li class="nav-group-task">
                 <a href="../Classes/TMDbKitMovieService.html">TMDbKitMovieService</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TMDdImageURLBuilder.html">TMDdImageURLBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TMDdImageURLBuilder/Scheme.html">– Scheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TMDdImageURLBuilder/Size.html">– Size</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -52,7 +61,21 @@
                 <a href="../Enums/TMDbServiceError.html">TMDbServiceError</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Enums/TMDbServiceError/FailureFromServiceReason.html">– FailureFromServiceReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TMDbServiceError/JSONParsingReason.html">– JSONParsingReason</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Enums/TMDbServiceResult.html">TMDbServiceResult</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/ImagesContaining.html">ImagesContaining</a>
               </li>
             </ul>
           </li>
@@ -92,6 +115,9 @@
                 <a href="../Structs/Image.html">Image</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/Images.html">Images</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/LanguageInfo.html">LanguageInfo</a>
               </li>
               <li class="nav-group-task">
@@ -102,9 +128,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/MovieCredits.html">MovieCredits</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/MovieImages.html">MovieImages</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/TMDbKitServiceConfig.html">TMDbKitServiceConfig</a>
@@ -129,6 +152,33 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7TMDbKit0aB12MovieServiceC14operationQueueSo09OperationF0Cv"></a>
+                    <a name="//apple_ref/swift/Property/operationQueue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TMDbKit0aB12MovieServiceC14operationQueueSo09OperationF0Cv">operationQueue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">operationQueue</span> <span class="o">=</span> <span class="kt">OperationQueue</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -159,9 +209,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7TMDbKit0aB12MovieServiceC11movieDetailySi3for_SayAA0acD11QueryMethodOG9appendingyAA0aD6ResultOyAA0C0VGc17completionHandlertF"></a>
-                    <a name="//apple_ref/swift/Method/movieDetail(for:appending:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0aB12MovieServiceC11movieDetailySi3for_SayAA0acD11QueryMethodOG9appendingyAA0aD6ResultOyAA0C0VGc17completionHandlertF">movieDetail(for:appending:completionHandler:)</a>
+                    <a name="/s:7TMDbKit0aB12MovieServiceC11movieDetailSo9OperationCSi3for_SSSg8languageSayAA0acD11QueryMethodOG9appendingyAA0aD6ResultOyAA0C0VGc17completionHandlertF"></a>
+                    <a name="//apple_ref/swift/Method/movieDetail(for:language:appending:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TMDbKit0aB12MovieServiceC11movieDetailSo9OperationCSi3for_SSSg8languageSayAA0acD11QueryMethodOG9appendingyAA0aD6ResultOyAA0C0VGc17completionHandlertF">movieDetail(for:language:appending:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -176,7 +226,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">movieDetail</span><span class="p">(</span><span class="k">for</span> <span class="nv">movieId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">appending</span> <span class="nv">queryMethods</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Enums/TMDbMovieServiceQueryMethod.html">TMDbMovieServiceQueryMethod</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt"><a href="../Enums/TMDbMovieServiceQueryMethod.html">TMDbMovieServiceQueryMethod</a></span><span class="p">](),</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/TMDbServiceResult.html">TMDbServiceResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Movie.html">Movie</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">movieDetail</span><span class="p">(</span><span class="k">for</span> <span class="nv">movieId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">language</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">appending</span> <span class="nv">queryMethods</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Enums/TMDbMovieServiceQueryMethod.html">TMDbMovieServiceQueryMethod</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kt"><a href="../Enums/TMDbMovieServiceQueryMethod.html">TMDbMovieServiceQueryMethod</a></span><span class="p">](),</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/TMDbServiceResult.html">TMDbServiceResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Movie.html">Movie</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="o">-&gt;</span> <span class="kt">Operation</span></code></pre>
 
                         </div>
                       </div>
@@ -186,9 +236,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7TMDbKit0aB12MovieServiceC12movieCreditsySi3for_yAA0aD6ResultOyAA0cF0VGc17completionHandlertF"></a>
+                    <a name="/s:7TMDbKit0aB12MovieServiceC12movieCreditsSo9OperationCSi3for_yAA0aD6ResultOyAA0cF0VGc17completionHandlertF"></a>
                     <a name="//apple_ref/swift/Method/movieCredits(for:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0aB12MovieServiceC12movieCreditsySi3for_yAA0aD6ResultOyAA0cF0VGc17completionHandlertF">movieCredits(for:completionHandler:)</a>
+                    <a class="token" href="#/s:7TMDbKit0aB12MovieServiceC12movieCreditsSo9OperationCSi3for_yAA0aD6ResultOyAA0cF0VGc17completionHandlertF">movieCredits(for:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -203,7 +253,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">movieCredits</span><span class="p">(</span><span class="k">for</span> <span class="nv">movieId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/TMDbServiceResult.html">TMDbServiceResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/MovieCredits.html">MovieCredits</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">movieCredits</span><span class="p">(</span><span class="k">for</span> <span class="nv">movieId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/TMDbServiceResult.html">TMDbServiceResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/MovieCredits.html">MovieCredits</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="o">-&gt;</span> <span class="kt">Operation</span></code></pre>
 
                         </div>
                       </div>
@@ -213,9 +263,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7TMDbKit0aB12MovieServiceC22movieAlternativeTitlesySi3for_SSSg7countryyAA0aD6ResultOySayAA0F5TitleVGGc17completionHandlertF"></a>
+                    <a name="/s:7TMDbKit0aB12MovieServiceC22movieAlternativeTitlesSo9OperationCSi3for_SSSg7countryyAA0aD6ResultOySayAA0F5TitleVGGc17completionHandlertF"></a>
                     <a name="//apple_ref/swift/Method/movieAlternativeTitles(for:country:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0aB12MovieServiceC22movieAlternativeTitlesySi3for_SSSg7countryyAA0aD6ResultOySayAA0F5TitleVGGc17completionHandlertF">movieAlternativeTitles(for:country:completionHandler:)</a>
+                    <a class="token" href="#/s:7TMDbKit0aB12MovieServiceC22movieAlternativeTitlesSo9OperationCSi3for_SSSg7countryyAA0aD6ResultOySayAA0F5TitleVGGc17completionHandlertF">movieAlternativeTitles(for:country:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -230,7 +280,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">movieAlternativeTitles</span><span class="p">(</span><span class="k">for</span> <span class="nv">movieId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">country</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/TMDbServiceResult.html">TMDbServiceResult</a></span><span class="o">&lt;</span><span class="p">[</span><span class="kt"><a href="../Structs/AlternativeTitle.html">AlternativeTitle</a></span><span class="p">]</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">movieAlternativeTitles</span><span class="p">(</span><span class="k">for</span> <span class="nv">movieId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">country</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/TMDbServiceResult.html">TMDbServiceResult</a></span><span class="o">&lt;</span><span class="p">[</span><span class="kt"><a href="../Structs/AlternativeTitle.html">AlternativeTitle</a></span><span class="p">]</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Operation</span></code></pre>
 
                         </div>
                       </div>
@@ -240,9 +290,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7TMDbKit0aB12MovieServiceC11movieImagesySi3for_yAA0aD6ResultOyAA0cF0VGc17completionHandlertF"></a>
+                    <a name="/s:7TMDbKit0aB12MovieServiceC11movieImagesSo9OperationCSi3for_yAA0aD6ResultOyAA0F0VGc17completionHandlertF"></a>
                     <a name="//apple_ref/swift/Method/movieImages(for:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7TMDbKit0aB12MovieServiceC11movieImagesySi3for_yAA0aD6ResultOyAA0cF0VGc17completionHandlertF">movieImages(for:completionHandler:)</a>
+                    <a class="token" href="#/s:7TMDbKit0aB12MovieServiceC11movieImagesSo9OperationCSi3for_yAA0aD6ResultOyAA0F0VGc17completionHandlertF">movieImages(for:completionHandler:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -257,7 +307,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">movieImages</span><span class="p">(</span><span class="k">for</span> <span class="nv">movieId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/TMDbServiceResult.html">TMDbServiceResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/MovieImages.html">MovieImages</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">movieImages</span><span class="p">(</span><span class="k">for</span> <span class="nv">movieId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Enums/TMDbServiceResult.html">TMDbServiceResult</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Images.html">Images</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Operation</span></code></pre>
 
                         </div>
                       </div>
@@ -269,7 +319,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2018-03-14)</p>
+          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2018-03-15)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
