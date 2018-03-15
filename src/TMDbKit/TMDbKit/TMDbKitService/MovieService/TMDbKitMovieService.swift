@@ -19,36 +19,46 @@
 // SOFTWARE.
 
 import Foundation
-import Alamofire
-import CodableAlamofire
 
 public class TMDbKitMovieService: TMDbMovieService {
     private let urlBuilder: TMDbKitMovieURLBuilder
+    public let operationQueue = OperationQueue()
     
     public init(config: TMDbKitServiceConfig) {
         self.urlBuilder = TMDbKitMovieURLBuilder(apiKey: config.apiKey)
     }
     
-    public func movieDetail(for movieId: Int, language: String? = nil, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod](), completionHandler: @escaping (TMDbServiceResult<Movie>) -> ()) {
+    public func movieDetail(for movieId: Int, language: String? = nil, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod](), completionHandler: @escaping (TMDbServiceResult<Movie>) -> ()) -> Operation {
         let url = self.urlBuilder.movieDetailURL(for: movieId, language: language, appending: queryMethods)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
         
-        Alamofire.request(url).responseTMDbKitResult(decoder: decoder, completionHandler: completionHandler)
+        let operation = TMDbKitServiceOperation(url: url, decoder: decoder, completionHandler: completionHandler)
+        self.operationQueue.addOperation(operation)
+        return operation
     }
 
-    public func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> ()) {
+    public func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> ()) -> Operation {
         let url = self.urlBuilder.movieCreditsURL(for: movieId)
-        Alamofire.request(url).responseTMDbKitResult(completionHandler: completionHandler)
+        
+        let operation = TMDbKitServiceOperation(url: url, completionHandler: completionHandler)
+        self.operationQueue.addOperation(operation)
+        return operation
     }
     
-    public func movieAlternativeTitles(for movieId: Int, country: String? = nil, completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) {
+    public func movieAlternativeTitles(for movieId: Int, country: String? = nil, completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) -> Operation {
         let url = self.urlBuilder.movieAlternativeTitles(for: movieId, country: country)
-        Alamofire.request(url).responseTMDbKitResult(keyPath: "titles", completionHandler: completionHandler)
+        
+        let operation = TMDbKitServiceOperation(url: url, keyPath: "titles", completionHandler: completionHandler)
+        self.operationQueue.addOperation(operation)
+        return operation
     }
     
-    public func movieImages(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<Images>) -> Void) {
+    public func movieImages(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<Images>) -> Void) -> Operation {
         let url = self.urlBuilder.movieImages(for: movieId)
-        Alamofire.request(url).responseTMDbKitResult(completionHandler: completionHandler)
+        
+        let operation = TMDbKitServiceOperation(url: url, completionHandler: completionHandler)
+        self.operationQueue.addOperation(operation)
+        return operation
     }
 }

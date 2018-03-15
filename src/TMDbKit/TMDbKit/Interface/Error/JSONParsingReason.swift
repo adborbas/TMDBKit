@@ -19,29 +19,24 @@
 // SOFTWARE.
 
 import Foundation
-import Alamofire
 
-extension DataRequest {
-    
-    func responseTMDbKitResult<Value: Decodable>(keyPath: String? = nil, decoder: JSONDecoder = JSONDecoder(), completionHandler: @escaping (TMDbServiceResult<Value>) -> Void) {
-        self.responseDecodableObject(keyPath: keyPath, decoder: decoder) { (response: DataResponse<Value>) in
-            switch response.result {
-            case .failure(let error):
-                if let data = response.data, let tmdbError = self.isTMDbKitError(data) {
-                    completionHandler(.failure(tmdbError))
-                    return
-                }
+extension TMDbServiceError {
+    public enum JSONParsingReason {
+        case jsonForKeyPathNotFound(String)
+        case decodeFailed(Error)
+    }
+}
 
-                completionHandler(.failure(error))
-                return
-                
-            case .success(let value):
-                completionHandler(.success(value))
-            }
+extension TMDbServiceError.JSONParsingReason: TMDbServiceErrorReason {
+    var description: String? {
+        switch self {
+        case .decodeFailed(let error):
+            return error.localizedDescription
+        case .jsonForKeyPathNotFound(let reason):
+            return reason
         }
     }
     
-    private func isTMDbKitError(_ data: Data) -> TMDbServiceError? {
-        return try? JSONDecoder().decode(TMDbServiceError.self, from: data)
-    }
+    
 }
+

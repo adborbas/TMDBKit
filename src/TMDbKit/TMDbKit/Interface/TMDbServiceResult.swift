@@ -21,6 +21,6 @@
 import Foundation
 
 public enum TMDbServiceResult<T> {
-    case failure(Error)
+    case failure(TMDbServiceError)
     case success(T)
 }

@@ -18,16 +18,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import XCTest
-@testable import TMDbKit
+import Foundation
 
-class TMDbKitMovieServiceIntegrationTest: XCTestCase {
-    var service: TMDbKitMovieService!
-    
-    override func setUp() {
-        super.setUp()
-        self.continueAfterFailure = false
-        
-        _ = self.service = TMDbKitMovieService(config: TestConstants.ServiceConfig.validAPIKey)
+public enum TMDbServiceError: Error {
+    case failureFromService(FailureFromServiceReason)
+    case noDataInResponse
+    case failedToParse(JSONParsingReason)
+    case networkError(Error)
+}
+
+extension TMDbServiceError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .failureFromService(let reason):
+            return reason.description
+        case .noDataInResponse:
+            return "Service returned no data."
+        case .failedToParse(let reason):
+            return reason.description
+        case .networkError(let error):
+            return error.localizedDescription
+        }
     }
+}
+
+internal protocol TMDbServiceErrorReason {
+    var description: String? { get }
 }
