@@ -31,12 +31,19 @@ class TMDbKitMovieURLBuilderUnitTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        self.movieUrlBuilder = TMDbKitMovieURLBuilder(apiKey: "\(self.apiKey)", language: "\(self.language)")
+        self.movieUrlBuilder = TMDbKitMovieURLBuilder(apiKey: "\(self.apiKey)")
     }
     
     func test_movieDetailURL() {
-        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/\(self.movieId)?api_key=\(self.apiKey)&language=\(self.language)")!
+        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/\(self.movieId)?api_key=\(self.apiKey)")!
         let actualURL = self.movieUrlBuilder.movieDetailURL(for: self.movieId)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    func test_movieDetailURL_withLanguage() {
+        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/\(self.movieId)?api_key=\(self.apiKey)&language=\(self.language)")!
+        let actualURL = self.movieUrlBuilder.movieDetailURL(for: self.movieId, language: self.language)
         
         XCTAssertEqual(expectedURL, actualURL)
     }

@@ -20,13 +20,17 @@
 
 import Foundation
 
-public protocol TMDbMovieService {
-
-    func movieDetail(for movieId: Int, appending: [TMDbMovieServiceQueryMethod], completionHandler: @escaping (TMDbServiceResult<Movie>) -> Void)
-    
-    func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> Void)
-    
-    func movieAlternativeTitles(for movieId: Int, country: String?, completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void)
-    
-    func movieImages(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieImages>) -> Void)
+protocol ImagesContaining {
+    var images: Images? { get }
 }
+
+extension ImagesContaining {
+    public var backdrops: [Image]? {
+        return self.images?.backdrops
+    }
+    
+    public var posters: [Image]? {
+        return self.images?.posters
+    }
+}
+

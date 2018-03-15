@@ -20,9 +20,8 @@
 
 import Foundation
 
-
 class TMDbKitMovieURLBuilder: TMDbURLBuilder {
-    func movieDetailURL(for movieId: Int, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod]()) -> URL {
+    func movieDetailURL(for movieId: Int, language: String? = nil, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod]()) -> URL {
         var components = self.baseURLComponents()
         
         // Append path
@@ -30,11 +29,17 @@ class TMDbKitMovieURLBuilder: TMDbURLBuilder {
         components.path.append(movieDetailPath)
         components.addQueryItem(from: queryMethods.map { $0.rawValue })
         
+        // Append language
+        if let language = language {
+            let languageQueryItem = URLQueryItem(name: TMDbAPI.Key.language, value: language)
+            components.queryItems!.append(languageQueryItem)
+        }
+        
         return components.url!
     }
     
     func movieCreditsURL(for movieId: Int) -> URL {
-        var components = self.baseURLComponents(withLanguage: false)
+        var components = self.baseURLComponents()
         
         // Append path
         let movieCreditsPath = self.movieDetailPath(with: movieId, method: TMDbAPI.Movie.credits)
@@ -44,7 +49,7 @@ class TMDbKitMovieURLBuilder: TMDbURLBuilder {
     }
     
     func movieAlternativeTitles(for movieId: Int, country: String? = nil) -> URL {
-        var components = self.baseURLComponents(withLanguage: false)
+        var components = self.baseURLComponents()
         
         // Append path
         let movieCreditsPath = self.movieDetailPath(with: movieId, method: TMDbAPI.Movie.alternativeTitles)
@@ -60,7 +65,7 @@ class TMDbKitMovieURLBuilder: TMDbURLBuilder {
     }
     
     func movieImages(for movieId: Int) -> URL {
-        var components = self.baseURLComponents(withLanguage: false)
+        var components = self.baseURLComponents()
         
         // Append path
         let movieCreditsPath = self.movieDetailPath(with: movieId, method: TMDbAPI.Movie.images)
