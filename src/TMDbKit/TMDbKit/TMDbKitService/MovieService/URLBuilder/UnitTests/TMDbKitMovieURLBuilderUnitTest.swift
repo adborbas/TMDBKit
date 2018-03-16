@@ -83,9 +83,16 @@ class TMDbKitMovieURLBuilderUnitTest: XCTestCase {
     }
     
     // MARK: - nowPlaying
-    func test_nowPlaying() {
+    func test_nowPlaying_defautl() {
         let expectedURL = URL(string: "\(self.baseURL)now_playing?\(self.apiKeyPath)=\(self.apiKey)&page=1")!
         let actualURL = self.movieUrlBuilder.nowPlaying(language: nil, page: 1, region: nil)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    func test_nowPlaying_full() {
+        let expectedURL = URL(string: "\(self.baseURL)now_playing?\(self.apiKeyPath)=\(self.apiKey)&language=hu&page=1&region=HU")!
+        let actualURL = self.movieUrlBuilder.nowPlaying(language: "hu", page: 1, region: "HU")
         
         XCTAssertEqual(expectedURL, actualURL)
     }
