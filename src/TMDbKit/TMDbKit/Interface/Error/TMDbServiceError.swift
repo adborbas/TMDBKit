@@ -31,7 +31,7 @@ extension TMDbServiceError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .failureFromService(let reason):
-            return reason.description
+            return "TMDb error: \(reason.description)"
         case .noDataInResponse:
             return "Service returned no data."
         case .failedToParse(let reason):
@@ -43,5 +43,5 @@ extension TMDbServiceError: LocalizedError {
 }
 
 internal protocol TMDbServiceErrorReason {
-    var description: String? { get }
+    var description: String { get }
 }

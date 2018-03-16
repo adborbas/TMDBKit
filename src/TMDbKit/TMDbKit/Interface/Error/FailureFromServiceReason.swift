@@ -39,7 +39,6 @@ extension TMDbServiceError {
 }
 
 extension TMDbServiceError.FailureFromServiceReason: TMDbServiceErrorReason {
-    
     private static let statusMessages: [TMDbServiceError.FailureFromServiceReason: String] = [
         .invalidSerice: "Invalid service: this service does not exist.",
         .invalidFormat:"Invalid format: This service doesn't exist in that format.",
@@ -56,8 +55,8 @@ extension TMDbServiceError.FailureFromServiceReason: TMDbServiceErrorReason {
         .resourceNotFound: "The resource you requested could not be found."
     ]
     
-    internal var description: String? {
-        return TMDbServiceError.FailureFromServiceReason.statusMessages[self]
+    internal var description: String {
+        return TMDbServiceError.FailureFromServiceReason.statusMessages[self] ?? ""
     }
     
 }
