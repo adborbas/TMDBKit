@@ -20,15 +20,19 @@
 
 import Foundation
 
-
-public protocol TMDbMovieService {
-    func movieDetail(for movieId: Int, language: String?, appending: [TMDbMovieServiceQueryMethod], completionHandler: @escaping (TMDbServiceResult<Movie>) -> Void) -> Operation
-    
-    func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> Void) -> Operation
-    
-    func movieAlternativeTitles(for movieId: Int, country: String?, completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) -> Operation
-    
-    func movieImages(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<Images>) -> Void) -> Operation
-    
-    func nowPlaying(language: String?, page: Int?, region: String?, completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation
+public struct Page<Value>: Decodable where Value: Decodable {
+    public let results: [Value]
+    public let current: Int
+    public let totalPages: Int
+    public let totalResults: Int
 }
+
+extension Page {
+    enum CodingKeys: String, CodingKey {
+        case results
+        case current = "page"
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+    }
+}
+

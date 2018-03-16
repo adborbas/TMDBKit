@@ -25,7 +25,7 @@ class TMDbKitMovieURLBuilder: TMDbURLBuilder {
         var components = self.baseURLComponents()
         
         // Append path
-        let movieDetailPath = self.movieDetailPath(with: movieId)
+        let movieDetailPath = self.movieMethodPath(with: movieId)
         components.path.append(movieDetailPath)
         components.addQueryItem(from: queryMethods.map { $0.rawValue })
         
@@ -42,7 +42,7 @@ class TMDbKitMovieURLBuilder: TMDbURLBuilder {
         var components = self.baseURLComponents()
         
         // Append path
-        let movieCreditsPath = self.movieDetailPath(with: movieId, method: TMDbAPI.Movie.credits)
+        let movieCreditsPath = self.movieMethodPath(with: movieId, method: TMDbAPI.Movie.credits)
         components.path.append(movieCreditsPath)
         
         return components.url!
@@ -52,7 +52,7 @@ class TMDbKitMovieURLBuilder: TMDbURLBuilder {
         var components = self.baseURLComponents()
         
         // Append path
-        let movieCreditsPath = self.movieDetailPath(with: movieId, method: TMDbAPI.Movie.alternativeTitles)
+        let movieCreditsPath = self.movieMethodPath(with: movieId, method: TMDbAPI.Movie.alternativeTitles)
         components.path.append(movieCreditsPath)
         
         // Append country query
@@ -68,14 +68,44 @@ class TMDbKitMovieURLBuilder: TMDbURLBuilder {
         var components = self.baseURLComponents()
         
         // Append path
-        let movieCreditsPath = self.movieDetailPath(with: movieId, method: TMDbAPI.Movie.images)
+        let movieCreditsPath = self.movieMethodPath(with: movieId, method: TMDbAPI.Movie.images)
         components.path.append(movieCreditsPath)
         
         return components.url!
     }
     
-    private func movieDetailPath(with movieId: Int, method: String? = nil) -> String {
-        var url = URL(string: "/")!.appendingPathComponent(TMDbAPI.Movie.path).appendingPathComponent("\(movieId)")
+    func nowPlaying(language: String?, page: Int, region: String?) -> URL {
+        var components = self.baseURLComponents()
+        
+        // Append path
+        let nowPlayingPath = self.movieMethodPath(method: TMDbAPI.Movie.nowPlaying)
+        components.path.append(nowPlayingPath)
+        
+        // Append language
+        if let language = language {
+            let languageQueryItem = URLQueryItem(name: TMDbAPI.Key.language, value: language)
+            components.queryItems!.append(languageQueryItem)
+        }
+        
+        // Append page
+        let pageQueryItem = URLQueryItem(name: TMDbAPI.Key.page, value: "\(page)")
+        components.queryItems!.append(pageQueryItem)
+        
+        // Append region
+        if let region = region {
+            let regionQueryItem = URLQueryItem(name: TMDbAPI.Key.region, value: region)
+            components.queryItems!.append(regionQueryItem)
+        }
+        
+        return components.url!
+    }
+    
+    private func movieMethodPath(with movieId: Int? = nil, method: String? = nil) -> String {
+        var url = URL(string: "/")!.appendingPathComponent(TMDbAPI.Movie.path)
+        
+        if let movieId = movieId {
+            url.appendPathComponent("\(movieId)")
+        }
         if let method = method {
             url.appendPathComponent(method)
         }
