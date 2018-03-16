@@ -298,7 +298,7 @@
 		12686D48205AAFC0007B09F3 /* TMDbKitServiceOperation */ = {
 			isa = PBXGroup;
 			children = (
-				12910C36205C301A00CC4860 /* Unit Tests */,
+				12910C36205C301A00CC4860 /* UnitTests */,
 				12686D49205AAFEA007B09F3 /* TMDbKitServiceOperation.swift */,
 			);
 			path = TMDbKitServiceOperation;
@@ -314,12 +314,12 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
-		12910C36205C301A00CC4860 /* Unit Tests */ = {
+		12910C36205C301A00CC4860 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
 				12910C37205C303B00CC4860 /* TMBdKitServiceOperationUnitTests.swift */,
 			);
-			path = "Unit Tests";
+			path = UnitTests;
 			sourceTree = "<group>";
 		};
 		12910C3A205C3BBF00CC4860 /* Common */ = {
