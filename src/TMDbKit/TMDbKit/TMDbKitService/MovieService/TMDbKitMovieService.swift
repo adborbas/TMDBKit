@@ -62,8 +62,8 @@ public class TMDbKitMovieService: TMDbMovieService {
         return operation
     }
     
-    public func nowPlaying(language: String? = nil, region: String? = nil, completionHandler: @escaping (TMDbServiceResult<PageResult<MovieInfo>>) -> Void) -> Operation {
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=bdd678a8d65f5abf8608d6eb9a5be85f")!
+    public func nowPlaying(language: String? = nil, page: Int? = nil, region: String? = nil, completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
+        let url = self.urlBuilder.nowPlaying(language: language, page: page ?? 1, region: region)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
         

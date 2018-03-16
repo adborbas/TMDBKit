@@ -20,43 +20,14 @@
 
 import Foundation
 
-public class PageResult<Value>: Decodable where Value: Decodable {
-    public internal(set) var results: [Value]
-    public internal(set) var current: Int
-    public let totalPages: Int
-    public let totalResults: Int
-    
-    // TODO: why is this needed?
-    fileprivate init() {
-        self.results = [Value]()
-        self.current = 1
-        self.totalPages = 1
-        self.totalResults = 1
-    }
+public struct Dates: Decodable {
+    public let from: Date
+    public let to: Date
 }
 
-extension PageResult {
+extension Dates {
     enum CodingKeys: String, CodingKey {
-        case results
-        case current = "page"
-        case totalPages = "total_pages"
-        case totalResults = "total_results"
+        case from = "minimum"
+        case to = "maximum"
     }
 }
-
-//public class TimeFramePageResult<Value: Decodable>: PageResult<Value> {
-//    public let fromDate: Date
-//    public let toDate: Date
-//
-//    // TODO: why is this needed?
-//    private override init() {
-//        super.init()
-//        self.fromDate = Date()
-//        self.toDate = Date()
-//    }
-//
-//    required public init(from decoder: Decoder) throws {
-//        try super.init(from: decoder)
-//    }
-//}
-

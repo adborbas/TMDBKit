@@ -22,14 +22,17 @@ import XCTest
 import TMDbKit
 
 class NowPlayingIntegrationTest: TMDbKitMovieServiceIntegrationTest {
-    func test_nowPlaying() {
+    func test_nowPlaying_defaultReturnsFirstPage() {
         let expectation = XCTestExpectation()
         _ = self.service.nowPlaying() { result in
             switch result {
             case .failure(let error):
                 XCTFail("Requesting movie images for existing movie should not fail: \(error.localizedDescription)")
             case .success(let page):
-                XCTAssertTrue(true)
+                XCTAssertEqual(page.current, 1)
+                XCTAssertTrue(page.results.count > 0)
+                XCTAssertTrue(page.totalPages > 0)
+                XCTAssertTrue(page.totalResults > page.totalResults)
             }
             expectation.fulfill()
         }

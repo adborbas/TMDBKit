@@ -27,6 +27,8 @@ class TMDbKitMovieURLBuilderUnitTest: XCTestCase {
     private let apiKey = "APIKey"
     private let language = "en-US"
     private let movieId = 10
+    private let baseURL = "https://api.themoviedb.org/3/movie/"
+    private let apiKeyPath = "api_key"
     
     override func setUp() {
         super.setUp()
@@ -34,44 +36,56 @@ class TMDbKitMovieURLBuilderUnitTest: XCTestCase {
         self.movieUrlBuilder = TMDbKitMovieURLBuilder(apiKey: "\(self.apiKey)")
     }
     
+    // MARK: - movieDetail
     func test_movieDetailURL() {
-        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/\(self.movieId)?api_key=\(self.apiKey)")!
+        let expectedURL = URL(string: "\(self.baseURL)\(self.movieId)?\(self.apiKeyPath)=\(self.apiKey)")!
         let actualURL = self.movieUrlBuilder.movieDetailURL(for: self.movieId)
         
         XCTAssertEqual(expectedURL, actualURL)
     }
     
     func test_movieDetailURL_withLanguage() {
-        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/\(self.movieId)?api_key=\(self.apiKey)&language=\(self.language)")!
+        let expectedURL = URL(string: "\(self.baseURL)\(self.movieId)?\(self.apiKeyPath)=\(self.apiKey)&language=\(self.language)")!
         let actualURL = self.movieUrlBuilder.movieDetailURL(for: self.movieId, language: self.language)
         
         XCTAssertEqual(expectedURL, actualURL)
     }
     
+    // MARK: - movieCredits
     func test_movieCreditsURL() {
-        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/\(self.movieId)/credits?api_key=\(self.apiKey)")!
+        let expectedURL = URL(string: "\(self.baseURL)\(self.movieId)/credits?\(self.apiKeyPath)=\(self.apiKey)")!
         let actualURL = self.movieUrlBuilder.movieCreditsURL(for: self.movieId)
         
         XCTAssertEqual(expectedURL, actualURL)
     }
     
+    // MARK: - movieAlternativeTitles
     func test_movieAlternativeTitlesURL() {
-        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/\(self.movieId)/alternative_titles?api_key=\(self.apiKey)")!
+        let expectedURL = URL(string: "\(self.baseURL)\(self.movieId)/alternative_titles?\(self.apiKeyPath)=\(self.apiKey)")!
         let actualURL = self.movieUrlBuilder.movieAlternativeTitles(for: self.movieId)
         
         XCTAssertEqual(expectedURL, actualURL)
     }
     
     func test_movieAlternativeTitlesURL_wihtCounty() {
-        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/\(self.movieId)/alternative_titles?api_key=\(self.apiKey)&country=hu")!
+        let expectedURL = URL(string: "\(self.baseURL)\(self.movieId)/alternative_titles?\(self.apiKeyPath)=\(self.apiKey)&country=hu")!
         let actualURL = self.movieUrlBuilder.movieAlternativeTitles(for: self.movieId, country: "hu")
         
         XCTAssertEqual(expectedURL, actualURL)
     }
     
-    func test_movieImagesTitlesURL() {
-        let expectedURL = URL(string: "https://api.themoviedb.org/3/movie/\(self.movieId)/images?api_key=\(self.apiKey)")!
+    // MARK: - movieImage
+    func test_movieImagesURL() {
+        let expectedURL = URL(string: "\(self.baseURL)\(self.movieId)/images?\(self.apiKeyPath)=\(self.apiKey)")!
         let actualURL = self.movieUrlBuilder.movieImages(for: self.movieId)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    // MARK: - nowPlaying
+    func test_nowPlaying() {
+        let expectedURL = URL(string: "\(self.baseURL)now_playing?\(self.apiKeyPath)=\(self.apiKey)&page=1")!
+        let actualURL = self.movieUrlBuilder.nowPlaying(language: nil, page: 1, region: nil)
         
         XCTAssertEqual(expectedURL, actualURL)
     }
