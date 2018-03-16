@@ -21,28 +21,12 @@
 import Foundation
 
 public class TMDdImageURLBuilder {
+    
+    public enum Size { } // Only placeholder
+    
     public enum Scheme: String {
         case secure = "https://image.tmdb.org/t/p"
         case nonSecure = "http://image.tmdb.org/t/p"
-    }
-    
-    public enum Size {
-        public enum Backdrop: String {
-            case w300
-            case w780
-            case w1280
-            case original
-        }
-        
-        public enum Poster: String {
-            case w92
-            case w154
-            case w185
-            case w342
-            case w500
-            case w780
-            case original
-        }
     }
     
     public static let secure = TMDdImageURLBuilder(scheme: .secure)
@@ -54,12 +38,42 @@ public class TMDdImageURLBuilder {
         self.baseURL = URL(string: scheme.rawValue)!
     }
     
-    public func backdropURL(_ filePath: String, size: Size.Backdrop = .original) -> URL {
-        return baseURL.appendingPathComponent(size.rawValue).appendingPathComponent(filePath)
-    }
-    
-    public func posterURL(_ filePath: String, size: Size.Poster = .original) -> URL {
-        return baseURL.appendingPathComponent(size.rawValue).appendingPathComponent(filePath)
+    fileprivate func imageURL(size: String, filePath: String) -> URL {
+        return self.baseURL.appendingPathComponent(size).appendingPathComponent(filePath)
     }
 }
 
+// MARK: - Backdrop
+extension TMDdImageURLBuilder.Size {
+    public enum Backdrop: String {
+        case w300
+        case w780
+        case w1280
+        case original
+    }
+}
+
+extension TMDdImageURLBuilder {
+    public func backdropURL(_ filePath: String, size: Size.Backdrop = .original) -> URL {
+        return self.imageURL(size: size.rawValue, filePath: filePath)
+    }
+}
+
+// MARK: - Poster
+extension TMDdImageURLBuilder.Size {
+    public enum Poster: String {
+        case w92
+        case w154
+        case w185
+        case w342
+        case w500
+        case w780
+        case original
+    }
+}
+
+extension TMDdImageURLBuilder {
+    public func posterURL(_ filePath: String, size: Size.Poster = .original) -> URL {
+        return self.imageURL(size: size.rawValue, filePath: filePath)
+    }
+}

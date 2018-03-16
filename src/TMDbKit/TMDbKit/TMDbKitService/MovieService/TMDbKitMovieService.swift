@@ -34,14 +34,18 @@ public class TMDbKitMovieService: TMDbMovieService {
         self.urlBuilder = TMDbKitMovieURLBuilder(apiKey: config.apiKey)
     }
     
-    public func movieDetail(for movieId: Int, language: String? = nil, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod](), completionHandler: @escaping (TMDbServiceResult<Movie>) -> ()) -> Operation {
+    public func movieDetail(for movieId: Int,
+                            language: String? = nil,
+                            appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod](),
+                            completionHandler: @escaping (TMDbServiceResult<Movie>) -> ()) -> Operation {
         let url = self.urlBuilder.movieDetailURL(for: movieId, language: language, appending: queryMethods)
         let operation = TMDbKitServiceOperation(url: url, decoder: self.jsonDecoder, completionHandler: completionHandler)
         self.operationQueue.addOperation(operation)
         return operation
     }
 
-    public func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> ()) -> Operation {
+    public func movieCredits(for movieId: Int,
+                             completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> ()) -> Operation {
         let url = self.urlBuilder.movieCreditsURL(for: movieId)
         
         let operation = TMDbKitServiceOperation(url: url, completionHandler: completionHandler)
@@ -49,7 +53,9 @@ public class TMDbKitMovieService: TMDbMovieService {
         return operation
     }
     
-    public func movieAlternativeTitles(for movieId: Int, country: String? = nil, completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) -> Operation {
+    public func movieAlternativeTitles(for movieId: Int,
+                                       country: String? = nil,
+                                       completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) -> Operation {
         let url = self.urlBuilder.movieAlternativeTitles(for: movieId, country: country)
         
         let operation = TMDbKitServiceOperation(url: url, keyPath: "titles", completionHandler: completionHandler)
@@ -57,7 +63,8 @@ public class TMDbKitMovieService: TMDbMovieService {
         return operation
     }
     
-    public func movieImages(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<Images>) -> Void) -> Operation {
+    public func movieImages(for movieId: Int,
+                            completionHandler: @escaping (TMDbServiceResult<Images>) -> Void) -> Operation {
         let url = self.urlBuilder.movieImages(for: movieId)
         
         let operation = TMDbKitServiceOperation(url: url, completionHandler: completionHandler)
@@ -65,7 +72,10 @@ public class TMDbKitMovieService: TMDbMovieService {
         return operation
     }
     
-    public func nowPlaying(language: String? = nil, page: Int? = nil, region: String? = nil, completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
+    public func nowPlaying(language: String? = nil,
+                           page: Int? = nil,
+                           region: String? = nil,
+                           completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
         let url = self.urlBuilder.nowPlaying(language: language, page: page ?? 1, region: region)
         
         let operation = TMDbKitServiceOperation(url: url, decoder: self.jsonDecoder, completionHandler: completionHandler)
