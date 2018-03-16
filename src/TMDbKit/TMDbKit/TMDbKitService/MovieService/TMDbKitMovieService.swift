@@ -21,8 +21,14 @@
 import Foundation
 
 public class TMDbKitMovieService: TMDbMovieService {
-    private let urlBuilder: TMDbKitMovieURLBuilder
     public let operationQueue = OperationQueue()
+    
+    private let urlBuilder: TMDbKitMovieURLBuilder
+    private lazy var jsonDecoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
+        return decoder
+    }()
     
     public init(config: TMDbKitServiceConfig) {
         self.urlBuilder = TMDbKitMovieURLBuilder(apiKey: config.apiKey)
@@ -30,10 +36,7 @@ public class TMDbKitMovieService: TMDbMovieService {
     
     public func movieDetail(for movieId: Int, language: String? = nil, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod](), completionHandler: @escaping (TMDbServiceResult<Movie>) -> ()) -> Operation {
         let url = self.urlBuilder.movieDetailURL(for: movieId, language: language, appending: queryMethods)
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
-        
-        let operation = TMDbKitServiceOperation(url: url, decoder: decoder, completionHandler: completionHandler)
+        let operation = TMDbKitServiceOperation(url: url, decoder: self.jsonDecoder, completionHandler: completionHandler)
         self.operationQueue.addOperation(operation)
         return operation
     }
@@ -58,6 +61,14 @@ public class TMDbKitMovieService: TMDbMovieService {
         let url = self.urlBuilder.movieImages(for: movieId)
         
         let operation = TMDbKitServiceOperation(url: url, completionHandler: completionHandler)
+        self.operationQueue.addOperation(operation)
+        return operation
+    }
+    
+    public func nowPlaying(language: String? = nil, page: Int? = nil, region: String? = nil, completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
+        let url = self.urlBuilder.nowPlaying(language: language, page: page ?? 1, region: region)
+        
+        let operation = TMDbKitServiceOperation(url: url, decoder: self.jsonDecoder, completionHandler: completionHandler)
         self.operationQueue.addOperation(operation)
         return operation
     }

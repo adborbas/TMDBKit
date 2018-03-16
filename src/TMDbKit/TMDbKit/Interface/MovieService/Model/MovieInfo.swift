@@ -20,15 +20,38 @@
 
 import Foundation
 
+public struct MovieInfo: Decodable {    
+    public let voteCount: Int
+    public let id: Int
+    public let video: Bool
+    public let voteAverage: Double
+    public let title: String
+    public let popularity: Double
+    public let posterPath: String?
+    public let originalLanguage: String
+    public let originalTitle: String
+    public let genres: [Int]
+    public let backdropPath: String
+    public let adult: Bool
+    public let overview: String?
+    public let releaseDate: Date
+}
 
-public protocol TMDbMovieService {
-    func movieDetail(for movieId: Int, language: String?, appending: [TMDbMovieServiceQueryMethod], completionHandler: @escaping (TMDbServiceResult<Movie>) -> Void) -> Operation
-    
-    func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> Void) -> Operation
-    
-    func movieAlternativeTitles(for movieId: Int, country: String?, completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) -> Operation
-    
-    func movieImages(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<Images>) -> Void) -> Operation
-    
-    func nowPlaying(language: String?, page: Int?, region: String?, completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation
+private extension MovieInfo {
+    enum CodingKeys: String, CodingKey {
+        case adult
+        case backdropPath = "backdrop_path"
+        case genres = "genre_ids"
+        case id
+        case originalLanguage = "original_language"
+        case originalTitle = "original_title"
+        case overview
+        case popularity
+        case posterPath = "poster_path"
+        case releaseDate = "release_date"
+        case title
+        case video
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
+    }
 }

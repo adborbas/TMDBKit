@@ -18,17 +18,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+import XCTest
+import TMDbKit
 
-
-public protocol TMDbMovieService {
-    func movieDetail(for movieId: Int, language: String?, appending: [TMDbMovieServiceQueryMethod], completionHandler: @escaping (TMDbServiceResult<Movie>) -> Void) -> Operation
-    
-    func movieCredits(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> Void) -> Operation
-    
-    func movieAlternativeTitles(for movieId: Int, country: String?, completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) -> Operation
-    
-    func movieImages(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<Images>) -> Void) -> Operation
-    
-    func nowPlaying(language: String?, page: Int?, region: String?, completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation
+class NowPlayingIntegrationTest: TMDbKitMovieServiceIntegrationTest {
+    func test_nowPlaying_defaultReturnsFirstPage() {
+        let expectation = XCTestExpectation()
+        _ = self.service.nowPlaying() { result in
+            switch result {
+            case .failure(let error):
+                XCTFail("Requesting movie images for existing movie should not fail: \(error.localizedDescription)")
+            case .success(let page):
+                XCTAssertEqual(page.current, 1)
+                XCTAssertTrue(page.results.count > 0)
+                XCTAssertTrue(page.totalPages > 0)
+                XCTAssertTrue(page.totalResults > page.totalPages)
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: defaultTimeout)
+    }
 }
