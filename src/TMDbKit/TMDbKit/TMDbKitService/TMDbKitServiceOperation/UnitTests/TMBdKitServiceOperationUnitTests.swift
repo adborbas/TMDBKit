@@ -111,7 +111,7 @@ class TMBdKitServiceOperationUnitTests: XCTestCase {
         } catch {
             switch error {
             case TMDbServiceError.failureFromService(let reason):
-                XCTAssertEqual(error.localizedDescription, "TMDb error: \(reason.description)")
+                XCTAssertEqual(error.localizedDescription, reason.description)
             default:
                 XCTFail("Expected failureFromService but got: \(error.localizedDescription)")
             }
