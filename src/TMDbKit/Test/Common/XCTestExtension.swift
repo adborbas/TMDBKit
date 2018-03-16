@@ -19,8 +19,8 @@
 // SOFTWARE.
 
 import Foundation
+import XCTest
 
-public enum TMDbServiceResult<T> {
-    case failure(Error)
-    case success(T)
+func XCTFail(unexpected error: Error) {
+    XCTFail("Not expected error but got: \(error.localizedDescription)")
 }
