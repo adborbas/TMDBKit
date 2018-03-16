@@ -32,7 +32,7 @@ class NowPlayingIntegrationTest: TMDbKitMovieServiceIntegrationTest {
                 XCTAssertEqual(page.current, 1)
                 XCTAssertTrue(page.results.count > 0)
                 XCTAssertTrue(page.totalPages > 0)
-                XCTAssertTrue(page.totalResults > page.totalResults)
+                XCTAssertTrue(page.totalResults > page.totalPages)
             }
             expectation.fulfill()
         }
