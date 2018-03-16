@@ -28,12 +28,12 @@ extension TMDbServiceError {
 }
 
 extension TMDbServiceError.JSONParsingReason: TMDbServiceErrorReason {
-    var description: String? {
+    var description: String {
         switch self {
         case .decodeFailed(let error):
-            return error.localizedDescription
+            return "Decoding failed: \(error.localizedDescription)"
         case .jsonForKeyPathNotFound(let reason):
-            return reason
+            return "KeyPath not found for: \(reason)"
         }
     }
 }

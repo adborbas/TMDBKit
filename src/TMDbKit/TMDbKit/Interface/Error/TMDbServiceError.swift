@@ -43,5 +43,5 @@ extension TMDbServiceError: LocalizedError {
 }
 
 internal protocol TMDbServiceErrorReason {
-    var description: String? { get }
+    var description: String { get }
 }

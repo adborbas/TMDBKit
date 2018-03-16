@@ -3,6 +3,7 @@ ignore:
   - **/UnitTests/.*
   - **/IntegrationTests/.*
   - docs/.*
+  - **/Test/.*
 
 coverage:
   precision: 2

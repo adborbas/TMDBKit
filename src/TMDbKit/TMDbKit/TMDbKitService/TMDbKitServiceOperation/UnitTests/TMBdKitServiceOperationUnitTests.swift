@@ -78,8 +78,8 @@ class TMBdKitServiceOperationUnitTests: XCTestCase {
     func test_process_notNilError_expectNetworkError() {
         do {
             _ = try self.operation.process(nil, nil, SomeError.some)
-        } catch TMDbServiceError.networkError {
-            // We got the expected error.
+        } catch TMDbServiceError.networkError(let error) {
+            XCTAssertEqual(error.localizedDescription, "Some error.")
         } catch {
             XCTFail("Expected networkError but got: \(error.localizedDescription)")
         }
@@ -88,10 +88,13 @@ class TMBdKitServiceOperationUnitTests: XCTestCase {
     func test_process_notData_expectNoDataInResponse() {
         do {
             _ = try self.operation.process(nil, nil, nil)
-        } catch TMDbServiceError.noDataInResponse {
-            // We got the expected error.
         } catch {
-            XCTFail("Expected noDataInResponse but got: \(error.localizedDescription)")
+            switch error {
+            case TMDbServiceError.noDataInResponse:
+                XCTAssertEqual(error.localizedDescription, "Service returned no data.")
+            default:
+                XCTFail("Expected noDataInResponse but got: \(error.localizedDescription)")
+            }
         }
     }
     
@@ -105,10 +108,13 @@ class TMBdKitServiceOperationUnitTests: XCTestCase {
         
         do {
             _ = try self.operation.process(tmdbError, nil, nil)
-        } catch TMDbServiceError.failureFromService {
-            // We got the expected error.
         } catch {
-            XCTFail("Expected failureFromService but got: \(error.localizedDescription)")
+            switch error {
+            case TMDbServiceError.failureFromService(let reason):
+                XCTAssertEqual(error.localizedDescription, reason.description)
+            default:
+                XCTFail("Expected failureFromService but got: \(error.localizedDescription)")
+            }
         }
     }
     
@@ -137,6 +143,13 @@ fileprivate struct MockJSONResult: Codable {
 }
 
 // MARK: - SomeError
-fileprivate enum SomeError: Error {
+fileprivate enum SomeError: Error, LocalizedError {
     case some
+    
+    var errorDescription: String? {
+        switch self {
+        case .some:
+            return "Some error."
+        }
+    }
 }
