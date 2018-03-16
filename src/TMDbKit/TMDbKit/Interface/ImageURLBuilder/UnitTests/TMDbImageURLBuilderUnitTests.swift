@@ -63,7 +63,7 @@ class TMDbKitImageURLBuilderUnitTest: XCTestCase {
         XCTAssertEqual(expectedURL, actualURL)
     }
     
-    func test_posterURL_w300() {
+    func test_posterURL_w500() {
         let expectedURL = baseURL.appendingPathComponent("w500").appendingPathComponent(self.filePath)
         let actualURL = self.imageURLBuilder.posterURL(self.filePath, size: .w500)
         

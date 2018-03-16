@@ -21,6 +21,13 @@
 import Foundation
 
 public struct LanguageInfo: Decodable {
-    public let iso_639_1: String
+    public let code: String
     public let name: String
+}
+
+extension LanguageInfo {
+    private enum CodingKeys: String, CodingKey {
+        case code = "iso_639_1"
+        case name
+    }
 }

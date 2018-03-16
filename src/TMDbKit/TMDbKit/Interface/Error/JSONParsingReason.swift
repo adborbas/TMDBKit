@@ -36,7 +36,5 @@ extension TMDbServiceError.JSONParsingReason: TMDbServiceErrorReason {
             return reason
         }
     }
-    
-    
 }
 
