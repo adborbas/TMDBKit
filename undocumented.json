@@ -1318,28 +1318,28 @@
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 47,
+      "line": 48,
       "symbol": "TMDbKitMovieService.movieCredits(for:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 56,
+      "line": 57,
       "symbol": "TMDbKitMovieService.movieAlternativeTitles(for:country:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 66,
+      "line": 68,
       "symbol": "TMDbKitMovieService.movieImages(for:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 75,
+      "line": 77,
       "symbol": "TMDbKitMovieService.nowPlaying(language:page:region:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
