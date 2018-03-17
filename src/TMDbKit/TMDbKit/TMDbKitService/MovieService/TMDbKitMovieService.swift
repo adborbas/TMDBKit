@@ -39,7 +39,8 @@ public class TMDbKitMovieService: TMDbMovieService {
                             appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod](),
                             completionHandler: @escaping (TMDbServiceResult<Movie>) -> ()) -> Operation {
         let url = self.urlBuilder.movieDetailURL(for: movieId, language: language, appending: queryMethods)
-        let operation = TMDbKitServiceOperation(url: url, decoder: self.jsonDecoder, completionHandler: completionHandler)
+        let responseDecoder = TMDbServiceResponseDecoder<Movie>(decoder: self.jsonDecoder)
+        let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
         self.operationQueue.addOperation(operation)
         return operation
     }
@@ -48,7 +49,7 @@ public class TMDbKitMovieService: TMDbMovieService {
                              completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> ()) -> Operation {
         let url = self.urlBuilder.movieCreditsURL(for: movieId)
         
-        let operation = TMDbKitServiceOperation(url: url, completionHandler: completionHandler)
+        let operation = TMDbOperation(url: url, completionHandler: completionHandler)
         self.operationQueue.addOperation(operation)
         return operation
     }
@@ -58,7 +59,8 @@ public class TMDbKitMovieService: TMDbMovieService {
                                        completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) -> Operation {
         let url = self.urlBuilder.movieAlternativeTitles(for: movieId, country: country)
         
-        let operation = TMDbKitServiceOperation(url: url, keyPath: "titles", completionHandler: completionHandler)
+        let decoder = TMDbServiceResponseDecoder<[AlternativeTitle]>(keyPath: "titles")
+        let operation = TMDbOperation(url: url, responseDecoder: decoder, completionHandler: completionHandler)
         self.operationQueue.addOperation(operation)
         return operation
     }
@@ -67,7 +69,7 @@ public class TMDbKitMovieService: TMDbMovieService {
                             completionHandler: @escaping (TMDbServiceResult<Images>) -> Void) -> Operation {
         let url = self.urlBuilder.movieImages(for: movieId)
         
-        let operation = TMDbKitServiceOperation(url: url, completionHandler: completionHandler)
+        let operation = TMDbOperation(url: url, completionHandler: completionHandler)
         self.operationQueue.addOperation(operation)
         return operation
     }
@@ -78,7 +80,8 @@ public class TMDbKitMovieService: TMDbMovieService {
                            completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
         let url = self.urlBuilder.nowPlaying(language: language, page: page ?? 1, region: region)
         
-        let operation = TMDbKitServiceOperation(url: url, decoder: self.jsonDecoder, completionHandler: completionHandler)
+        let responseDecoder = TMDbServiceResponseDecoder<Page<MovieInfo>>(decoder: self.jsonDecoder)
+        let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
         self.operationQueue.addOperation(operation)
         return operation
     }

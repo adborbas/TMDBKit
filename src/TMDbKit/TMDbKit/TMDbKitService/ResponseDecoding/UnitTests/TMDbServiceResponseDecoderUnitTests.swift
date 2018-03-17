@@ -22,32 +22,32 @@ import Foundation
 import XCTest
 @testable import TMDbKit
 
-class TMBdKitServiceOperationUnitTests: XCTestCase {
-    private var operation: TMDbKitServiceOperation<MockJSON>!
-    private let mockCompletionHandler: (TMDbServiceResult<MockJSON>) -> Void = { result in }
+class TMDbServiceResponseDecoderUnitTests: XCTestCase {
+    private var decoder: TMDbServiceResponseDecoder<MockJSON>!
     private var jsonData: Data!
     private var invalidJsonData: Data = {
         return "this is an invalid json".data(using: .utf8)!
     }()
     
     override func setUp() {
-        self.operation = TMDbKitServiceOperation(url: URL(string: "http://host.com")!, completionHandler: self.mockCompletionHandler)
+        self.decoder = TMDbServiceResponseDecoder<MockJSON>()
         self.jsonData = try! JSONEncoder().encode(MockJSON())
     }
     
-    // MARK: - extractJSON
-    func test_extractJSON_validKeyPath_shouldSucceed() {
+    func test_process_validKeyPath_shouldSucceed() {
         do {
-            _ = try self.operation.extractJSON(at: "result", from: self.jsonData)
+            let validKeyPathDecoder = TMDbServiceResponseDecoder<MockJSON>(keyPath: "result")
+            _ = try validKeyPathDecoder.process(self.jsonData, nil, nil)
         } catch {
             XCTFail(unexpected: error)
         }
     }
     
-    func test_extractJSON_invalidKeyPath_shouldThrowError() {
+    func test_process_invalidKeyPath_shouldThrowError() {
         let invalidKeyPath = "invalidKeyPath"
         do {
-            _ = try self.operation.extractJSON(at: invalidKeyPath, from: self.jsonData)
+            let invalidKeyPathDecoder = TMDbServiceResponseDecoder<MockJSON>(keyPath: invalidKeyPath)
+            _ = try invalidKeyPathDecoder.process(self.jsonData, nil, nil)
             XCTFail("Should have thrown error.")
         } catch TMDbServiceError.failedToParse(.jsonForKeyPathNotFound(let keypath)){
             XCTAssertEqual(keypath, invalidKeyPath)
@@ -55,39 +55,37 @@ class TMBdKitServiceOperationUnitTests: XCTestCase {
             XCTFail("Expected jsonForKeyPathNotFound but got: \(error.localizedDescription)")
         }
     }
-    
-    // MARK: - performDecoding
-    func test_performDecoding_validJsonData_shoudSucceed() {
+
+    func test_process_validJsonData_shoudSucceed() {
         do {
-            _ = try self.operation.performDecoding(on: self.jsonData, keyPath: nil)
+            _ = try self.decoder.process(self.jsonData, nil, nil)
         } catch {
             XCTFail(unexpected: error)
         }
     }
-    
+
     func test_performDecoding_invalidJsonData_expectError() {
         do {
-            _ = try self.operation.performDecoding(on: self.invalidJsonData, keyPath: nil)
+            _ = try self.decoder.process(self.invalidJsonData, nil, nil)
             XCTFail("Should have thrown error.")
         } catch {
             // We got the expected error.
         }
     }
-    
-    // MARK: - process
+
     func test_process_notNilError_expectNetworkError() {
         do {
-            _ = try self.operation.process(nil, nil, SomeError.some)
+            _ = try self.decoder.process(nil, nil, SomeError.some)
         } catch TMDbServiceError.networkError(let error) {
             XCTAssertEqual(error.localizedDescription, "Some error.")
         } catch {
             XCTFail("Expected networkError but got: \(error.localizedDescription)")
         }
     }
-    
+
     func test_process_notData_expectNoDataInResponse() {
         do {
-            _ = try self.operation.process(nil, nil, nil)
+            _ = try self.decoder.process(nil, nil, nil)
         } catch {
             switch error {
             case TMDbServiceError.noDataInResponse:
@@ -97,7 +95,7 @@ class TMBdKitServiceOperationUnitTests: XCTestCase {
             }
         }
     }
-    
+
     func test_process_tmdbError_expectFailureFromService() {
         let tmdbError = """
         {
@@ -105,9 +103,9 @@ class TMBdKitServiceOperationUnitTests: XCTestCase {
             "status_code": 34
         }
         """.data(using: .utf8)!
-        
+
         do {
-            _ = try self.operation.process(tmdbError, nil, nil)
+            _ = try self.decoder.process(tmdbError, nil, nil)
         } catch {
             switch error {
             case TMDbServiceError.failureFromService(let reason):
@@ -115,41 +113,6 @@ class TMBdKitServiceOperationUnitTests: XCTestCase {
             default:
                 XCTFail("Expected failureFromService but got: \(error.localizedDescription)")
             }
-        }
-    }
-    
-    // MARK: - cancellation
-    func test_cancel_completionHandlerIsNotCalled() {
-        let semaphore = DispatchSemaphore(value: 0)
-        let operation = TMDbKitServiceOperation(url: URL(string: "http://host.com")!) { (result: TMDbServiceResult<MockJSON>) in
-            XCTFail("completionHandler should not be called")
-            semaphore.signal()
-        }
-        operation.cancel()
-        OperationQueue().addOperation(operation)
-        let timeoutResult = semaphore.wait(timeout: DispatchTime.now() + 0.1)
-        XCTAssertEqual(timeoutResult, DispatchTimeoutResult.timedOut)
-    }
-}
-
-// MARK: - MockJSON
-fileprivate struct MockJSON: Codable {
-    let vote: Int = 1
-    let result: MockJSONResult = MockJSONResult()
-}
-
-fileprivate struct MockJSONResult: Codable {
-    let id: Int = 1
-}
-
-// MARK: - SomeError
-fileprivate enum SomeError: Error, LocalizedError {
-    case some
-    
-    var errorDescription: String? {
-        switch self {
-        case .some:
-            return "Some error."
         }
     }
 }
