@@ -4,6 +4,7 @@ ignore:
   - **/IntegrationTests/.*
   - docs/.*
   - **/Test/.*
+  - src/TMDbKit/TMDbKit/Interface/Error/.*
 
 coverage:
   precision: 2

@@ -76,8 +76,8 @@ class TMDbServiceResponseDecoderUnitTests: XCTestCase {
     func test_process_notNilError_expectNetworkError() {
         do {
             _ = try self.decoder.process(nil, nil, SomeError.some)
-        } catch TMDbServiceError.networkError(let error) {
-            XCTAssertEqual(error.localizedDescription, "Some error.")
+        } catch TMDbServiceError.networkError {
+            // This is the expected error
         } catch {
             XCTFail("Expected networkError but got: \(error.localizedDescription)")
         }
@@ -89,7 +89,8 @@ class TMDbServiceResponseDecoderUnitTests: XCTestCase {
         } catch {
             switch error {
             case TMDbServiceError.noDataInResponse:
-                XCTAssertEqual(error.localizedDescription, "Service returned no data.")
+                // This is the expected error.
+                break
             default:
                 XCTFail("Expected noDataInResponse but got: \(error.localizedDescription)")
             }
