@@ -22,13 +22,21 @@ import Foundation
 
 public class TMDbKitMovieService: TMDbMovieService {
     public let operationQueue = OperationQueue()
-    
     private let urlBuilder: TMDbKitMovieURLBuilder
-    private lazy var jsonDecoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Short)
-        return decoder
-    }()
+    
+    private enum TMDbJSONDecoder {
+        static var shortDate: JSONDecoder = {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .formatted(DateFormatter.tmdbShort)
+            return decoder
+        }()
+        
+        static var fullDate: JSONDecoder = {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .formatted(DateFormatter.tmdbFull)
+            return decoder
+        }()
+    }
     
     public init(config: TMDbKitServiceConfig) {
         self.urlBuilder = TMDbKitMovieURLBuilder(apiKey: config.apiKey)
@@ -39,7 +47,7 @@ public class TMDbKitMovieService: TMDbMovieService {
                             appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod](),
                             completionHandler: @escaping (TMDbServiceResult<Movie>) -> ()) -> Operation {
         let url = self.urlBuilder.movieDetailURL(for: movieId, language: language, appending: queryMethods)
-        let responseDecoder = TMDbServiceResponseDecoder<Movie>(decoder: self.jsonDecoder)
+        let responseDecoder = TMDbServiceResponseDecoder<Movie>(jsonDecoder: TMDbJSONDecoder.shortDate)
         let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
         self.operationQueue.addOperation(operation)
         return operation
@@ -80,8 +88,17 @@ public class TMDbKitMovieService: TMDbMovieService {
                            completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
         let url = self.urlBuilder.nowPlaying(language: language, page: page ?? 1, region: region)
         
-        let responseDecoder = TMDbServiceResponseDecoder<Page<MovieInfo>>(decoder: self.jsonDecoder)
+        let responseDecoder = TMDbServiceResponseDecoder<Page<MovieInfo>>(jsonDecoder: TMDbJSONDecoder.shortDate)
         let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
+        self.operationQueue.addOperation(operation)
+        return operation
+    }
+    
+    public func releaseDates(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<[Release]>) -> Void) -> Operation {
+        let url = self.urlBuilder.releaseDates(for: movieId)
+        
+        let decoder = TMDbServiceResponseDecoder<[Release]>(jsonDecoder: TMDbJSONDecoder.fullDate, keyPath: "results")
+        let operation = TMDbOperation(url: url, responseDecoder: decoder, completionHandler: completionHandler)
         self.operationQueue.addOperation(operation)
         return operation
     }

@@ -100,6 +100,16 @@ class TMDbKitMovieURLBuilder: TMDbURLBuilder {
         return components.url!
     }
     
+    func releaseDates(for movieId: Int) -> URL {
+        var components = self.baseURLComponents()
+        
+        // Append path
+        let releaseDates = self.movieMethodPath(with: movieId, method: TMDbAPI.Movie.releaseDates)
+        components.path.append(releaseDates)
+        
+        return components.url!
+    }
+    
     private func movieMethodPath(with movieId: Int? = nil, method: String? = nil) -> String {
         var url = URL(string: "/")!.appendingPathComponent(TMDbAPI.Movie.path)
         

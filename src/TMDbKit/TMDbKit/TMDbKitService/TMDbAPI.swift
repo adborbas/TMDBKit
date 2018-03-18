@@ -38,5 +38,6 @@ enum TMDbAPI {
         static let country = "country"
         static let images = "images"
         static let nowPlaying = "now_playing"
+        static let releaseDates = "release_dates"
     }
 }

@@ -19,17 +19,23 @@
 // SOFTWARE.
 
 import Foundation
+import XCTest
+@testable import TMDbKit
 
-extension DateFormatter {
-    static let tmdbShort: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
-    
-    static let tmdbFull: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSS'Z'"
-        return formatter
-    }()
+class ReleaseDatesIntegrationTest: TMDbKitMovieServiceIntegrationTest {
+    func test_releaseDates_defaultReturnsFirstPage() {
+        let expectation = XCTestExpectation()
+        _ = self.service.releaseDates(for: TestConstants.Movie.existsingId) { result in
+            switch result {
+            case .failure(let error):
+                XCTFail("Requesting release dates for existing movie should not fail: \(error.localizedDescription)")
+            case .success(let releases):
+                XCTAssertFalse(releases.isEmpty, "Movie should have been release at least once")
+                XCTAssertFalse(releases[0].releaseDates.isEmpty, "Movie should have been release at least once")
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: defaultTimeout)
+    }
 }
