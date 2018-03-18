@@ -23,11 +23,11 @@ import Foundation
 class TMDbServiceResponseDecoder<Value: Decodable>: ResponseDecoding {
     typealias DecodedValue = Value
     
-    private let decoder: JSONDecoder
+    private let jsonDecoder: JSONDecoder
     private let keyPath: String?
     
-    init(decoder: JSONDecoder = JSONDecoder(), keyPath: String? = nil) {
-        self.decoder = decoder
+    init(jsonDecoder: JSONDecoder = JSONDecoder(), keyPath: String? = nil) {
+        self.jsonDecoder = jsonDecoder
         self.keyPath = keyPath
     }
     
@@ -65,7 +65,7 @@ class TMDbServiceResponseDecoder<Value: Decodable>: ResponseDecoding {
             return try self.performDecoding(on: jsonAtKeyPath, keyPath: nil)
         }
         
-        return try self.decoder.decode(Value.self, from: data)
+        return try self.jsonDecoder.decode(Value.self, from: data)
     }
     
     /**

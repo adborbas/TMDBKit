@@ -27,7 +27,7 @@ class NowPlayingIntegrationTest: TMDbKitMovieServiceIntegrationTest {
         _ = self.service.nowPlaying() { result in
             switch result {
             case .failure(let error):
-                XCTFail("Requesting movie images for existing movie should not fail: \(error.localizedDescription)")
+                XCTFail("Requesting now playing movies should not fail: \(error.localizedDescription)")
             case .success(let page):
                 XCTAssertEqual(page.current, 1)
                 XCTAssertTrue(page.results.count > 0)

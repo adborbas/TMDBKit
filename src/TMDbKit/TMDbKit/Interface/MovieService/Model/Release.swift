@@ -20,16 +20,14 @@
 
 import Foundation
 
-extension DateFormatter {
-    static let tmdbShort: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
-    
-    static let tmdbFull: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSS'Z'"
-        return formatter
-    }()
+public struct Release: Decodable {
+    public let country: String
+    public let releaseDates: [ReleaseDate]
+}
+
+private extension Release {
+    enum CodingKeys: String, CodingKey {
+        case country = "iso_3166_1"
+        case releaseDates = "release_dates"
+    }
 }

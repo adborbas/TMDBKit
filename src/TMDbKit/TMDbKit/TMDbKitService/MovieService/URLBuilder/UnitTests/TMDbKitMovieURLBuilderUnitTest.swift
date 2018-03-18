@@ -96,4 +96,12 @@ class TMDbKitMovieURLBuilderUnitTest: XCTestCase {
         
         XCTAssertEqual(expectedURL, actualURL)
     }
+    
+    // MARK: - releaseDates
+    func test_releaseDates() {
+        let expectedURL = URL(string: "\(self.baseURL)\(self.movieId)/release_dates?\(self.apiKeyPath)=\(self.apiKey)")!
+        let actualURL = self.movieUrlBuilder.releaseDates(for: self.movieId)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
 }
