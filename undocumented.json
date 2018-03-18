@@ -1114,6 +1114,118 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Release.swift",
+      "line": 23,
+      "symbol": "Release",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Release.swift",
+      "line": 24,
+      "symbol": "Release.country",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Release.swift",
+      "line": 25,
+      "symbol": "Release.releaseDates",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/ReleaseDate.swift",
+      "line": 23,
+      "symbol": "ReleaseDate",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/ReleaseDate.swift",
+      "line": 25,
+      "symbol": "ReleaseDate.ReleaseType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/ReleaseDate.swift",
+      "line": 26,
+      "symbol": "ReleaseDate.ReleaseType.premiere",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/ReleaseDate.swift",
+      "line": 27,
+      "symbol": "ReleaseDate.ReleaseType.theatricalLimited",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/ReleaseDate.swift",
+      "line": 28,
+      "symbol": "ReleaseDate.ReleaseType.theatrical",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/ReleaseDate.swift",
+      "line": 29,
+      "symbol": "ReleaseDate.ReleaseType.digital",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/ReleaseDate.swift",
+      "line": 30,
+      "symbol": "ReleaseDate.ReleaseType.physical",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/ReleaseDate.swift",
+      "line": 31,
+      "symbol": "ReleaseDate.ReleaseType.tv",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/ReleaseDate.swift",
+      "line": 34,
+      "symbol": "ReleaseDate.language",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/ReleaseDate.swift",
+      "line": 35,
+      "symbol": "ReleaseDate.certification",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/ReleaseDate.swift",
+      "line": 36,
+      "symbol": "ReleaseDate.note",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/ReleaseDate.swift",
+      "line": 37,
+      "symbol": "ReleaseDate.date",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/ReleaseDate.swift",
+      "line": 38,
+      "symbol": "ReleaseDate.type",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Status.swift",
       "line": 23,
       "symbol": "Status",
@@ -1201,6 +1313,13 @@
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieService.swift",
       "line": 40,
       "symbol": "TMDbMovieService.nowPlaying(language:page:region:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieService.swift",
+      "line": 45,
+      "symbol": "TMDbMovieService.releaseDates(for:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -1304,43 +1423,50 @@
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 33,
+      "line": 41,
       "symbol": "TMDbKitMovieService.init(config:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 37,
+      "line": 45,
       "symbol": "TMDbKitMovieService.movieDetail(for:language:appending:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 48,
+      "line": 56,
       "symbol": "TMDbKitMovieService.movieCredits(for:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 57,
+      "line": 65,
       "symbol": "TMDbKitMovieService.movieAlternativeTitles(for:country:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 68,
+      "line": 76,
       "symbol": "TMDbKitMovieService.movieImages(for:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 77,
+      "line": 85,
       "symbol": "TMDbKitMovieService.nowPlaying(language:page:region:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
+      "line": 97,
+      "symbol": "TMDbKitMovieService.releaseDates(for:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
