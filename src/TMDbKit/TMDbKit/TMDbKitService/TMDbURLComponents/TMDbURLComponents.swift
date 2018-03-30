@@ -24,7 +24,7 @@ struct TMDbURLComponents {
     private var urlComponents: URLComponents
     private let method: String
     
-    var path: String = ""
+    var path: String?
     var language: String?
     var country: String?
     var region: String?
@@ -37,7 +37,9 @@ struct TMDbURLComponents {
         var computedPath = URL(string: "/")!
         computedPath.appendPathComponent(TMDbAPI.version)
         computedPath.appendPathComponent(method)
-        computedPath.appendPathComponent(path)
+        if let path = self.path {
+            computedPath.appendPathComponent(path)
+        }
         components.path = computedPath.absoluteString
         
         

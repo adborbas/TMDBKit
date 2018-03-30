@@ -31,7 +31,6 @@ class TMDbKitMovieURLBuilder {
     func movieDetailURL(for movieId: Int, language: String? = nil, appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod]()) -> URL {
         var components = TMDbURLComponents(apiKey: self.apiKey, method: TMDbAPI.Movie.path)
         
-        // Append path
         let movieDetailPath = self.movieMethodPath(with: movieId)
         components.path = movieDetailPath
         components.addQueryItem(from: queryMethods.map { $0.rawValue })
@@ -44,9 +43,8 @@ class TMDbKitMovieURLBuilder {
     func movieCreditsURL(for movieId: Int) -> URL {
         var components = TMDbURLComponents(apiKey: self.apiKey, method: TMDbAPI.Movie.path)
         
-        // Append path
         let movieCreditsPath = self.movieMethodPath(with: movieId, method: TMDbAPI.Movie.credits)
-        components.path.append(movieCreditsPath)
+        components.path = movieCreditsPath
         
         return components.url!
     }
@@ -54,9 +52,8 @@ class TMDbKitMovieURLBuilder {
     func movieAlternativeTitles(for movieId: Int, country: String? = nil) -> URL {
         var components = TMDbURLComponents(apiKey: self.apiKey, method: TMDbAPI.Movie.path)
         
-        // Append path
         let movieCreditsPath = self.movieMethodPath(with: movieId, method: TMDbAPI.Movie.alternativeTitles)
-        components.path.append(movieCreditsPath)
+        components.path = movieCreditsPath
         
         components.country = country
         
@@ -66,9 +63,8 @@ class TMDbKitMovieURLBuilder {
     func movieImages(for movieId: Int) -> URL {
         var components = TMDbURLComponents(apiKey: self.apiKey, method: TMDbAPI.Movie.path)
         
-        // Append path
         let movieCreditsPath = self.movieMethodPath(with: movieId, method: TMDbAPI.Movie.images)
-        components.path.append(movieCreditsPath)
+        components.path = movieCreditsPath
         
         return components.url!
     }
@@ -76,9 +72,8 @@ class TMDbKitMovieURLBuilder {
     func nowPlaying(language: String?, page: Int, region: String?) -> URL {
         var components = TMDbURLComponents(apiKey: self.apiKey, method: TMDbAPI.Movie.path)
         
-        // Append path
         let nowPlayingPath = self.movieMethodPath(method: TMDbAPI.Movie.nowPlaying)
-        components.path.append(nowPlayingPath)
+        components.path = nowPlayingPath
         
         components.language = language
         components.page = page
@@ -90,9 +85,8 @@ class TMDbKitMovieURLBuilder {
     func releaseDates(for movieId: Int) -> URL {
         var components = TMDbURLComponents(apiKey: self.apiKey, method: TMDbAPI.Movie.path)
         
-        // Append path
         let releaseDates = self.movieMethodPath(with: movieId, method: TMDbAPI.Movie.releaseDates)
-        components.path.append(releaseDates)
+        components.path = releaseDates
         
         return components.url!
     }
@@ -100,9 +94,8 @@ class TMDbKitMovieURLBuilder {
     func recommendations(for movieId: Int, language: String?, page: Int) -> URL {
         var components = TMDbURLComponents(apiKey: self.apiKey, method: TMDbAPI.Movie.path)
         
-        // Append path
         let recommendations = self.movieMethodPath(with: movieId, method: TMDbAPI.Movie.recommendations)
-        components.path.append(recommendations)
+        components.path = recommendations
         
         components.language = language
         components.page = page
