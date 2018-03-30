@@ -77,7 +77,9 @@ class TMDbKitMovieURLBuilder {
         
         components.language = language
         components.page = page
-        components.region = region
+        if let region = region {
+            components.addQueryItem(key: TMDbAPI.Key.region, value: region)
+        }
         
         return components.url!
     }

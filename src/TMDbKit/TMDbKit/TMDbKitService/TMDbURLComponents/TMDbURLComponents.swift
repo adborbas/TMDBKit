@@ -27,7 +27,6 @@ struct TMDbURLComponents {
     var path: String?
     var language: String?
     var country: String?
-    var region: String?
     var page: Int?
     
     var url: URL? {
@@ -49,10 +48,6 @@ struct TMDbURLComponents {
         
         if let country = country {
             components.queryItems!.append(URLQueryItem(name: TMDbAPI.Key.country, value: country))
-        }
-        
-        if let region = region {
-            components.queryItems!.append(URLQueryItem(name: TMDbAPI.Key.region, value: region))
         }
         
         if let page = self.page {
