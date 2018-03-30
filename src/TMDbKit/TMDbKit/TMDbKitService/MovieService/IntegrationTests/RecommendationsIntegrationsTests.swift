@@ -18,40 +18,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+import XCTest
+import TMDbKit
 
-public struct MovieInfo: Decodable {    
-    public let voteCount: Int
-    public let id: Int
-    public let video: Bool
-    public let voteAverage: Double
-    public let title: String
-    public let popularity: Double?
-    public let posterPath: String?
-    public let originalLanguage: String
-    public let originalTitle: String
-    public let genres: [Int]
-    public let backdropPath: String
-    public let adult: Bool
-    public let overview: String?
-    public let releaseDate: Date
-}
-
-private extension MovieInfo {
-    enum CodingKeys: String, CodingKey {
-        case adult
-        case backdropPath = "backdrop_path"
-        case genres = "genre_ids"
-        case id
-        case originalLanguage = "original_language"
-        case originalTitle = "original_title"
-        case overview
-        case popularity
-        case posterPath = "poster_path"
-        case releaseDate = "release_date"
-        case title
-        case video
-        case voteAverage = "vote_average"
-        case voteCount = "vote_count"
+class RecommendationsIntegrationTest: TMDbKitMovieServiceIntegrationTest {
+    func test_recommendations_defaultReturnsFirstPage() {
+        let expectation = XCTestExpectation()
+        _ = self.service.recommendations(for: TestConstants.Movie.existsingId) { result in
+            switch result {
+            case .failure(let error):
+                XCTFail("Requesting recommendations should not fail: \(error.localizedDescription)")
+            case .success(let page):
+                XCTAssertEqual(page.current, 1)
+                XCTAssertTrue(page.results.count > 0)
+                XCTAssertTrue(page.totalPages > 0)
+                XCTAssertTrue(page.totalResults > page.totalPages)
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: defaultTimeout)
     }
 }
