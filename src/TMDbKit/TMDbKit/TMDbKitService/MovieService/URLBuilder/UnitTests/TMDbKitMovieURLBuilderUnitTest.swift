@@ -91,7 +91,7 @@ class TMDbKitMovieURLBuilderUnitTest: XCTestCase {
     }
     
     func test_nowPlaying_full() {
-        let expectedURL = URL(string: "\(self.baseURL)now_playing?\(self.apiKeyPath)=\(self.apiKey)&language=hu&page=1&region=HU")!
+        let expectedURL = URL(string: "\(self.baseURL)now_playing?\(self.apiKeyPath)=\(self.apiKey)&language=hu&region=HU&page=1")!
         let actualURL = self.movieUrlBuilder.nowPlaying(language: "hu", page: 1, region: "HU")
         
         XCTAssertEqual(expectedURL, actualURL)
