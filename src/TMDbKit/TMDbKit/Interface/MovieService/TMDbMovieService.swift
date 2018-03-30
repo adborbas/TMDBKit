@@ -44,4 +44,9 @@ public protocol TMDbMovieService {
     
     func releaseDates(for movieId: Int,
                       completionHandler: @escaping (TMDbServiceResult<[Release]>) -> Void) -> Operation
+    
+    func recommendations(for movieId: Int,
+                         language: String?,
+                         page: Int?,
+                         completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation
 }

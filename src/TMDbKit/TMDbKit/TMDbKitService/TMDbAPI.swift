@@ -29,15 +29,16 @@ enum TMDbAPI {
         static let appendToResponse = "append_to_response"
         static let page = "page"
         static let region = "region"
+        static let country = "country"
     }
     
     enum Movie {
         static let path = "movie"
         static let credits = "credits"
         static let alternativeTitles = "alternative_titles"
-        static let country = "country"
         static let images = "images"
         static let nowPlaying = "now_playing"
         static let releaseDates = "release_dates"
+        static let recommendations = "recommendations"
     }
 }

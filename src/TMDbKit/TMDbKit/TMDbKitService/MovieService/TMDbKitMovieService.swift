@@ -102,4 +102,16 @@ public class TMDbKitMovieService: TMDbMovieService {
         self.operationQueue.addOperation(operation)
         return operation
     }
+    
+    public func recommendations(for movieId: Int,
+                                language: String? = nil,
+                                page: Int? = nil,
+                                completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
+        let url = self.urlBuilder.recommendations(for: movieId, language: language, page: page ?? 1)
+
+        let responseDecoder = TMDbServiceResponseDecoder<Page<MovieInfo>>(jsonDecoder: TMDbJSONDecoder.shortDate)
+        let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
+        self.operationQueue.addOperation(operation)
+        return operation
+    }
 }

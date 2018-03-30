@@ -18,12 +18,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+import XCTest
+import TMDbKit
 
-extension URLComponents {
-    mutating func addQueryItem(from queryMethods: [String]) {
-        guard !queryMethods.isEmpty else { return }
+class RecommendationsIntegrationTest: TMDbKitMovieServiceIntegrationTest {
+    func test_recommendations_defaultReturnsFirstPage() {
+        let expectation = XCTestExpectation()
+        _ = self.service.recommendations(for: TestConstants.Movie.existsingId) { result in
+            switch result {
+            case .failure(let error):
+                XCTFail("Requesting recommendations should not fail: \(error.localizedDescription)")
+            case .success(let page):
+                XCTAssertEqual(page.current, 1)
+                XCTAssertTrue(page.results.count > 0)
+                XCTAssertTrue(page.totalPages > 0)
+                XCTAssertTrue(page.totalResults > page.totalPages)
+            }
+            expectation.fulfill()
+        }
         
-        self.queryItems?.append(URLQueryItem(from: queryMethods))
+        wait(for: [expectation], timeout: defaultTimeout)
     }
 }

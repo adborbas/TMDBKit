@@ -26,7 +26,7 @@ public struct MovieInfo: Decodable {
     public let video: Bool
     public let voteAverage: Double
     public let title: String
-    public let popularity: Double
+    public let popularity: Double?
     public let posterPath: String?
     public let originalLanguage: String
     public let originalTitle: String
