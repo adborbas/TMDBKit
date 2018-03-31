@@ -1324,6 +1324,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieService.swift",
+      "line": 48,
+      "symbol": "TMDbMovieService.recommendations(for:language:page:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieServiceQueryMethod.swift",
       "line": 23,
       "symbol": "TMDbMovieServiceQueryMethod",
@@ -1467,6 +1474,13 @@
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
       "line": 97,
       "symbol": "TMDbKitMovieService.releaseDates(for:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
+      "line": 106,
+      "symbol": "TMDbKitMovieService.recommendations(for:language:page:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
