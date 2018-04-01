@@ -25,7 +25,7 @@ class MovieImagesIntegrationTest: TMDbKitMovieServiceIntegrationTest {
     
     func test_movieImages_existing_shouldSucceed() {
         let expectation = XCTestExpectation()
-        _ = self.service.movieImages(for: TestConstants.Movie.existsingId) { result in
+        _ = self.service.images(for: TestConstants.Movie.existsingId) { result in
             switch result {
             case .failure(let error):
                 XCTFail("Requesting movie images for existing movie should not fail: \(error.localizedDescription)")
@@ -41,7 +41,7 @@ class MovieImagesIntegrationTest: TMDbKitMovieServiceIntegrationTest {
     
     func test_movieImages_nonExisting_shouldReturnError() {
         let expectation = XCTestExpectation()
-        _ = self.service.movieImages(for: TestConstants.Movie.notExistsingId) { result in
+        _ = self.service.images(for: TestConstants.Movie.notExistsingId) { result in
             switch result {
             case .failure(let error):
                 if case TMDbServiceError.failureFromService(.resourceNotFound) = error {} else {
@@ -58,7 +58,7 @@ class MovieImagesIntegrationTest: TMDbKitMovieServiceIntegrationTest {
     
     func test_movieDetail_appendingImages_shouldSucceed() {
         let expectation = XCTestExpectation()
-        _ = self.service.movieDetail(for: TestConstants.Movie.existsingId, appending: [.images]) { result in
+        _ = self.service.detail(for: TestConstants.Movie.existsingId, appending: [.images]) { result in
             switch result {
             case .failure(let error):
                 XCTFail("Request movie details with images should not fail: \(error.localizedDescription)")

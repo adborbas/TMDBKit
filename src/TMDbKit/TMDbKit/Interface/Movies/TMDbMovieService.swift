@@ -22,19 +22,19 @@ import Foundation
 
 
 public protocol TMDbMovieService {
-    func movieDetail(for movieId: Int,
+    func detail(for movieId: Int,
                      language: String?,
                      appending: [TMDbMovieServiceQueryMethod],
                      completionHandler: @escaping (TMDbServiceResult<Movie>) -> Void) -> Operation
     
-    func movieCredits(for movieId: Int,
+    func credits(for movieId: Int,
                       completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> Void) -> Operation
     
-    func movieAlternativeTitles(for movieId: Int,
+    func alternativeTitles(for movieId: Int,
                                 country: String?,
                                 completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) -> Operation
     
-    func movieImages(for movieId: Int,
+    func images(for movieId: Int,
                      completionHandler: @escaping (TMDbServiceResult<Images>) -> Void) -> Operation
     
     func nowPlaying(language: String?,

@@ -27,7 +27,7 @@ class MovieDetailIntegrationTest: TMDbKitMovieServiceIntegrationTest {
         let invalidApiKeyService = TMDbKitMovieService(config: TestConstants.ServiceConfig.invalidAPIKey)
 
         let expectation = XCTestExpectation()
-        _ = invalidApiKeyService.movieDetail(for: TestConstants.Movie.notExistsingId) { result in
+        _ = invalidApiKeyService.detail(for: TestConstants.Movie.notExistsingId) { result in
             switch result {
             case .failure(let error):
                 if case TMDbServiceError.failureFromService(.invalidAPIKey) = error {
@@ -44,7 +44,7 @@ class MovieDetailIntegrationTest: TMDbKitMovieServiceIntegrationTest {
     
     func test_movieDetail_existing_shouldSucceed() {
         let expectation = XCTestExpectation()
-        _ = _ = self.service.movieDetail(for: TestConstants.Movie.existsingId) { result in
+        _ = _ = self.service.detail(for: TestConstants.Movie.existsingId) { result in
             switch result {
             case .failure(let error):
                 XCTFail("Requesting details for an existing movie should not fail: \(error.localizedDescription)")
@@ -59,7 +59,7 @@ class MovieDetailIntegrationTest: TMDbKitMovieServiceIntegrationTest {
     
     func test_movieDetail_nonExisting_shouldReturnError() {
         let expectation = XCTestExpectation()
-        _ = _ = self.service.movieDetail(for: TestConstants.Movie.notExistsingId) { result in
+        _ = _ = self.service.detail(for: TestConstants.Movie.notExistsingId) { result in
             
             switch result {
             case .failure(let error):
@@ -77,7 +77,7 @@ class MovieDetailIntegrationTest: TMDbKitMovieServiceIntegrationTest {
     
     func test_movieDetail_appendingCreditsImagesAlternativeTitles_shouldSucceed() {
         let expectation = XCTestExpectation()
-        _ = _ = self.service.movieDetail(for: TestConstants.Movie.existsingId, appending: [.credits, .images, .alternativeTitles]) { result in
+        _ = _ = self.service.detail(for: TestConstants.Movie.existsingId, appending: [.credits, .images, .alternativeTitles]) { result in
             switch result {
             case .failure(let error):
                 XCTFail("Request movie details with credentials should not fail: \(error.localizedDescription)")

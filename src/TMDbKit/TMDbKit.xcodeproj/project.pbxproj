@@ -221,7 +221,7 @@
 				12E30A92205CF14F003A80EA /* ResponseDecoding */,
 				12686D48205AAFC0007B09F3 /* TMDbOperation */,
 				1255BD1B204AE6F600939FA4 /* ServiceConfig */,
-				1255BD1A204AE6B300939FA4 /* MovieService */,
+				1255BD1A204AE6B300939FA4 /* Movies */,
 				12E6044E204AD195001C5F20 /* TMDbURLComponents */,
 				1255BD1E204AEAD500939FA4 /* Utils */,
 			);
@@ -237,24 +237,24 @@
 			path = TMDbKitIntegrationTests;
 			sourceTree = "<group>";
 		};
-		1255BD19204AE67C00939FA4 /* MovieService */ = {
+		1255BD19204AE67C00939FA4 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
 				124AA2CE20435FB600935492 /* TMDbMovieService.swift */,
 				1255BD23204AFABB00939FA4 /* TMDbMovieServiceQueryMethod.swift */,
 				12E60453204AD249001C5F20 /* Model */,
 			);
-			path = MovieService;
+			path = Movies;
 			sourceTree = "<group>";
 		};
-		1255BD1A204AE6B300939FA4 /* MovieService */ = {
+		1255BD1A204AE6B300939FA4 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
 				1255BD2B204B01E400939FA4 /* URLBuilder */,
 				12FACC7C20437EAD00104F9E /* IntegrationTests */,
 				12FACC7A20437E6F00104F9E /* TMDbKitMovieService.swift */,
 			);
-			path = MovieService;
+			path = Movies;
 			sourceTree = "<group>";
 		};
 		1255BD1B204AE6F600939FA4 /* ServiceConfig */ = {
@@ -401,6 +401,13 @@
 			path = UnitTests;
 			sourceTree = "<group>";
 		};
+		12F6F3242070FBF0009245F0 /* People */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = People;
+			sourceTree = "<group>";
+		};
 		12FACC7820437DED00104F9E /* Interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,7 +416,8 @@
 				12B0B8D5205562E600EAF1DB /* ImagesContaining.swift */,
 				12686D4B205AD157007B09F3 /* Error */,
 				12686D44205A7756007B09F3 /* ImageURLBuilder */,
-				1255BD19204AE67C00939FA4 /* MovieService */,
+				1255BD19204AE67C00939FA4 /* Movies */,
+				12F6F3242070FBF0009245F0 /* People */,
 				124AA2C520435FB600935492 /* Model */,
 			);
 			path = Interface;

@@ -42,7 +42,7 @@ public class TMDbKitMovieService: TMDbMovieService {
         self.urlBuilder = TMDbKitMovieURLBuilder(apiKey: config.apiKey)
     }
     
-    public func movieDetail(for movieId: Int,
+    public func detail(for movieId: Int,
                             language: String? = nil,
                             appending queryMethods: [TMDbMovieServiceQueryMethod] = [TMDbMovieServiceQueryMethod](),
                             completionHandler: @escaping (TMDbServiceResult<Movie>) -> ()) -> Operation {
@@ -53,7 +53,7 @@ public class TMDbKitMovieService: TMDbMovieService {
         return operation
     }
     
-    public func movieCredits(for movieId: Int,
+    public func credits(for movieId: Int,
                              completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> ()) -> Operation {
         let url = self.urlBuilder.movieCreditsURL(for: movieId)
         
@@ -62,7 +62,7 @@ public class TMDbKitMovieService: TMDbMovieService {
         return operation
     }
     
-    public func movieAlternativeTitles(for movieId: Int,
+    public func alternativeTitles(for movieId: Int,
                                        country: String? = nil,
                                        completionHandler: @escaping (TMDbServiceResult<[AlternativeTitle]>) -> Void) -> Operation {
         let url = self.urlBuilder.movieAlternativeTitles(for: movieId, country: country)
@@ -73,7 +73,7 @@ public class TMDbKitMovieService: TMDbMovieService {
         return operation
     }
     
-    public func movieImages(for movieId: Int,
+    public func images(for movieId: Int,
                             completionHandler: @escaping (TMDbServiceResult<Images>) -> Void) -> Operation {
         let url = self.urlBuilder.movieImages(for: movieId)
         
