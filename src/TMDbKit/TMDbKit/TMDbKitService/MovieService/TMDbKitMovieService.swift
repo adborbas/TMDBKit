@@ -86,48 +86,28 @@ public class TMDbKitMovieService: TMDbMovieService {
                            page: Int? = nil,
                            region: String? = nil,
                            completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
-        let url = self.urlBuilder.nowPlaying(language: language, page: page ?? 1, region: region)
-        
-        let responseDecoder = TMDbServiceResponseDecoder<Page<MovieInfo>>(jsonDecoder: TMDbJSONDecoder.shortDate)
-        let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
-        self.operationQueue.addOperation(operation)
-        return operation
+        return self.serviceList(language, page, region, self.urlBuilder.nowPlaying, completionHandler)
     }
     
     public func popular(language: String? = nil,
                         page: Int? = nil,
                         region: String? = nil,
                         completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
-        let url = self.urlBuilder.popular(language: language, page: page ?? 1, region: region)
-        
-        let responseDecoder = TMDbServiceResponseDecoder<Page<MovieInfo>>(jsonDecoder: TMDbJSONDecoder.shortDate)
-        let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
-        self.operationQueue.addOperation(operation)
-        return operation
+        return self.serviceList(language, page, region, self.urlBuilder.popular, completionHandler)
     }
     
     public func topRated(language: String? = nil,
                         page: Int? = nil,
                         region: String? = nil,
                         completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
-        let url = self.urlBuilder.topRated(language: language, page: page ?? 1, region: region)
-        
-        let responseDecoder = TMDbServiceResponseDecoder<Page<MovieInfo>>(jsonDecoder: TMDbJSONDecoder.shortDate)
-        let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
-        self.operationQueue.addOperation(operation)
-        return operation
+        return self.serviceList(language, page, region, self.urlBuilder.topRated, completionHandler)
     }
     
     public func upcoming(language: String? = nil,
                         page: Int? = nil,
                         region: String? = nil,
                         completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
-        let url = self.urlBuilder.upcoming(language: language, page: page ?? 1, region: region)
-        
-        let responseDecoder = TMDbServiceResponseDecoder<Page<MovieInfo>>(jsonDecoder: TMDbJSONDecoder.shortDate)
-        let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
-        self.operationQueue.addOperation(operation)
-        return operation
+        return self.serviceList(language, page, region, self.urlBuilder.upcoming, completionHandler)
     }
     
     public func releaseDates(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<[Release]>) -> Void) -> Operation {
@@ -158,6 +138,21 @@ public class TMDbKitMovieService: TMDbMovieService {
         let url = self.urlBuilder.lists(for: movieId, language: language, page: page ?? 1)
         
         let responseDecoder = TMDbServiceResponseDecoder<Page<MovieList>>(jsonDecoder: TMDbJSONDecoder.shortDate)
+        let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
+        self.operationQueue.addOperation(operation)
+        return operation
+    }
+    
+    // MARK: - Private functions
+    
+    private func serviceList(_ language: String? = nil,
+                         _ page: Int? = nil,
+                         _ region: String? = nil,
+                         _ urlConstructor: (String?, Int, String?) -> URL,
+                         _ completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
+        let url = urlConstructor(language, page ?? 1, region)
+        
+        let responseDecoder = TMDbServiceResponseDecoder<Page<MovieInfo>>(jsonDecoder: TMDbJSONDecoder.shortDate)
         let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
         self.operationQueue.addOperation(operation)
         return operation
