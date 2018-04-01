@@ -105,6 +105,18 @@ class TMDbKitMovieURLBuilder {
         return components.url!
     }
     
+    func lists(for movieId: Int, language: String?, page: Int) -> URL {
+        var components = TMDbURLComponents(apiKey: self.apiKey, method: TMDbAPI.Movie.path)
+        
+        let lists = self.movieMethodPath(with: movieId, method: TMDbAPI.Movie.lists)
+        components.path = lists
+        
+        components.language = language
+        components.page = page
+        
+        return components.url!
+    }
+    
     // MARK: - Private Functions
     private func movieMethodPath(with movieId: Int? = nil, method: String? = nil) -> String {
         var path = ""

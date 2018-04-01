@@ -49,4 +49,9 @@ public protocol TMDbMovieService {
                          language: String?,
                          page: Int?,
                          completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation
+    
+    func lists(for movieId: Int,
+                         language: String?,
+                         page: Int?,
+                         completionHandler: @escaping (TMDbServiceResult<Page<MovieList>>) -> Void) -> Operation
 }

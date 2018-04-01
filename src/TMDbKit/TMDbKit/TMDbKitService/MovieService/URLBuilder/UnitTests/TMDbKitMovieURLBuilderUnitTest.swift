@@ -119,4 +119,19 @@ class TMDbKitMovieURLBuilderUnitTest: XCTestCase {
         
         XCTAssertEqual(expectedURL, actualURL)
     }
+    
+    // MARK: - lists
+    func test_lists() {
+        let expectedURL = URL(string: "\(self.baseURL)\(self.movieId)/lists?\(self.apiKeyPath)=\(self.apiKey)&page=1")!
+        let actualURL = self.movieUrlBuilder.lists(for: self.movieId, language: nil, page: 1)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    func test_lists_full() {
+        let expectedURL = URL(string: "\(self.baseURL)\(self.movieId)/lists?\(self.apiKeyPath)=\(self.apiKey)&language=hu&page=100")!
+        let actualURL = self.movieUrlBuilder.lists(for: self.movieId, language: "hu", page: 100)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
 }

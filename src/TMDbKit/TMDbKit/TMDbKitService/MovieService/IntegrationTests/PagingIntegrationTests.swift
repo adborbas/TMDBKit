@@ -21,22 +21,49 @@
 import XCTest
 import TMDbKit
 
-class NowPlayingIntegrationTest: TMDbKitMovieServiceIntegrationTest {
+class PagingIntegrationTest: TMDbKitMovieServiceIntegrationTest {
+    
+    // MARK: - Tests
     func test_nowPlaying_defaultReturnsFirstPage() {
         let expectation = XCTestExpectation()
         _ = self.service.nowPlaying() { result in
-            switch result {
-            case .failure(let error):
-                XCTFail("Requesting now playing movies should not fail: \(error.localizedDescription)")
-            case .success(let page):
-                XCTAssertEqual(page.current, 1)
-                XCTAssertTrue(page.results.count > 0)
-                XCTAssertTrue(page.totalPages > 0)
-                XCTAssertTrue(page.totalResults > page.totalPages)
-            }
+            XCTAssertNonEmptyFirstPageResult(result)
             expectation.fulfill()
         }
         
         wait(for: [expectation], timeout: defaultTimeout)
+    }
+    
+    func test_recommendations_defaultReturnsFirstPage() {
+        let expectation = XCTestExpectation()
+        _ = self.service.recommendations(for: TestConstants.Movie.existsingId) { result in
+            XCTAssertNonEmptyFirstPageResult(result)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: defaultTimeout)
+    }
+    
+    func test_lists_defaultReturnsFirstPage() {
+        let expectation = XCTestExpectation()
+        _ = self.service.lists(for: TestConstants.Movie.existsingId) { result in
+            XCTAssertNonEmptyFirstPageResult(result)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: defaultTimeout)
+    }
+}
+
+// MARK: - Private functions
+private func XCTAssertNonEmptyFirstPageResult<Element>(_ result: TMDbServiceResult<Page<Element>>) {
+    switch result {
+    case .failure(let error):
+        XCTFail("Requesting lists should not fail: \(error.localizedDescription)")
+    case .success(let page):
+        XCTAssertEqual(page.current, 1)
+        XCTAssertTrue(page.results.count > 0)
+        XCTAssertTrue(page.totalPages > 0)
+        XCTAssertTrue(page.totalResults > page.totalPages)
     }
 }

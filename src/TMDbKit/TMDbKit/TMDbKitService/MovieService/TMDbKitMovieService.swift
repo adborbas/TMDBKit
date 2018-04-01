@@ -114,4 +114,16 @@ public class TMDbKitMovieService: TMDbMovieService {
         self.operationQueue.addOperation(operation)
         return operation
     }
+    
+    public func lists(for movieId: Int,
+                                language: String? = nil,
+                                page: Int? = nil,
+                                completionHandler: @escaping (TMDbServiceResult<Page<MovieList>>) -> Void) -> Operation {
+        let url = self.urlBuilder.lists(for: movieId, language: language, page: page ?? 1)
+        
+        let responseDecoder = TMDbServiceResponseDecoder<Page<MovieList>>(jsonDecoder: TMDbJSONDecoder.shortDate)
+        let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
+        self.operationQueue.addOperation(operation)
+        return operation
+    }
 }

@@ -18,25 +18,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import XCTest
-import TMDbKit
+import Foundation
 
-class RecommendationsIntegrationTest: TMDbKitMovieServiceIntegrationTest {
-    func test_recommendations_defaultReturnsFirstPage() {
-        let expectation = XCTestExpectation()
-        _ = self.service.recommendations(for: TestConstants.Movie.existsingId) { result in
-            switch result {
-            case .failure(let error):
-                XCTFail("Requesting recommendations should not fail: \(error.localizedDescription)")
-            case .success(let page):
-                XCTAssertEqual(page.current, 1)
-                XCTAssertTrue(page.results.count > 0)
-                XCTAssertTrue(page.totalPages > 0)
-                XCTAssertTrue(page.totalResults > page.totalPages)
-            }
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: defaultTimeout)
+public struct MovieList: Decodable {
+    let description: String
+    let favoriteCount: Int
+    let id: Int
+    let itemCount: Int
+    let language: String
+    let name: String
+    let posterPath: String?
+}
+
+private extension MovieList {
+    enum CodingKeys: String, CodingKey {
+        case description
+        case favoriteCount = "favorite_count"
+        case id
+        case itemCount = "item_count"
+        case language = "iso_639_1"
+        case name
+        case posterPath = "poster_path"
     }
 }
