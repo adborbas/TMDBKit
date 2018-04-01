@@ -52,7 +52,7 @@ public class TMDbKitMovieService: TMDbMovieService {
         self.operationQueue.addOperation(operation)
         return operation
     }
-
+    
     public func movieCredits(for movieId: Int,
                              completionHandler: @escaping (TMDbServiceResult<MovieCredits>) -> ()) -> Operation {
         let url = self.urlBuilder.movieCreditsURL(for: movieId)
@@ -95,10 +95,34 @@ public class TMDbKitMovieService: TMDbMovieService {
     }
     
     public func popular(language: String? = nil,
-                           page: Int? = nil,
-                           region: String? = nil,
-                           completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
+                        page: Int? = nil,
+                        region: String? = nil,
+                        completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
         let url = self.urlBuilder.popular(language: language, page: page ?? 1, region: region)
+        
+        let responseDecoder = TMDbServiceResponseDecoder<Page<MovieInfo>>(jsonDecoder: TMDbJSONDecoder.shortDate)
+        let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
+        self.operationQueue.addOperation(operation)
+        return operation
+    }
+    
+    public func topRated(language: String? = nil,
+                        page: Int? = nil,
+                        region: String? = nil,
+                        completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
+        let url = self.urlBuilder.topRated(language: language, page: page ?? 1, region: region)
+        
+        let responseDecoder = TMDbServiceResponseDecoder<Page<MovieInfo>>(jsonDecoder: TMDbJSONDecoder.shortDate)
+        let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
+        self.operationQueue.addOperation(operation)
+        return operation
+    }
+    
+    public func upcoming(language: String? = nil,
+                        page: Int? = nil,
+                        region: String? = nil,
+                        completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
+        let url = self.urlBuilder.upcoming(language: language, page: page ?? 1, region: region)
         
         let responseDecoder = TMDbServiceResponseDecoder<Page<MovieInfo>>(jsonDecoder: TMDbJSONDecoder.shortDate)
         let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
@@ -120,7 +144,7 @@ public class TMDbKitMovieService: TMDbMovieService {
                                 page: Int? = nil,
                                 completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
         let url = self.urlBuilder.recommendations(for: movieId, language: language, page: page ?? 1)
-
+        
         let responseDecoder = TMDbServiceResponseDecoder<Page<MovieInfo>>(jsonDecoder: TMDbJSONDecoder.shortDate)
         let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
         self.operationQueue.addOperation(operation)
@@ -128,9 +152,9 @@ public class TMDbKitMovieService: TMDbMovieService {
     }
     
     public func lists(for movieId: Int,
-                                language: String? = nil,
-                                page: Int? = nil,
-                                completionHandler: @escaping (TMDbServiceResult<Page<MovieList>>) -> Void) -> Operation {
+                      language: String? = nil,
+                      page: Int? = nil,
+                      completionHandler: @escaping (TMDbServiceResult<Page<MovieList>>) -> Void) -> Operation {
         let url = self.urlBuilder.lists(for: movieId, language: language, page: page ?? 1)
         
         let responseDecoder = TMDbServiceResponseDecoder<Page<MovieList>>(jsonDecoder: TMDbJSONDecoder.shortDate)

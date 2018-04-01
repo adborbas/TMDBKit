@@ -42,5 +42,7 @@ enum TMDbAPI {
         static let recommendations = "recommendations"
         static let lists = "lists"
         static let popular = "popular"
+        static let topRated = "top_rated"
+        static let upcoming = "upcoming"
     }
 }
