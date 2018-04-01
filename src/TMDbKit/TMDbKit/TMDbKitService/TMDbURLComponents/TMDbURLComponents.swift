@@ -22,7 +22,7 @@ import Foundation
 
 struct TMDbURLComponents {
     private var urlComponents: URLComponents
-    private let method: String
+    private let service: String
     
     var path: String?
     var language: String?
@@ -35,7 +35,7 @@ struct TMDbURLComponents {
         // Path
         var computedPath = URL(string: "/")!
         computedPath.appendPathComponent(TMDbAPI.version)
-        computedPath.appendPathComponent(method)
+        computedPath.appendPathComponent(service)
         if let path = self.path {
             computedPath.appendPathComponent(path)
         }
@@ -57,7 +57,7 @@ struct TMDbURLComponents {
         return components.url
     }
     
-    init(apiKey: String, method: String) {
+    init(apiKey: String, service: String) {
         var components = URLComponents()
         components.scheme = TMDbAPI.scheme
         components.host = TMDbAPI.host
@@ -66,7 +66,7 @@ struct TMDbURLComponents {
         components.queryItems = [apiKeyQueryItem]
         self.urlComponents = components
         
-        self.method = method
+        self.service = service
     }
     
     mutating func addQueryItem(from queryMethods: [String]) {

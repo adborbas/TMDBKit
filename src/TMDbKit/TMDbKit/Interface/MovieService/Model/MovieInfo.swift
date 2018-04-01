@@ -31,7 +31,7 @@ public struct MovieInfo: Decodable {
     public let originalLanguage: String
     public let originalTitle: String
     public let genres: [Int]
-    public let backdropPath: String
+    public let backdropPath: String?
     public let adult: Bool
     public let overview: String?
     public let releaseDate: Date

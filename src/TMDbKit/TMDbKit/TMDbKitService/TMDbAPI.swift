@@ -40,5 +40,9 @@ enum TMDbAPI {
         static let nowPlaying = "now_playing"
         static let releaseDates = "release_dates"
         static let recommendations = "recommendations"
+        static let lists = "lists"
+        static let popular = "popular"
+        static let topRated = "top_rated"
+        static let upcoming = "upcoming"
     }
 }

@@ -97,6 +97,51 @@ class TMDbKitMovieURLBuilderUnitTest: XCTestCase {
         XCTAssertEqual(expectedURL, actualURL)
     }
     
+    // MARK: - popular
+    func test_popular_defautl() {
+        let expectedURL = URL(string: "\(self.baseURL)popular?\(self.apiKeyPath)=\(self.apiKey)&page=1")!
+        let actualURL = self.movieUrlBuilder.popular(language: nil, page: 1, region: nil)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    func test_popular_full() {
+        let expectedURL = URL(string: "\(self.baseURL)popular?\(self.apiKeyPath)=\(self.apiKey)&region=HU&language=hu&page=1")!
+        let actualURL = self.movieUrlBuilder.popular(language: "hu", page: 1, region: "HU")
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    // MARK: - topRated
+    func test_topRated_defautl() {
+        let expectedURL = URL(string: "\(self.baseURL)top_rated?\(self.apiKeyPath)=\(self.apiKey)&page=1")!
+        let actualURL = self.movieUrlBuilder.topRated(language: nil, page: 1, region: nil)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    func test_topRated_full() {
+        let expectedURL = URL(string: "\(self.baseURL)top_rated?\(self.apiKeyPath)=\(self.apiKey)&region=HU&language=hu&page=1")!
+        let actualURL = self.movieUrlBuilder.topRated(language: "hu", page: 1, region: "HU")
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    // MARK: - upcoming
+    func test_upcoming_defautl() {
+        let expectedURL = URL(string: "\(self.baseURL)upcoming?\(self.apiKeyPath)=\(self.apiKey)&page=1")!
+        let actualURL = self.movieUrlBuilder.upcoming(language: nil, page: 1, region: nil)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    func test_upcoming_full() {
+        let expectedURL = URL(string: "\(self.baseURL)upcoming?\(self.apiKeyPath)=\(self.apiKey)&region=HU&language=hu&page=1")!
+        let actualURL = self.movieUrlBuilder.upcoming(language: "hu", page: 1, region: "HU")
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
     // MARK: - releaseDates
     func test_releaseDates() {
         let expectedURL = URL(string: "\(self.baseURL)\(self.movieId)/release_dates?\(self.apiKeyPath)=\(self.apiKey)")!
@@ -116,6 +161,21 @@ class TMDbKitMovieURLBuilderUnitTest: XCTestCase {
     func test_recommendations_full() {
         let expectedURL = URL(string: "\(self.baseURL)\(self.movieId)/recommendations?\(self.apiKeyPath)=\(self.apiKey)&language=hu&page=100")!
         let actualURL = self.movieUrlBuilder.recommendations(for: self.movieId, language: "hu", page: 100)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    // MARK: - lists
+    func test_lists() {
+        let expectedURL = URL(string: "\(self.baseURL)\(self.movieId)/lists?\(self.apiKeyPath)=\(self.apiKey)&page=1")!
+        let actualURL = self.movieUrlBuilder.lists(for: self.movieId, language: nil, page: 1)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    func test_lists_full() {
+        let expectedURL = URL(string: "\(self.baseURL)\(self.movieId)/lists?\(self.apiKeyPath)=\(self.apiKey)&language=hu&page=100")!
+        let actualURL = self.movieUrlBuilder.lists(for: self.movieId, language: "hu", page: 100)
         
         XCTAssertEqual(expectedURL, actualURL)
     }

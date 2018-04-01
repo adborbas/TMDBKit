@@ -42,6 +42,11 @@ public protocol TMDbMovieService {
                     region: String?,
                     completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation
     
+    func popular(language: String?,
+                    page: Int?,
+                    region: String?,
+                    completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation
+    
     func releaseDates(for movieId: Int,
                       completionHandler: @escaping (TMDbServiceResult<[Release]>) -> Void) -> Operation
     
@@ -49,4 +54,9 @@ public protocol TMDbMovieService {
                          language: String?,
                          page: Int?,
                          completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation
+    
+    func lists(for movieId: Int,
+                         language: String?,
+                         page: Int?,
+                         completionHandler: @escaping (TMDbServiceResult<Page<MovieList>>) -> Void) -> Operation
 }
