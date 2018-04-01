@@ -1114,6 +1114,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/MovieList.swift",
+      "line": 23,
+      "symbol": "MovieList",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/Model/Release.swift",
       "line": 23,
       "symbol": "Release",
@@ -1319,14 +1326,28 @@
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieService.swift",
       "line": 45,
+      "symbol": "TMDbMovieService.popular(language:page:region:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieService.swift",
+      "line": 50,
       "symbol": "TMDbMovieService.releaseDates(for:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieService.swift",
-      "line": 48,
+      "line": 53,
       "symbol": "TMDbMovieService.recommendations(for:language:page:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/Interface/MovieService/TMDbMovieService.swift",
+      "line": 58,
+      "symbol": "TMDbMovieService.lists(for:language:page:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -1472,15 +1493,43 @@
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
-      "line": 97,
-      "symbol": "TMDbKitMovieService.releaseDates(for:completionHandler:)",
+      "line": 92,
+      "symbol": "TMDbKitMovieService.popular(language:page:region:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
+      "line": 99,
+      "symbol": "TMDbKitMovieService.topRated(language:page:region:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
       "line": 106,
+      "symbol": "TMDbKitMovieService.upcoming(language:page:region:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
+      "line": 113,
+      "symbol": "TMDbKitMovieService.releaseDates(for:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
+      "line": 122,
       "symbol": "TMDbKitMovieService.recommendations(for:language:page:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/adborbas/TMDbKit/src/TMDbKit/TMDbKit/TMDbKitService/MovieService/TMDbKitMovieService.swift",
+      "line": 134,
+      "symbol": "TMDbKitMovieService.lists(for:language:page:completionHandler:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
