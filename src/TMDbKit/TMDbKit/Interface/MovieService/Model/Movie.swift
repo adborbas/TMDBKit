@@ -22,7 +22,7 @@ import Foundation
 
 public struct Movie: Decodable {
     public let adult: Bool
-    public let backdropPath: String
+    public let backdropPath: String?
     public let collection: CollectionInfo?
     public let budget: Int
     public let genres: [GenreInfo]
