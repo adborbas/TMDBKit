@@ -134,4 +134,19 @@ class TMDbKitMovieURLBuilderUnitTest: XCTestCase {
         
         XCTAssertEqual(expectedURL, actualURL)
     }
+    
+    // MARK: - popular
+    func test_popular_defautl() {
+        let expectedURL = URL(string: "\(self.baseURL)popular?\(self.apiKeyPath)=\(self.apiKey)&page=1")!
+        let actualURL = self.movieUrlBuilder.popular(language: nil, page: 1, region: nil)
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
+    
+    func test_popular_full() {
+        let expectedURL = URL(string: "\(self.baseURL)popular?\(self.apiKeyPath)=\(self.apiKey)&region=HU&language=hu&page=1")!
+        let actualURL = self.movieUrlBuilder.popular(language: "hu", page: 1, region: "HU")
+        
+        XCTAssertEqual(expectedURL, actualURL)
+    }
 }

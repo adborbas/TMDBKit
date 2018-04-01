@@ -94,6 +94,18 @@ public class TMDbKitMovieService: TMDbMovieService {
         return operation
     }
     
+    public func popular(language: String? = nil,
+                           page: Int? = nil,
+                           region: String? = nil,
+                           completionHandler: @escaping (TMDbServiceResult<Page<MovieInfo>>) -> Void) -> Operation {
+        let url = self.urlBuilder.popular(language: language, page: page ?? 1, region: region)
+        
+        let responseDecoder = TMDbServiceResponseDecoder<Page<MovieInfo>>(jsonDecoder: TMDbJSONDecoder.shortDate)
+        let operation = TMDbOperation(url: url, responseDecoder: responseDecoder, completionHandler: completionHandler)
+        self.operationQueue.addOperation(operation)
+        return operation
+    }
+    
     public func releaseDates(for movieId: Int, completionHandler: @escaping (TMDbServiceResult<[Release]>) -> Void) -> Operation {
         let url = self.urlBuilder.releaseDates(for: movieId)
         

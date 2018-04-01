@@ -34,6 +34,16 @@ class PagingIntegrationTest: TMDbKitMovieServiceIntegrationTest {
         wait(for: [expectation], timeout: defaultTimeout)
     }
     
+    func test_popular_defaultReturnsFirstPage() {
+        let expectation = XCTestExpectation()
+        _ = self.service.popular() { result in
+            XCTAssertNonEmptyFirstPageResult(result)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: defaultTimeout)
+    }
+    
     func test_recommendations_defaultReturnsFirstPage() {
         let expectation = XCTestExpectation()
         _ = self.service.recommendations(for: TestConstants.Movie.existsingId) { result in
